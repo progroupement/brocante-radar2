@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect, useCallback } from 'react'
+import { Suspense, useState, useEffect, useCallback } from 'react'
 import Link from 'next/link'
 import { useSearchParams, useRouter } from 'next/navigation'
 import SearchBar from '@/components/SearchBar'
@@ -9,7 +9,7 @@ import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import { Radar, Loader2, Calendar } from 'lucide-react'
 import { createClient, type Event } from '@/lib/supabase'
-import { KEYWORDS_SUGGESTIONS, formatDate } from '@/lib/utils'
+import { formatDate } from '@/lib/utils'
 
 interface SearchResult {
   id: string
@@ -28,7 +28,7 @@ interface SearchResult {
 
 const POPULAR = ['Playmobil', 'Vinyles', 'Lego', 'Livres', 'Nintendo', 'Vêtements', 'Déco', 'Outils']
 
-export default function SearchPage() {
+function SearchContent() {
   const router = useRouter()
   const searchParams = useSearchParams()
   const initialQ = searchParams.get('q') ?? ''
@@ -41,7 +41,6 @@ export default function SearchPage() {
   const [eventId, setEventId] = useState('')
   const [todayEvents, setTodayEvents] = useState<Pick<Event, 'id' | 'nom' | 'date' | 'ville'>[]>([])
 
-  // Charger les événements du jour/semaine pour le sélecteur
   useEffect(() => {
     const supabase = createClient()
     const today = new Date().toISOString().split('T')[0]
@@ -70,7 +69,6 @@ export default function SearchPage() {
       const data = await res.json()
       setResults(data.results ?? [])
 
-      // Mettre à jour l'URL
       router.replace(`/search?q=${encodeURIComponent(q.trim())}`, { scroll: false })
     } catch {
       setResults([])
@@ -79,13 +77,11 @@ export default function SearchPage() {
     }
   }, [scope, eventId, router])
 
-  // Relancer si les filtres changent
   useEffect(() => {
     if (query) doSearch(query)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [scope, eventId])
 
-  // Recherche initiale si ?q= dans l'URL
   useEffect(() => {
     if (initialQ) doSearch(initialQ)
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -98,10 +94,8 @@ export default function SearchPage() {
     <>
       <Navbar />
       <main className="flex-1 min-h-screen">
-        {/* En-tête de recherche */}
         <div className="bg-white border-b border-gray-100 px-4 py-8 sm:py-12">
           <div className="max-w-2xl mx-auto">
-            {/* Logo */}
             <Link href="/" className="flex items-center justify-center gap-2 mb-8 group">
               <div className="w-9 h-9 bg-[#E8651A] rounded-xl flex items-center justify-center group-hover:scale-105 transition-transform">
                 <Radar className="w-5 h-5 text-white" />
@@ -111,17 +105,9 @@ export default function SearchPage() {
               </span>
             </Link>
 
-            {/* Barre de recherche */}
-            <SearchBar
-              value={query}
-              onChange={setQuery}
-              onSearch={doSearch}
-              autoFocus
-            />
+            <SearchBar value={query} onChange={setQuery} onSearch={doSearch} autoFocus />
 
-            {/* Filtres */}
             <div className="flex flex-wrap gap-3 mt-4">
-              {/* Scope */}
               <div className="flex rounded-xl overflow-hidden border border-gray-200 text-sm">
                 {([
                   { key: 'today', label: "Aujourd'hui" },
@@ -132,9 +118,7 @@ export default function SearchPage() {
                     key={key}
                     onClick={() => setScope(key)}
                     className={`px-4 py-2 transition-colors ${
-                      scope === key
-                        ? 'bg-[#E8651A] text-white font-medium'
-                        : 'bg-white text-[#6B6B6B] hover:bg-gray-50'
+                      scope === key ? 'bg-[#E8651A] text-white font-medium' : 'bg-white text-[#6B6B6B] hover:bg-gray-50'
                     }`}
                   >
                     {label}
@@ -142,7 +126,6 @@ export default function SearchPage() {
                 ))}
               </div>
 
-              {/* Sélecteur de brocante */}
               {todayEvents.length > 0 && (
                 <select
                   value={eventId}
@@ -161,9 +144,7 @@ export default function SearchPage() {
           </div>
         </div>
 
-        {/* Résultats */}
         <div className="max-w-2xl mx-auto px-4 py-6">
-          {/* Loading */}
           {loading && (
             <div className="flex items-center justify-center py-16 gap-3 text-[#6B6B6B]">
               <Loader2 className="w-5 h-5 animate-spin text-[#E8651A]" />
@@ -171,7 +152,6 @@ export default function SearchPage() {
             </div>
           )}
 
-          {/* Résultats */}
           {!loading && hasResults && (
             <>
               <p className="text-sm text-[#6B6B6B] mb-4">
@@ -186,7 +166,6 @@ export default function SearchPage() {
             </>
           )}
 
-          {/* État vide */}
           {isEmpty && (
             <div className="text-center py-16">
               <div className="text-5xl mb-4">🔍</div>
@@ -213,7 +192,6 @@ export default function SearchPage() {
             </div>
           )}
 
-          {/* État initial (avant toute recherche) */}
           {!searched && !loading && (
             <div className="text-center py-12">
               <p className="text-[#6B6B6B] mb-6 text-lg">Recherches populaires :</p>
@@ -241,9 +219,7 @@ export default function SearchPage() {
                         key={e.id}
                         onClick={() => setEventId(e.id)}
                         className={`border rounded-xl px-4 py-2 text-sm text-left transition-all ${
-                          eventId === e.id
-                            ? 'border-[#E8651A] bg-orange-50'
-                            : 'border-gray-200 hover:border-orange-200 bg-white'
+                          eventId === e.id ? 'border-[#E8651A] bg-orange-50' : 'border-gray-200 hover:border-orange-200 bg-white'
                         }`}
                       >
                         <span className="font-medium">{e.nom}</span>
@@ -259,5 +235,17 @@ export default function SearchPage() {
       </main>
       <Footer />
     </>
+  )
+}
+
+export default function SearchPage() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen flex items-center justify-center">
+        <Loader2 className="w-6 h-6 animate-spin text-[#E8651A]" />
+      </div>
+    }>
+      <SearchContent />
+    </Suspense>
   )
 }
