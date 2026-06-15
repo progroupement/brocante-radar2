@@ -1,10 +1,10 @@
 import { createBrowserClient } from '@supabase/ssr'
 
+const SUPABASE_URL = process.env.NEXT_PUBLIC_SUPABASE_URL ?? 'https://amnwcgdqrgmsdgfekrry.supabase.co'
+const SUPABASE_ANON_KEY = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY ?? 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFtbndjZ2Rxcmdtc2RnZmVrcnJ5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODE1MjUyODMsImV4cCI6MjA5NzEwMTI4M30.Zodk0XBNeOBgiYWrzWXkR6qsdYpgxdUbK-1-etMFiJQ'
+
 export function createClient() {
-  return createBrowserClient(
-    process.env.NEXT_PUBLIC_SUPABASE_URL!,
-    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
-  )
+  return createBrowserClient(SUPABASE_URL, SUPABASE_ANON_KEY)
 }
 
 // Types utilitaires
