@@ -1,9 +1,10 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { Resend } from 'resend'
 
-const resend = new Resend(process.env.RESEND_API_KEY)
+export const dynamic = 'force-dynamic'
 
 export async function POST(request: NextRequest) {
+  const resend = new Resend(process.env.RESEND_API_KEY)
   const { nom, email, nomBrocante, date, adresse, ville, qrCodeUrl, dashboardUrl } = await request.json()
 
   const dateFormatted = new Date(date).toLocaleDateString('fr-FR', {
