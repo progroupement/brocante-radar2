@@ -39,7 +39,7 @@ export default function SearchPage() {
   const [searched, setSearched] = useState(false)
   const [scope, setScope] = useState<'today' | 'week' | 'all'>('today')
   const [eventId, setEventId] = useState('')
-  const [todayEvents, setTodayEvents] = useState<Event[]>([])
+  const [todayEvents, setTodayEvents] = useState<Pick<Event, 'id' | 'nom' | 'date' | 'ville'>[]>([])
 
   // Charger les événements du jour/semaine pour le sélecteur
   useEffect(() => {
@@ -54,7 +54,7 @@ export default function SearchPage() {
       .lte('date', nextWeek)
       .order('date')
       .limit(30)
-      .then(({ data }) => { if (data) setTodayEvents(data) })
+      .then(({ data }) => { if (data) setTodayEvents(data as Pick<Event, 'id' | 'nom' | 'date' | 'ville'>[]) })
   }, [])
 
   const doSearch = useCallback(async (q: string) => {
