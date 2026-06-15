@@ -110,7 +110,24 @@ export default function OrganizerPage() {
 
       if (eventError || !event) throw new Error(eventError?.message || 'Erreur création événement')
 
-      // 4. Redirection vers le QR code
+      // 4. Envoyer l'email de confirmation via Resend
+      const appUrl = process.env.NEXT_PUBLIC_APP_URL || ''
+      await fetch('/api/send-confirmation', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          nom: data.nom,
+          email: data.email,
+          nomBrocante: data.nom_brocante,
+          date: data.date,
+          adresse: data.adresse,
+          ville: data.ville,
+          qrCodeUrl: `${appUrl}/organizer/${event.id}/qrcode`,
+          dashboardUrl: `${appUrl}/organizer/${event.id}/dashboard`,
+        }),
+      })
+
+      // 5. Redirection vers le QR code
       router.push(`/organizer/${event.id}/qrcode`)
     } catch (err: unknown) {
       setError(err instanceof Error ? err.message : 'Une erreur est survenue')
