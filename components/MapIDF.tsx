@@ -40,8 +40,8 @@ export default function MapIDF() {
       .not('lat', 'is', null)
       .then(({ data }) => {
         if (data) {
-          setEvents(data)
-          setFilteredEvents(data)
+          setEvents(data as Event[])
+          setFilteredEvents(data as Event[])
         }
       })
   }, [])
