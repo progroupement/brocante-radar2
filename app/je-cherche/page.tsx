@@ -3,7 +3,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
-import { Search, MapPin, CheckCircle, ArrowRight, Star, Clock, Lightbulb, Bell } from 'lucide-react'
+import { Search, MapPin, CheckCircle, ArrowRight, Star, Clock, Lightbulb, Bell, ShoppingBag } from 'lucide-react'
 
 export const metadata: Metadata = {
   title: 'Je cherche la perle rare — Brocante Radar Île-de-France',
