@@ -39,8 +39,8 @@ export default function Navbar() {
           <Link href="/search" className="text-sm font-medium text-[#6B6B6B] hover:text-[#1A1A1A] transition-colors px-4 py-2">
             Rechercher
           </Link>
-          <Link href="/organizer" className="ml-2 bg-[#E8651A] hover:bg-[#d4581a] text-white text-sm font-semibold px-5 py-2.5 rounded-xl transition-colors">
-            Organiser ma brocante
+          <Link href="/exposant" className="ml-2 bg-[#E8651A] hover:bg-[#d4581a] text-white text-sm font-semibold px-5 py-2.5 rounded-xl transition-colors">
+            Publier mon stand
           </Link>
         </div>
 
@@ -59,7 +59,7 @@ export default function Navbar() {
           <Link href="/guide-chineur" onClick={() => setOpen(false)} className="text-sm font-medium text-[#1A1A1A] px-3 py-3 rounded-lg hover:bg-gray-50">Guide du chineur</Link>
           <Link href="/brocantes-ile-de-france" onClick={() => setOpen(false)} className="text-sm font-medium text-[#1A1A1A] px-3 py-3 rounded-lg hover:bg-gray-50">Brocantes IDF</Link>
           <Link href="/search" onClick={() => setOpen(false)} className="text-sm font-medium text-[#1A1A1A] px-3 py-3 rounded-lg hover:bg-gray-50">Rechercher un objet</Link>
-          <Link href="/organizer" onClick={() => setOpen(false)} className="mt-2 bg-[#E8651A] text-white text-sm font-semibold px-4 py-3 rounded-xl text-center">Organiser ma brocante</Link>
+          <Link href="/exposant" onClick={() => setOpen(false)} className="mt-2 bg-[#E8651A] text-white text-sm font-semibold px-4 py-3 rounded-xl text-center">Publier mon stand</Link>
         </div>
       )}
     </nav>

@@ -29,10 +29,11 @@ export default function Footer() {
             <h3 className="text-xs font-bold text-white uppercase tracking-widest mb-5">Navigation</h3>
             <ul className="space-y-3 text-sm">
               <li><Link href="/" className="hover:text-white transition-colors">Accueil</Link></li>
-              <li><Link href="/organizer" className="hover:text-white transition-colors">Organiser ma brocante</Link></li>
               <li><Link href="/search" className="hover:text-white transition-colors">Rechercher un objet</Link></li>
+              <li><Link href="/exposant" className="hover:text-white transition-colors">Publier mon stand</Link></li>
               <li><Link href="/guide-chineur" className="hover:text-white transition-colors">Guide du chineur</Link></li>
               <li><Link href="/brocantes-ile-de-france" className="hover:text-white transition-colors">Brocantes IDF</Link></li>
+              <li><Link href="/contact-organisateur" className="hover:text-white transition-colors">Organisateur — QR code</Link></li>
             </ul>
           </div>
 
