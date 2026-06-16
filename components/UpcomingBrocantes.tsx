@@ -68,24 +68,25 @@ function groupByWeekend(brocantes: BrocanteAgenda[]) {
   return groups
 }
 
-export default function UpcomingBrocantes() {
+export default function UpcomingBrocantes({ dept }: { dept?: string }) {
   const [brocantes, setBrocantes] = useState<BrocanteAgenda[]>([])
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
     const today = new Date().toISOString().split('T')[0]
     const supabase = createClient()
-    supabase
+    let query = supabase
       .from('brocantes_agenda')
       .select('*')
       .gte('date_fin', today)
       .order('date_debut', { ascending: true })
       .limit(30)
-      .then(({ data }) => {
-        if (data) setBrocantes(data as BrocanteAgenda[])
-        setLoading(false)
-      })
-  }, [])
+    if (dept) query = query.eq('dept', dept)
+    query.then(({ data }) => {
+      if (data) setBrocantes(data as BrocanteAgenda[])
+      setLoading(false)
+    })
+  }, [dept])
 
   const groups = groupByWeekend(brocantes)
   const weekendKeys = Object.keys(groups).sort()

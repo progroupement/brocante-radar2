@@ -22,7 +22,34 @@ body {
   font-family: var(--font-geist, Arial, sans-serif);
   color: var(--text-main);
   background: #ffffff;
-  line-height: 1.7;
+  line-height: 1.8;
+  font-size: 17px;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ─── Accessibilité seniors ─────────────────────────── */
+
+/* Textes plus grands partout */
+p, li, span, label, td {
+  font-size: inherit;
+  line-height: 1.8;
+}
+
+/* Boutons plus grands, plus faciles à cliquer */
+button, a[class*="rounded"] {
+  min-height: 44px;
+}
+
+/* Liens bien visibles */
+a {
+  text-underline-offset: 3px;
+}
+
+/* Focus visible pour accessibilité clavier */
+:focus-visible {
+  outline: 3px solid #E8651A;
+  outline-offset: 3px;
+  border-radius: 4px;
 }
 
 /* Leaflet fix for Next.js */

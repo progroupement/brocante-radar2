@@ -1,11 +1,10 @@
 import type { Metadata } from 'next'
-import { createClient } from '@/lib/supabase-server'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import MapIDF from '@/components/MapIDF'
+import UpcomingBrocantes from '@/components/UpcomingBrocantes'
 import Link from 'next/link'
-import { formatDate } from '@/lib/utils'
-import { CalendarDays, MapPin, Users } from 'lucide-react'
+import { Search, ArrowRight } from 'lucide-react'
 import { DEPARTEMENTS_IDF } from '@/lib/utils'
 
 export const metadata: Metadata = {
@@ -22,107 +21,95 @@ export const metadata: Metadata = {
   },
 }
 
-export default async function BrocantesIdfPage() {
-  const supabase = await createClient()
-  const today = new Date().toISOString().split('T')[0]
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'WebPage',
+  name: 'Brocantes et vide-greniers en Île-de-France',
+  description: 'Toutes les brocantes référencées par Brocante Radar en Île-de-France.',
+  url: 'https://brocanteradar.fr/brocantes-ile-de-france',
+}
 
-  const { data: events } = await supabase
-    .from('events')
-    .select('*')
-    .eq('statut', 'validé')
-    .gte('date', today)
-    .order('date', { ascending: true })
-    .limit(30)
-
-  const upcomingEvents = events ?? []
-
-  const jsonLd = {
-    '@context': 'https://schema.org',
-    '@type': 'WebPage',
-    name: 'Brocantes et vide-greniers en Île-de-France',
-    description: 'Toutes les brocantes référencées par Brocante Radar en Île-de-France.',
-    url: `${process.env.NEXT_PUBLIC_APP_URL}/brocantes-ile-de-france`,
-  }
-
+export default function BrocantesIdfPage() {
   return (
     <>
       <Navbar />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <main className="flex-1">
-        <section className="bg-[#F8F5F0] py-12 px-4">
+
+        {/* ─── HERO — bleu sombre ─── */}
+        <section className="bg-[#0D1B4B] py-16 px-4">
           <div className="max-w-4xl mx-auto text-center">
-            <h1 className="text-3xl sm:text-4xl font-bold text-[#1A1A1A] mb-4">
-              Brocantes et vide-greniers en Île-de-France
+            <div className="inline-flex items-center gap-2 border border-blue-600 bg-blue-900/50 text-blue-300 text-xs font-semibold px-4 py-2 rounded-full mb-6 uppercase tracking-wide">
+              <span className="w-1.5 h-1.5 bg-[#E8651A] rounded-full animate-pulse" />
+              Île-de-France · Mis à jour chaque semaine
+            </div>
+            <h1 className="text-3xl sm:text-5xl font-black text-white mb-5 tracking-tight leading-tight">
+              Brocantes en{' '}
+              <span className="text-[#E8651A]">Île-de-France</span>
             </h1>
-            <p className="text-[#6B6B6B] text-lg max-w-2xl mx-auto">
-              {upcomingEvents.length} brocante{upcomingEvents.length > 1 ? 's' : ''} référencée{upcomingEvents.length > 1 ? 's' : ''} à venir — recherchez les objets que vous cherchez avant d&apos;arriver.
+            <p className="text-blue-200 text-lg max-w-2xl mx-auto leading-relaxed mb-3">
+              50+ brocantes référencées à venir — recherchez les objets que vous cherchez avant d&apos;arriver.
             </p>
+            <Link
+              href="/search"
+              className="inline-flex items-center gap-2 bg-[#E8651A] hover:bg-[#d4581a] text-white font-semibold px-7 py-4 rounded-2xl text-base transition-colors mt-4"
+            >
+              <Search className="w-5 h-5" />
+              Rechercher un objet
+            </Link>
           </div>
         </section>
 
-        {/* Départements rapides */}
-        <section className="max-w-4xl mx-auto px-4 py-8">
-          <h2 className="text-xl font-bold mb-4">Par département</h2>
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-            {DEPARTEMENTS_IDF.map((d) => (
-              <Link
-                key={d.code}
-                href={`/brocante-${d.slug}`}
-                className="border border-gray-200 rounded-xl p-3 text-center hover:border-[#E8651A] hover:bg-orange-50 transition-all bg-white"
-              >
-                <div className="font-bold text-lg text-[#E8651A]">{d.code}</div>
-                <div className="text-sm text-[#6B6B6B]">{d.nom}</div>
-              </Link>
-            ))}
-          </div>
-        </section>
+        {/* ─── BROCANTES AGENDA ─── */}
+        <UpcomingBrocantes />
 
-        {/* Événements */}
-        <section className="max-w-4xl mx-auto px-4 pb-10">
-          <h2 className="text-2xl font-bold mb-6">Prochaines brocantes</h2>
-          {upcomingEvents.length === 0 ? (
-            <div className="text-center py-12 bg-[#F8F5F0] rounded-2xl">
-              <p className="text-[#6B6B6B] mb-4">Aucune brocante planifiée pour le moment.</p>
-              <Link href="/organizer" className="inline-block bg-[#E8651A] text-white px-6 py-3 rounded-xl font-semibold hover:bg-orange-700 transition-colors">
-                Ajouter votre brocante
-              </Link>
-            </div>
-          ) : (
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              {upcomingEvents.map((event) => (
-                <article key={event.id} className="border border-gray-200 rounded-2xl bg-white p-5 hover:shadow-md transition-shadow">
-                  <h3 className="font-bold text-lg mb-2">{event.nom}</h3>
-                  <div className="space-y-1.5 text-sm text-[#6B6B6B]">
-                    <div className="flex items-center gap-1.5"><CalendarDays className="w-4 h-4 text-[#E8651A]" />{formatDate(event.date)}</div>
-                    <div className="flex items-center gap-1.5"><MapPin className="w-4 h-4 text-[#E8651A]" />{event.ville} ({event.departement})</div>
-                    {event.nb_stands && <div className="flex items-center gap-1.5"><Users className="w-4 h-4 text-[#E8651A]" />{event.nb_stands} stands</div>}
-                  </div>
-                </article>
-              ))}
-            </div>
-          )}
-        </section>
-
+        {/* ─── CARTE ─── */}
         <MapIDF />
 
-        {/* Texte SEO */}
-        <section className="max-w-3xl mx-auto px-4 py-10 text-[#6B6B6B] leading-relaxed space-y-4">
-          <h2 className="text-2xl font-bold text-[#1A1A1A]">Le guide des brocantes en Île-de-France</h2>
-          <p>
-            L&apos;Île-de-France est l&apos;une des régions les plus dynamiques de France en matière de brocantes et de vide-greniers.
-            De Paris à la Seine-et-Marne, en passant par les Yvelines, l&apos;Essonne et le Val-de-Marne, des centaines d&apos;événements
-            rassemblent chaque année collectionneurs, chineurs et amateurs de bonnes affaires.
-          </p>
-          <p>
-            Brocante Radar référence en temps réel tous les stands et les objets présents lors de ces événements.
-            Grâce à notre système de mots-clés, les exposants publient leur inventaire depuis leur smartphone le matin même,
-            et les visiteurs peuvent rechercher n&apos;importe quel objet — et savoir exactement à quel stand se rendre.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 mt-6">
-            <Link href="/search" className="flex-1 text-center bg-[#E8651A] text-white px-6 py-3 rounded-xl font-semibold hover:bg-orange-700 transition-colors">Rechercher un objet</Link>
-            <Link href="/organizer" className="flex-1 text-center border-2 border-[#E8651A] text-[#E8651A] px-6 py-3 rounded-xl font-semibold hover:bg-orange-50 transition-colors">Inscrire ma brocante</Link>
+        {/* ─── DÉPARTEMENTS — bleu clair ─── */}
+        <section className="bg-[#EEF4FF] py-16 px-4">
+          <div className="max-w-4xl mx-auto">
+            <h2 className="text-2xl sm:text-3xl font-black text-[#0D1B4B] mb-8 text-center">Par département</h2>
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+              {DEPARTEMENTS_IDF.map((d) => (
+                <Link
+                  key={d.code}
+                  href={`/brocante-${d.slug}`}
+                  className="group bg-white hover:bg-[#0D1B4B] border border-blue-100 hover:border-[#0D1B4B] rounded-2xl p-4 text-center transition-all"
+                >
+                  <div className="font-black text-lg text-[#E8651A] group-hover:text-[#E8651A] mb-1">{d.code}</div>
+                  <div className="text-sm text-[#4A5680] group-hover:text-blue-200 transition-colors">{d.nom}</div>
+                </Link>
+              ))}
+            </div>
           </div>
         </section>
+
+        {/* ─── TEXTE SEO ─── */}
+        <section className="py-16 px-4 bg-white">
+          <div className="max-w-3xl mx-auto text-[#4A5680] leading-relaxed space-y-4">
+            <h2 className="text-2xl font-black text-[#0D1B4B]">Le guide des brocantes en Île-de-France</h2>
+            <p>
+              L&apos;Île-de-France est l&apos;une des régions les plus dynamiques de France en matière de brocantes et de vide-greniers.
+              De Paris à la Seine-et-Marne, en passant par les Yvelines, l&apos;Essonne et le Val-de-Marne, des centaines d&apos;événements
+              rassemblent chaque année collectionneurs, chineurs et amateurs de bonnes affaires.
+            </p>
+            <p>
+              Brocante Radar référence en temps réel tous les stands et les objets présents lors de ces événements.
+              Grâce à notre système de mots-clés, les exposants publient leur inventaire depuis leur smartphone le matin même,
+              et les visiteurs peuvent rechercher n&apos;importe quel objet — et savoir exactement à quel stand se rendre.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 mt-8">
+              <Link href="/search" className="flex-1 inline-flex items-center justify-center gap-2 bg-[#E8651A] hover:bg-[#d4581a] text-white font-semibold px-6 py-4 rounded-2xl transition-colors">
+                <Search className="w-5 h-5" /> Rechercher un objet
+              </Link>
+              <Link href="/contact-organisateur" className="flex-1 inline-flex items-center justify-center gap-2 border-2 border-[#0D1B4B] text-[#0D1B4B] hover:bg-[#0D1B4B] hover:text-white font-semibold px-6 py-4 rounded-2xl transition-colors">
+                Organisateur — demander un QR code <ArrowRight className="w-5 h-5" />
+              </Link>
+            </div>
+          </div>
+        </section>
+
       </main>
       <Footer />
     </>

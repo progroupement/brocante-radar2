@@ -6,11 +6,29 @@ import { createClient, type Event } from '@/lib/supabase'
 import { DEPARTEMENTS_IDF } from '@/lib/utils'
 import { formatDate } from '@/lib/utils'
 import 'leaflet/dist/leaflet.css'
+import type { Icon } from 'leaflet'
 
 const MapContainer = dynamic(() => import('react-leaflet').then((m) => m.MapContainer), { ssr: false })
 const TileLayer = dynamic(() => import('react-leaflet').then((m) => m.TileLayer), { ssr: false })
 const Marker = dynamic(() => import('react-leaflet').then((m) => m.Marker), { ssr: false })
 const Popup = dynamic(() => import('react-leaflet').then((m) => m.Popup), { ssr: false })
+
+// Icônes Leaflet via CDN (fix webpack/Next.js)
+let orangeIcon: Icon | null = null
+let blueIcon: Icon | null = null
+if (typeof window !== 'undefined') {
+  const L = require('leaflet')
+  orangeIcon = L.icon({
+    iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-orange.png',
+    shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/images/marker-shadow.png',
+    iconSize: [25, 41], iconAnchor: [12, 41], popupAnchor: [1, -34], shadowSize: [41, 41],
+  })
+  blueIcon = L.icon({
+    iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-blue.png',
+    shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/images/marker-shadow.png',
+    iconSize: [25, 41], iconAnchor: [12, 41], popupAnchor: [1, -34], shadowSize: [41, 41],
+  })
+}
 
 // Coordonnées approximatives pour les villes brocantes_agenda
 const COORDS_BY_VILLE: Record<string, [number, number]> = {
@@ -170,7 +188,7 @@ export default function MapIDF() {
 
             {/* Brocantes agenda — marqueurs orange */}
             {brocantesAvecCoords.map((b) => (
-              <Marker key={`agenda-${b.id}`} position={b.coords!}>
+              <Marker key={`agenda-${b.id}`} position={b.coords!} icon={orangeIcon ?? undefined}>
                 <Popup>
                   <div className="text-sm min-w-[210px]">
                     <p className="font-bold text-base mb-1 text-[#0D1B4B]">{b.nom}</p>
@@ -194,7 +212,7 @@ export default function MapIDF() {
             {/* Stands publiés — marqueurs bleu */}
             {filteredEvents.map((event) =>
               event.lat && event.lng ? (
-                <Marker key={event.id} position={[event.lat, event.lng]}>
+                <Marker key={event.id} position={[event.lat, event.lng]} icon={blueIcon ?? undefined}>
                   <Popup>
                     <div className="text-sm min-w-[180px]">
                       <p className="font-bold text-base mb-1">{event.nom}</p>
@@ -210,7 +228,7 @@ export default function MapIDF() {
             )}
 
             {userPos && (
-              <Marker position={userPos}>
+              <Marker position={userPos} icon={blueIcon ?? undefined}>
                 <Popup>📍 Vous êtes ici</Popup>
               </Marker>
             )}

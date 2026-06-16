@@ -30,6 +30,9 @@ export default function Navbar() {
 
         {/* Desktop nav */}
         <div className="hidden md:flex items-center gap-2">
+          <Link href="/je-cherche" className="text-sm font-medium text-blue-300 hover:text-white transition-colors px-4 py-2">
+            Je cherche
+          </Link>
           <Link href="/guide-chineur" className="text-sm font-medium text-blue-300 hover:text-white transition-colors px-4 py-2">
             Guide du chineur
           </Link>
@@ -56,6 +59,7 @@ export default function Navbar() {
       {/* Mobile menu */}
       {open && (
         <div className="md:hidden border-t border-blue-800 bg-[#0D1B4B] px-4 py-4 flex flex-col gap-1">
+          <Link href="/je-cherche" onClick={() => setOpen(false)} className="text-sm font-medium text-blue-200 px-3 py-3 rounded-lg hover:bg-blue-800">Je cherche la perle rare</Link>
           <Link href="/guide-chineur" onClick={() => setOpen(false)} className="text-sm font-medium text-blue-200 px-3 py-3 rounded-lg hover:bg-blue-800">Guide du chineur</Link>
           <Link href="/brocantes-ile-de-france" onClick={() => setOpen(false)} className="text-sm font-medium text-blue-200 px-3 py-3 rounded-lg hover:bg-blue-800">Brocantes IDF</Link>
           <Link href="/search" onClick={() => setOpen(false)} className="text-sm font-medium text-blue-200 px-3 py-3 rounded-lg hover:bg-blue-800">Rechercher un objet</Link>

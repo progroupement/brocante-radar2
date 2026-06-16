@@ -1,8 +1,8 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
+import Image from 'next/image'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
-import { MarketIllustration, ChineurIllustration } from '@/components/illustrations'
 import { ArrowRight, Search, MapPin, Clock, Star, ShoppingBag, Lightbulb, CheckCircle } from 'lucide-react'
 
 export const metadata: Metadata = {
@@ -179,9 +179,20 @@ export default function GuideChiineurPage() {
             </div>
           </div>
 
-          {/* Illustration marché */}
+          {/* Photo marché */}
           <div className="max-w-4xl mx-auto px-4 sm:px-6 pb-10 pt-4">
-            <MarketIllustration className="w-full h-auto rounded-3xl shadow-sm" />
+            <div className="relative h-72 sm:h-96 w-full rounded-3xl overflow-hidden shadow-lg">
+              <Image
+                src="https://images.unsplash.com/photo-1516382461343-35e1ba016e01?auto=format&fit=crop&w=1200&q=80"
+                alt="Ambiance marché brocante en Île-de-France"
+                fill className="object-cover"
+                priority
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#0D1B4B]/40 to-transparent" />
+              <div className="absolute bottom-5 left-6">
+                <span className="bg-[#E8651A] text-white text-xs font-bold px-3 py-1.5 rounded-full uppercase tracking-wide">Guide 2026</span>
+              </div>
+            </div>
           </div>
         </section>
 
@@ -233,7 +244,13 @@ export default function GuideChiineurPage() {
 
           {/* CTA intermédiaire */}
           <div className="bg-[#0F0F0F] rounded-3xl p-10 text-center overflow-hidden relative">
-            <ChineurIllustration className="absolute right-0 bottom-0 w-64 h-auto opacity-10 pointer-events-none" />
+            <div className="absolute inset-0 overflow-hidden rounded-3xl">
+              <Image
+                src="https://images.unsplash.com/photo-1663366936874-e0cf8ad40d81?auto=format&fit=crop&w=1200&q=70"
+                alt="Chineur à la brocante"
+                fill className="object-cover opacity-10"
+              />
+            </div>
             <div className="w-12 h-12 bg-[#E8651A] rounded-2xl flex items-center justify-center mx-auto mb-6 relative z-10">
               <Search className="w-6 h-6 text-white" />
             </div>
