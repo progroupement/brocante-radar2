@@ -5,6 +5,7 @@ import dynamic from 'next/dynamic'
 import { createClient, type Event } from '@/lib/supabase'
 import { DEPARTEMENTS_IDF } from '@/lib/utils'
 import { formatDate } from '@/lib/utils'
+import 'leaflet/dist/leaflet.css'
 
 // Leaflet doit être chargé côté client uniquement
 const MapContainer = dynamic(
@@ -107,11 +108,11 @@ export default function MapIDF() {
         </div>
 
         {/* Carte */}
-        <div className="rounded-2xl overflow-hidden border border-gray-200 shadow-sm" style={{ height: '500px' }}>
+        <div className="rounded-2xl border border-gray-200 shadow-sm" style={{ height: '520px', position: 'relative' }}>
           <MapContainer
             center={[48.8499, 2.637]}
             zoom={9}
-            style={{ width: '100%', height: '100%' }}
+            style={{ width: '100%', height: '100%', borderRadius: '1rem' }}
           >
             <TileLayer
               attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'

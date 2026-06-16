@@ -11,6 +11,7 @@ import {
   ChineurIllustration,
   MarketIllustration,
 } from '@/components/illustrations'
+import UpcomingBrocantes from '@/components/UpcomingBrocantes'
 import { Search, QrCode, MapPin, ArrowRight, CheckCircle } from 'lucide-react'
 
 export default function HomePage() {
@@ -187,6 +188,9 @@ export default function HomePage() {
           </div>
         </section>
 
+        {/* ─── PROCHAINES BROCANTES ──────────────────────────────────── */}
+        <UpcomingBrocantes />
+
         {/* ─── ILLUSTRATION MARCHÉ ───────────────────────────────────── */}
         <section className="py-20 bg-[#F8F7F5]">
           <div className="max-w-6xl mx-auto px-4 sm:px-6">
@@ -204,17 +208,7 @@ export default function HomePage() {
         <CountdownBanner />
 
         {/* ─── CARTE ─────────────────────────────────────────────────── */}
-        <section className="bg-[#F8F7F5] py-6 pb-0">
-          <div className="max-w-6xl mx-auto px-4 sm:px-6">
-            <div className="text-center mb-10">
-              <p className="text-xs font-bold text-[#E8651A] uppercase tracking-widest mb-3">Carte interactive</p>
-              <h2 className="text-3xl sm:text-4xl font-black text-[#0F0F0F] tracking-tight">
-                Brocantes en Île-de-France
-              </h2>
-            </div>
-          </div>
-          <MapIDF />
-        </section>
+        <MapIDF />
 
         {/* ─── COMPTEURS ─────────────────────────────────────────────── */}
         <CounterSection />
