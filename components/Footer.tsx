@@ -4,68 +4,76 @@ import { DEPARTEMENTS_IDF } from '@/lib/utils'
 
 export default function Footer() {
   return (
-    <footer className="bg-[#1A1A1A] text-gray-300 py-12 mt-auto">
-      <div className="max-w-6xl mx-auto px-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-        {/* Brand */}
-        <div>
-          <div className="flex items-center gap-2 mb-3">
-            <div className="w-7 h-7 bg-[#E8651A] rounded-md flex items-center justify-center">
-              <Radar className="w-4 h-4 text-white" />
+    <footer className="bg-[#0F0F0F] text-gray-400 mt-auto">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 py-16">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
+          {/* Brand */}
+          <div className="lg:col-span-1">
+            <div className="flex items-center gap-2.5 mb-4">
+              <div className="w-8 h-8 bg-[#E8651A] rounded-lg flex items-center justify-center">
+                <Radar className="w-4 h-4 text-white" />
+              </div>
+              <div className="flex flex-col leading-none">
+                <span className="font-black text-xs tracking-widest text-white uppercase">Brocante</span>
+                <span className="font-black text-xs tracking-widest text-[#E8651A] uppercase">Radar</span>
+              </div>
             </div>
-            <span className="font-bold text-white">BROCANTE RADAR</span>
+            <p className="text-sm text-gray-500 leading-relaxed mb-6">
+              Le GPS des chineurs — trouvez les objets que vous cherchez avant même d&apos;arriver à la brocante.
+            </p>
+            <p className="text-xs text-gray-600">Île-de-France · Lancement juillet 2026</p>
           </div>
-          <p className="text-sm text-gray-400 leading-relaxed">
-            Le GPS des chineurs — trouvez les objets que vous cherchez avant même d'arriver à la brocante.
-          </p>
-        </div>
 
-        {/* Liens rapides */}
-        <div>
-          <h3 className="font-semibold text-white mb-3 text-sm uppercase tracking-wide">Navigation</h3>
-          <ul className="space-y-2 text-sm">
-            <li><Link href="/" className="hover:text-[#E8651A] transition-colors">Accueil</Link></li>
-            <li><Link href="/organizer" className="hover:text-[#E8651A] transition-colors">Organiser ma brocante</Link></li>
-            <li><Link href="/search" className="hover:text-[#E8651A] transition-colors">Rechercher un objet</Link></li>
-            <li><Link href="/brocantes-ile-de-france" className="hover:text-[#E8651A] transition-colors">Brocantes IDF</Link></li>
-          </ul>
-        </div>
+          {/* Navigation */}
+          <div>
+            <h3 className="text-xs font-bold text-white uppercase tracking-widest mb-5">Navigation</h3>
+            <ul className="space-y-3 text-sm">
+              <li><Link href="/" className="hover:text-white transition-colors">Accueil</Link></li>
+              <li><Link href="/organizer" className="hover:text-white transition-colors">Organiser ma brocante</Link></li>
+              <li><Link href="/search" className="hover:text-white transition-colors">Rechercher un objet</Link></li>
+              <li><Link href="/guide-chineur" className="hover:text-white transition-colors">Guide du chineur</Link></li>
+              <li><Link href="/brocantes-ile-de-france" className="hover:text-white transition-colors">Brocantes IDF</Link></li>
+            </ul>
+          </div>
 
-        {/* Départements */}
-        <div>
-          <h3 className="font-semibold text-white mb-3 text-sm uppercase tracking-wide">Départements</h3>
-          <ul className="space-y-2 text-sm">
-            {DEPARTEMENTS_IDF.slice(0, 5).map((d) => (
-              <li key={d.code}>
-                <Link href={`/brocante-${d.slug}`} className="hover:text-[#E8651A] transition-colors">
-                  Brocantes {d.nom}
+          {/* Départements */}
+          <div>
+            <h3 className="text-xs font-bold text-white uppercase tracking-widest mb-5">Départements</h3>
+            <ul className="space-y-3 text-sm">
+              {DEPARTEMENTS_IDF.slice(0, 6).map((d) => (
+                <li key={d.code}>
+                  <Link href={`/brocante-${d.slug}`} className="hover:text-white transition-colors">
+                    {d.nom}
+                  </Link>
+                </li>
+              ))}
+              <li>
+                <Link href="/brocantes-ile-de-france" className="text-[#E8651A] hover:text-orange-400 transition-colors font-medium">
+                  Voir tous →
                 </Link>
               </li>
-            ))}
-            <li>
-              <Link href="/brocantes-ile-de-france" className="hover:text-[#E8651A] transition-colors">
-                Voir tout →
-              </Link>
-            </li>
-          </ul>
-        </div>
+            </ul>
+          </div>
 
-        {/* Légal */}
-        <div>
-          <h3 className="font-semibold text-white mb-3 text-sm uppercase tracking-wide">Informations</h3>
-          <ul className="space-y-2 text-sm">
-            <li><a href="mailto:contact@brocante-radar.fr" className="hover:text-[#E8651A] transition-colors">Contact</a></li>
-            <li><Link href="/mentions-legales" className="hover:text-[#E8651A] transition-colors">Mentions légales</Link></li>
-            <li><Link href="/confidentialite" className="hover:text-[#E8651A] transition-colors">Confidentialité</Link></li>
-          </ul>
-          <div className="mt-4 flex gap-3">
-            <a href="#" aria-label="Instagram" className="text-gray-400 hover:text-[#E8651A] transition-colors text-lg">📸</a>
-            <a href="#" aria-label="Facebook" className="text-gray-400 hover:text-[#E8651A] transition-colors text-lg">👥</a>
+          {/* Contact */}
+          <div>
+            <h3 className="text-xs font-bold text-white uppercase tracking-widest mb-5">Contact</h3>
+            <ul className="space-y-3 text-sm">
+              <li><a href="mailto:contact@brocanteradar.fr" className="hover:text-white transition-colors">contact@brocanteradar.fr</a></li>
+              <li><Link href="/mentions-legales" className="hover:text-white transition-colors">Mentions légales</Link></li>
+              <li><Link href="/confidentialite" className="hover:text-white transition-colors">Confidentialité</Link></li>
+            </ul>
+            <div className="mt-6 flex gap-3">
+              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="w-9 h-9 rounded-xl bg-white/5 hover:bg-[#E8651A] flex items-center justify-center transition-colors text-sm">📸</a>
+              <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="w-9 h-9 rounded-xl bg-white/5 hover:bg-[#E8651A] flex items-center justify-center transition-colors text-sm">👥</a>
+            </div>
           </div>
         </div>
-      </div>
 
-      <div className="max-w-6xl mx-auto px-4 mt-8 pt-6 border-t border-gray-700 text-center text-xs text-gray-500">
-        © {new Date().getFullYear()} Brocante Radar — Île-de-France. Tous droits réservés.
+        <div className="mt-12 pt-6 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-gray-600">
+          <span>© {new Date().getFullYear()} Brocante Radar. Tous droits réservés.</span>
+          <span>Fait avec ❤️ pour les chineurs d&apos;Île-de-France</span>
+        </div>
       </div>
     </footer>
   )
