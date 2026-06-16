@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
+import { MarketIllustration, ChineurIllustration } from '@/components/illustrations'
 import { ArrowRight, Search, MapPin, Clock, Star, ShoppingBag, Lightbulb, CheckCircle } from 'lucide-react'
 
 export const metadata: Metadata = {
@@ -177,6 +178,11 @@ export default function GuideChiineurPage() {
               </Link>
             </div>
           </div>
+
+          {/* Illustration marché */}
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 pb-10 pt-4">
+            <MarketIllustration className="w-full h-auto rounded-3xl shadow-sm" />
+          </div>
         </section>
 
         {/* Sommaire rapide */}
@@ -226,17 +232,18 @@ export default function GuideChiineurPage() {
           ))}
 
           {/* CTA intermédiaire */}
-          <div className="bg-[#0F0F0F] rounded-3xl p-10 text-center">
-            <div className="w-12 h-12 bg-[#E8651A] rounded-2xl flex items-center justify-center mx-auto mb-6">
+          <div className="bg-[#0F0F0F] rounded-3xl p-10 text-center overflow-hidden relative">
+            <ChineurIllustration className="absolute right-0 bottom-0 w-64 h-auto opacity-10 pointer-events-none" />
+            <div className="w-12 h-12 bg-[#E8651A] rounded-2xl flex items-center justify-center mx-auto mb-6 relative z-10">
               <Search className="w-6 h-6 text-white" />
             </div>
-            <h3 className="text-2xl font-black text-white mb-3">
+            <h3 className="text-2xl font-black text-white mb-3 relative z-10">
               Trouvez vos objets avant d&apos;arriver
             </h3>
-            <p className="text-gray-400 mb-8 max-w-lg mx-auto text-sm leading-relaxed">
+            <p className="text-gray-400 mb-8 max-w-lg mx-auto text-sm leading-relaxed relative z-10">
               Avec Brocante Radar, recherchez un objet précis et découvrez dans quel stand et quelle brocante il est disponible — avant même de sortir de chez vous.
             </p>
-            <Link href="/search" className="inline-flex items-center gap-2 bg-[#E8651A] hover:bg-[#d4581a] text-white font-semibold px-8 py-4 rounded-2xl transition-colors">
+            <Link href="/search" className="inline-flex items-center gap-2 bg-[#E8651A] hover:bg-[#d4581a] text-white font-semibold px-8 py-4 rounded-2xl transition-colors relative z-10">
               Essayer la recherche
               <ArrowRight className="w-5 h-5" />
             </Link>

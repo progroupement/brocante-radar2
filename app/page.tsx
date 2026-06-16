@@ -4,6 +4,13 @@ import Footer from '@/components/Footer'
 import CountdownBanner from '@/components/CountdownBanner'
 import CounterSection from '@/components/CounterSection'
 import MapIDF from '@/components/MapIDF'
+import {
+  HeroIllustration,
+  OrganizerIllustration,
+  ExposantIllustration,
+  ChineurIllustration,
+  MarketIllustration,
+} from '@/components/illustrations'
 import { Search, QrCode, MapPin, ArrowRight, CheckCircle } from 'lucide-react'
 
 export default function HomePage() {
@@ -19,113 +26,112 @@ export default function HomePage() {
             <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-orange-50 rounded-full blur-3xl opacity-40 -translate-x-1/3 translate-y-1/3" />
           </div>
 
-          <div className="relative max-w-5xl mx-auto px-4 sm:px-6 pt-24 pb-28 sm:pt-32 sm:pb-36">
-            {/* Badge */}
-            <div className="inline-flex items-center gap-2 border border-orange-200 bg-orange-50 text-[#E8651A] text-xs font-semibold px-4 py-2 rounded-full mb-8 tracking-wide uppercase">
-              <span className="w-1.5 h-1.5 bg-[#E8651A] rounded-full animate-pulse" />
-              Île-de-France · Lancement juillet 2026
-            </div>
+          <div className="relative max-w-6xl mx-auto px-4 sm:px-6 pt-20 pb-24 sm:pt-28 sm:pb-32">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+              {/* Texte */}
+              <div>
+                <div className="inline-flex items-center gap-2 border border-orange-200 bg-orange-50 text-[#E8651A] text-xs font-semibold px-4 py-2 rounded-full mb-8 tracking-wide uppercase">
+                  <span className="w-1.5 h-1.5 bg-[#E8651A] rounded-full animate-pulse" />
+                  Île-de-France · Lancement juillet 2026
+                </div>
 
-            <h1 className="text-4xl sm:text-5xl lg:text-7xl font-black text-[#0F0F0F] leading-[1.05] tracking-tight mb-8 max-w-4xl">
-              Trouvez l&apos;objet{' '}
-              <span className="text-[#E8651A]">avant</span>{' '}
-              d&apos;arpenter la brocante.
-            </h1>
+                <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-[#0F0F0F] leading-[1.05] tracking-tight mb-8">
+                  Trouvez l&apos;objet{' '}
+                  <span className="text-[#E8651A]">avant</span>{' '}
+                  d&apos;arpenter la brocante.
+                </h1>
 
-            <p className="text-lg sm:text-xl text-[#6B6B6B] max-w-xl mb-10 leading-relaxed">
-              Brocante Radar connecte organisateurs, exposants et chineurs en temps réel. Fini de tourner en rond !
-            </p>
+                <p className="text-lg sm:text-xl text-[#6B6B6B] mb-10 leading-relaxed">
+                  Brocante Radar connecte organisateurs, exposants et chineurs en temps réel. Fini de tourner en rond !
+                </p>
 
-            <div className="flex flex-col sm:flex-row gap-3 mb-14">
-              <Link href="/search" className="inline-flex items-center justify-center gap-2 bg-[#0F0F0F] hover:bg-[#2a2a2a] text-white font-semibold px-7 py-4 rounded-2xl text-base transition-colors">
-                <Search className="w-5 h-5" />
-                Rechercher un objet
-              </Link>
-              <Link href="/organizer" className="inline-flex items-center justify-center gap-2 bg-[#E8651A] hover:bg-[#d4581a] text-white font-semibold px-7 py-4 rounded-2xl text-base transition-colors">
-                <QrCode className="w-5 h-5" />
-                Organiser ma brocante
-              </Link>
-            </div>
+                <div className="flex flex-col sm:flex-row gap-3 mb-10">
+                  <Link href="/search" className="inline-flex items-center justify-center gap-2 bg-[#0F0F0F] hover:bg-[#2a2a2a] text-white font-semibold px-7 py-4 rounded-2xl text-base transition-colors">
+                    <Search className="w-5 h-5" />
+                    Rechercher un objet
+                  </Link>
+                  <Link href="/organizer" className="inline-flex items-center justify-center gap-2 bg-[#E8651A] hover:bg-[#d4581a] text-white font-semibold px-7 py-4 rounded-2xl text-base transition-colors">
+                    <QrCode className="w-5 h-5" />
+                    Organiser ma brocante
+                  </Link>
+                </div>
 
-            {/* Social proof */}
-            <div className="flex flex-wrap items-center gap-6 text-sm text-[#6B6B6B]">
-              {[
-                '✓ Gratuit pour les organisateurs',
-                '✓ QR code en 2 minutes',
-                '✓ Aucune app à installer',
-              ].map((item) => (
-                <span key={item} className="flex items-center gap-1.5">{item}</span>
-              ))}
+                <div className="flex flex-wrap items-center gap-5 text-sm text-[#6B6B6B]">
+                  {[
+                    '✓ Gratuit pour les organisateurs',
+                    '✓ QR code en 2 minutes',
+                    '✓ Aucune app à installer',
+                  ].map((item) => (
+                    <span key={item}>{item}</span>
+                  ))}
+                </div>
+              </div>
+
+              {/* Illustration */}
+              <div className="hidden lg:flex items-center justify-center">
+                <HeroIllustration className="w-full max-w-[480px] h-auto drop-shadow-sm" />
+              </div>
             </div>
           </div>
         </section>
 
         {/* ─── COMMENT ÇA MARCHE ─────────────────────────────────────── */}
         <section className="py-24 bg-[#F8F7F5]">
-          <div className="max-w-5xl mx-auto px-4 sm:px-6">
+          <div className="max-w-6xl mx-auto px-4 sm:px-6">
             <div className="text-center mb-16">
               <p className="text-xs font-bold text-[#E8651A] uppercase tracking-widest mb-3">Comment ça marche</p>
               <h2 className="text-3xl sm:text-4xl font-black text-[#0F0F0F] tracking-tight">3 rôles, 1 plateforme</h2>
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-              {[
-                {
-                  number: '01',
-                  icon: '📋',
-                  color: 'bg-blue-50',
-                  iconColor: 'text-blue-600',
-                  title: "L'organisateur inscrit sa brocante",
-                  desc: "Il reçoit un QR code unique à afficher à l'entrée. Gratuit, en 2 minutes.",
-                  cta: 'Je suis organisateur',
-                  href: '/organizer',
-                },
-                {
-                  number: '02',
-                  icon: '📱',
-                  color: 'bg-orange-50',
-                  iconColor: 'text-[#E8651A]',
-                  title: "L'exposant publie son stand",
-                  desc: "Il scanne le QR code et liste ses objets avec photos depuis son téléphone.",
-                  cta: null,
-                  href: null,
-                },
-                {
-                  number: '03',
-                  icon: '🔍',
-                  color: 'bg-green-50',
-                  iconColor: 'text-green-600',
-                  title: "Le chineur trouve en secondes",
-                  desc: "Il recherche un objet et localise précisément le stand qui le vend.",
-                  cta: 'Je suis chineur',
-                  href: '/search',
-                },
-              ].map((item) => (
-                <div key={item.number} className="bg-white rounded-3xl p-8 border border-gray-100 flex flex-col gap-5 hover:shadow-lg hover:shadow-gray-100 transition-shadow">
-                  <div className="flex items-start justify-between">
-                    <div className={`w-12 h-12 ${item.color} rounded-2xl flex items-center justify-center text-2xl`}>
-                      {item.icon}
-                    </div>
-                    <span className="text-5xl font-black text-gray-100 leading-none">{item.number}</span>
-                  </div>
-                  <div>
-                    <h3 className="font-bold text-[#0F0F0F] text-lg mb-2 leading-snug">{item.title}</h3>
-                    <p className="text-[#6B6B6B] text-sm leading-relaxed">{item.desc}</p>
-                  </div>
-                  {item.cta && item.href && (
-                    <Link href={item.href} className="mt-auto inline-flex items-center gap-1 text-sm font-semibold text-[#E8651A] hover:gap-2 transition-all">
-                      {item.cta} <ArrowRight className="w-4 h-4" />
-                    </Link>
-                  )}
+              {/* Card 01 — Organisateur */}
+              <div className="bg-white rounded-3xl p-8 border border-gray-100 flex flex-col gap-4 hover:shadow-lg hover:shadow-gray-100 transition-shadow">
+                <div className="flex items-start justify-between">
+                  <span className="text-5xl font-black text-gray-100 leading-none">01</span>
                 </div>
-              ))}
+                <OrganizerIllustration className="w-full h-40" />
+                <div>
+                  <h3 className="font-bold text-[#0F0F0F] text-lg mb-2 leading-snug">L&apos;organisateur inscrit sa brocante</h3>
+                  <p className="text-[#6B6B6B] text-sm leading-relaxed">Il reçoit un QR code unique à afficher à l&apos;entrée. Gratuit, en 2 minutes.</p>
+                </div>
+                <Link href="/organizer" className="mt-auto inline-flex items-center gap-1 text-sm font-semibold text-[#E8651A] hover:gap-2 transition-all">
+                  Je suis organisateur <ArrowRight className="w-4 h-4" />
+                </Link>
+              </div>
+
+              {/* Card 02 — Exposant */}
+              <div className="bg-white rounded-3xl p-8 border border-gray-100 flex flex-col gap-4 hover:shadow-lg hover:shadow-gray-100 transition-shadow">
+                <div className="flex items-start justify-between">
+                  <span className="text-5xl font-black text-gray-100 leading-none">02</span>
+                </div>
+                <ExposantIllustration className="w-full h-40" />
+                <div>
+                  <h3 className="font-bold text-[#0F0F0F] text-lg mb-2 leading-snug">L&apos;exposant publie son stand</h3>
+                  <p className="text-[#6B6B6B] text-sm leading-relaxed">Il scanne le QR code et liste ses objets avec photos depuis son téléphone.</p>
+                </div>
+              </div>
+
+              {/* Card 03 — Chineur */}
+              <div className="bg-white rounded-3xl p-8 border border-gray-100 flex flex-col gap-4 hover:shadow-lg hover:shadow-gray-100 transition-shadow">
+                <div className="flex items-start justify-between">
+                  <span className="text-5xl font-black text-gray-100 leading-none">03</span>
+                </div>
+                <ChineurIllustration className="w-full h-40" />
+                <div>
+                  <h3 className="font-bold text-[#0F0F0F] text-lg mb-2 leading-snug">Le chineur trouve en secondes</h3>
+                  <p className="text-[#6B6B6B] text-sm leading-relaxed">Il recherche un objet et localise précisément le stand qui le vend.</p>
+                </div>
+                <Link href="/search" className="mt-auto inline-flex items-center gap-1 text-sm font-semibold text-[#E8651A] hover:gap-2 transition-all">
+                  Je suis chineur <ArrowRight className="w-4 h-4" />
+                </Link>
+              </div>
             </div>
           </div>
         </section>
 
         {/* ─── AVANTAGES ─────────────────────────────────────────────── */}
         <section className="py-24 bg-white">
-          <div className="max-w-5xl mx-auto px-4 sm:px-6">
+          <div className="max-w-6xl mx-auto px-4 sm:px-6">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
               <div>
                 <p className="text-xs font-bold text-[#E8651A] uppercase tracking-widest mb-3">Pourquoi Brocante Radar</p>
@@ -181,12 +187,25 @@ export default function HomePage() {
           </div>
         </section>
 
+        {/* ─── ILLUSTRATION MARCHÉ ───────────────────────────────────── */}
+        <section className="py-20 bg-[#F8F7F5]">
+          <div className="max-w-6xl mx-auto px-4 sm:px-6">
+            <div className="text-center mb-10">
+              <p className="text-xs font-bold text-[#E8651A] uppercase tracking-widest mb-3">L&apos;ambiance brocante</p>
+              <h2 className="text-3xl sm:text-4xl font-black text-[#0F0F0F] tracking-tight">
+                Des centaines de stands, un seul radar
+              </h2>
+            </div>
+            <MarketIllustration className="w-full max-w-3xl mx-auto h-auto rounded-3xl shadow-sm" />
+          </div>
+        </section>
+
         {/* ─── COUNTDOWN ─────────────────────────────────────────────── */}
         <CountdownBanner />
 
         {/* ─── CARTE ─────────────────────────────────────────────────── */}
         <section className="bg-[#F8F7F5] py-6 pb-0">
-          <div className="max-w-5xl mx-auto px-4 sm:px-6">
+          <div className="max-w-6xl mx-auto px-4 sm:px-6">
             <div className="text-center mb-10">
               <p className="text-xs font-bold text-[#E8651A] uppercase tracking-widest mb-3">Carte interactive</p>
               <h2 className="text-3xl sm:text-4xl font-black text-[#0F0F0F] tracking-tight">
@@ -202,7 +221,7 @@ export default function HomePage() {
 
         {/* ─── DEPARTEMENTS ──────────────────────────────────────────── */}
         <section className="py-24 bg-white">
-          <div className="max-w-5xl mx-auto px-4 sm:px-6">
+          <div className="max-w-6xl mx-auto px-4 sm:px-6">
             <div className="text-center mb-12">
               <p className="text-xs font-bold text-[#E8651A] uppercase tracking-widest mb-3">Par département</p>
               <h2 className="text-3xl sm:text-4xl font-black text-[#0F0F0F] tracking-tight">
@@ -217,7 +236,7 @@ export default function HomePage() {
                 { nom: 'Val-de-Marne', slug: 'brocante-val-de-marne', code: '94', emoji: '🌳' },
                 { nom: 'Essonne', slug: 'brocante-essonne', code: '91', emoji: '🌾' },
                 { nom: 'Yvelines', slug: 'brocante-yvelines', code: '78', emoji: '🏰' },
-                { nom: 'Val-d\'Oise', slug: 'brocante-val-d-oise', code: '95', emoji: '🌿' },
+                { nom: "Val-d'Oise", slug: 'brocante-val-d-oise', code: '95', emoji: '🌿' },
                 { nom: 'Seine-et-Marne', slug: 'brocante-seine-et-marne', code: '77', emoji: '🌻' },
               ].map((dept) => (
                 <Link
