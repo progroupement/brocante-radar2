@@ -26,7 +26,7 @@ const conseils = [
   {
     icon: '💶',
     title: 'Emportez du liquide',
-    desc: 'La majorité des exposants n'acceptent pas la carte bancaire. Billets de 5, 10 et 20€ — indispensables pour négocier sans friction.',
+    desc: "La majorité des exposants n'acceptent pas la carte bancaire. Billets de 5, 10 et 20€ — indispensables pour négocier sans friction.",
     color: 'bg-green-50 text-green-700',
   },
   {
