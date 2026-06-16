@@ -1,8 +1,9 @@
 'use client'
 
 import Link from 'next/link'
+import Image from 'next/image'
 import { useState, useEffect } from 'react'
-import { Menu, X, Radar } from 'lucide-react'
+import { Menu, X } from 'lucide-react'
 
 export default function Navbar() {
   const [open, setOpen] = useState(false)
@@ -18,14 +19,15 @@ export default function Navbar() {
     <nav className={`sticky top-0 z-50 transition-all duration-300 ${scrolled ? 'bg-[#0D1B4B]/95 backdrop-blur-md shadow-lg shadow-blue-950/30' : 'bg-[#0D1B4B]'} border-b border-blue-900`}>
       <div className="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
         {/* Logo */}
-        <Link href="/" className="flex items-center gap-2.5 group">
-          <div className="w-8 h-8 bg-[#E8651A] rounded-lg flex items-center justify-center transition-transform group-hover:scale-105">
-            <Radar className="w-4.5 h-4.5 text-white" />
-          </div>
-          <div className="flex flex-col leading-none">
-            <span className="font-black text-sm tracking-widest text-white uppercase">Brocante</span>
-            <span className="font-black text-sm tracking-widest text-[#E8651A] uppercase">Radar</span>
-          </div>
+        <Link href="/" className="flex items-center group">
+          <Image
+            src="/logo.png"
+            alt="Brocante Radar"
+            width={180}
+            height={60}
+            className="h-12 w-auto object-contain transition-opacity group-hover:opacity-90"
+            priority
+          />
         </Link>
 
         {/* Desktop nav */}
