@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import { MapPin, CalendarDays, ArrowRight } from 'lucide-react'
+import { MapPin, CalendarDays, ArrowRight, ChevronRight } from 'lucide-react'
 import { createClient } from '@/lib/supabase'
 import Link from 'next/link'
 
@@ -58,7 +58,6 @@ function groupByWeekend(brocantes: BrocanteAgenda[]) {
   brocantes.forEach((b) => {
     const d = new Date(b.date_debut + 'T00:00:00')
     const day = d.getDay()
-    // Ramène au samedi de la semaine
     const diffToSat = (6 - day + 7) % 7
     const sat = new Date(d)
     sat.setDate(d.getDate() + diffToSat)
@@ -92,19 +91,19 @@ export default function UpcomingBrocantes() {
   const weekendKeys = Object.keys(groups).sort()
 
   return (
-    <section className="py-24 bg-white">
+    <section className="py-24 bg-[#EEF4FF]">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
 
         {/* Header */}
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-14">
           <div>
             <p className="text-xs font-bold text-[#E8651A] uppercase tracking-widest mb-3">Agenda brocante</p>
-            <h2 className="text-3xl sm:text-4xl font-black text-[#0F0F0F] tracking-tight leading-tight">
+            <h2 className="text-3xl sm:text-4xl font-black text-[#0D1B4B] tracking-tight leading-tight">
               Prochaines brocantes<br />
               <span className="text-[#E8651A]">en Île-de-France</span>
             </h2>
-            <p className="text-[#6B6B6B] text-sm mt-3">
-              Uniquement des brocantes professionnelles · Mise à jour chaque semaine
+            <p className="text-[#4A5680] text-sm mt-3">
+              Uniquement des brocantes professionnelles · Cliquez pour vous inscrire
             </p>
           </div>
           <Link
@@ -119,16 +118,16 @@ export default function UpcomingBrocantes() {
         {loading && (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {[1, 2, 3, 4, 5, 6].map((i) => (
-              <div key={i} className="bg-[#F8F7F5] rounded-2xl p-5 h-36 animate-pulse" />
+              <div key={i} className="bg-white/60 rounded-2xl p-5 h-36 animate-pulse" />
             ))}
           </div>
         )}
 
         {/* Aucune brocante */}
         {!loading && brocantes.length === 0 && (
-          <div className="text-center py-16 text-[#6B6B6B]">
+          <div className="text-center py-16 text-[#4A5680]">
             <p className="text-4xl mb-4">🔍</p>
-            <p className="font-semibold text-[#0F0F0F] mb-1">Aucune brocante à venir pour l&apos;instant</p>
+            <p className="font-semibold text-[#0D1B4B] mb-1">Aucune brocante à venir pour l&apos;instant</p>
             <p className="text-sm">Revenez bientôt, le calendrier est mis à jour chaque semaine.</p>
           </div>
         )}
@@ -150,22 +149,23 @@ export default function UpcomingBrocantes() {
                   <div className="flex items-center gap-4 mb-5">
                     <div className="flex items-center gap-2 flex-shrink-0">
                       <CalendarDays className="w-4 h-4 text-[#E8651A]" />
-                      <span className="text-xs font-bold text-[#0F0F0F] uppercase tracking-widest">
+                      <span className="text-xs font-bold text-[#0D1B4B] uppercase tracking-widest">
                         Week-end {labelSat} – {labelSun}
                       </span>
                     </div>
-                    <div className="flex-1 h-px bg-gray-100" />
-                    <span className="text-xs text-[#6B6B6B] flex-shrink-0">
+                    <div className="flex-1 h-px bg-blue-200" />
+                    <span className="text-xs text-[#4A5680] flex-shrink-0">
                       {items.length} brocante{items.length > 1 ? 's' : ''}
                     </span>
                   </div>
 
-                  {/* Cards */}
+                  {/* Cards cliquables */}
                   <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                     {items.map((b) => (
-                      <div
+                      <Link
                         key={b.id}
-                        className="bg-[#F8F7F5] border border-transparent rounded-2xl p-5 flex flex-col gap-3"
+                        href={`/brocante/${b.id}`}
+                        className="group bg-white border border-blue-100 rounded-2xl p-5 flex flex-col gap-3 hover:shadow-lg hover:shadow-blue-100 hover:border-[#E8651A] transition-all cursor-pointer"
                       >
                         {/* Badges */}
                         <div className="flex items-center gap-2 flex-wrap">
@@ -181,21 +181,26 @@ export default function UpcomingBrocantes() {
 
                         {/* Infos */}
                         <div className="flex-1">
-                          <h3 className="font-bold text-[#0F0F0F] text-sm leading-snug mb-1">{b.nom}</h3>
+                          <h3 className="font-bold text-[#0D1B4B] text-sm leading-snug mb-1 group-hover:text-[#E8651A] transition-colors">{b.nom}</h3>
                           <p className="text-xs text-[#E8651A] font-semibold mb-2">{b.type}</p>
                           {b.adresse && (
-                            <div className="flex items-start gap-1.5 text-xs text-[#6B6B6B]">
+                            <div className="flex items-start gap-1.5 text-xs text-[#4A5680]">
                               <MapPin className="w-3 h-3 flex-shrink-0 mt-0.5" />
                               <span>{b.adresse}, {b.ville}</span>
                             </div>
                           )}
                         </div>
 
-                        {/* Date */}
-                        <div className="text-xs text-[#6B6B6B] font-medium pt-2 border-t border-gray-200">
-                          📅 {formatDateRange(b.date_debut, b.date_fin)}
+                        {/* Date + CTA */}
+                        <div className="flex items-center justify-between pt-2 border-t border-blue-100">
+                          <span className="text-xs text-[#4A5680] font-medium">
+                            📅 {formatDateRange(b.date_debut, b.date_fin)}
+                          </span>
+                          <span className="text-xs font-semibold text-[#E8651A] flex items-center gap-0.5 group-hover:gap-1 transition-all">
+                            S&apos;inscrire <ChevronRight className="w-3 h-3" />
+                          </span>
                         </div>
-                      </div>
+                      </Link>
                     ))}
                   </div>
                 </div>

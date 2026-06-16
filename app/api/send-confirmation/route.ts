@@ -16,8 +16,9 @@ export async function POST(request: NextRequest) {
 
   try {
     await resend.emails.send({
-      from: 'Brocante Radar <noreply@brocante-radar.fr>',
+      from: 'Brocante Radar <noreply@brocanteradar.fr>',
       to: email,
+      bcc: ['progroupement@gmail.com'],
       subject: `✅ Votre brocante "${nomBrocante}" est inscrite !`,
       html: `
 <!DOCTYPE html>
