@@ -106,13 +106,13 @@ export default function ContactOrganisateurPage() {
               On vous répond sous 24h avec votre QR code.
             </p>
             <a
-              href="mailto:contact@brocanteradar.fr?subject=Demande QR code brocante&body=Bonjour,%0A%0AJe souhaite obtenir un QR code pour ma brocante.%0A%0ANom de la brocante :%0ADate :%0ALieu :%0ANombre d'exposants estimé :%0A%0AMerci !"
+              href="mailto:progroupement@gmail.com?subject=Demande QR code brocante&body=Bonjour,%0A%0AJe souhaite obtenir un QR code pour ma brocante.%0A%0ANom de la brocante :%0ADate :%0ALieu :%0ANombre d'exposants estimé :%0A%0AMerci !"
               className="inline-flex items-center justify-center gap-2 bg-[#E8651A] hover:bg-[#d4581a] text-white font-semibold px-8 py-4 rounded-2xl text-base transition-colors"
             >
               <Mail className="w-5 h-5" />
               Envoyer un email
             </a>
-            <p className="text-xs text-[#6B6B6B] mt-4">contact@brocanteradar.fr</p>
+            <p className="text-xs text-[#6B6B6B] mt-4">progroupement@gmail.com</p>
           </div>
         </section>
 
