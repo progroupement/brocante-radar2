@@ -3,7 +3,8 @@ import Link from 'next/link'
 import Image from 'next/image'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
-import { Search, MapPin, CheckCircle, ArrowRight, Star, Clock, Lightbulb, Bell, ShoppingBag } from 'lucide-react'
+import InscriptionChineurForm from '@/components/InscriptionChineurForm'
+import { Search, MapPin, CheckCircle, ArrowRight, Star, Clock, Lightbulb, ShoppingBag } from 'lucide-react'
 
 export const metadata: Metadata = {
   title: 'Je cherche la perle rare — Brocante Radar Île-de-France',
@@ -183,71 +184,7 @@ export default function JeCherchePerleRarePage() {
                 Rejoignez la communauté des chineurs connectés. Recevez les nouvelles brocantes chaque semaine, et retrouvez votre historique de recherche.
               </p>
             </div>
-
-            <div className="bg-[#EEF4FF] rounded-3xl p-8 border border-blue-100">
-              <form className="space-y-5" action="/search">
-                <div>
-                  <label className="block text-sm font-bold text-[#0D1B4B] mb-2">Votre prénom</label>
-                  <input
-                    type="text"
-                    placeholder="Ex : Marie"
-                    className="w-full border border-blue-200 rounded-xl px-4 py-3 text-base focus:outline-none focus:ring-2 focus:ring-[#E8651A] bg-white"
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm font-bold text-[#0D1B4B] mb-2">Votre email</label>
-                  <input
-                    type="email"
-                    placeholder="vous@email.fr"
-                    className="w-full border border-blue-200 rounded-xl px-4 py-3 text-base focus:outline-none focus:ring-2 focus:ring-[#E8651A] bg-white"
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm font-bold text-[#0D1B4B] mb-2">Votre département IDF</label>
-                  <select className="w-full border border-blue-200 rounded-xl px-4 py-3 text-base focus:outline-none focus:ring-2 focus:ring-[#E8651A] bg-white">
-                    <option value="">Choisissez votre département</option>
-                    <option value="75">75 — Paris</option>
-                    <option value="77">77 — Seine-et-Marne</option>
-                    <option value="78">78 — Yvelines</option>
-                    <option value="91">91 — Essonne</option>
-                    <option value="92">92 — Hauts-de-Seine</option>
-                    <option value="93">93 — Seine-Saint-Denis</option>
-                    <option value="94">94 — Val-de-Marne</option>
-                    <option value="95">95 — Val-d'Oise</option>
-                  </select>
-                </div>
-                <div>
-                  <label className="block text-sm font-bold text-[#0D1B4B] mb-2">Que cherchez-vous ? <span className="text-[#4A5680] font-normal">(optionnel)</span></label>
-                  <input
-                    type="text"
-                    placeholder="Ex : vinyles, Lego, machine à coudre..."
-                    className="w-full border border-blue-200 rounded-xl px-4 py-3 text-base focus:outline-none focus:ring-2 focus:ring-[#E8651A] bg-white"
-                  />
-                </div>
-
-                <div className="flex items-start gap-3 pt-2">
-                  <input type="checkbox" id="notifs" className="mt-1 w-5 h-5 rounded accent-[#E8651A]" />
-                  <label htmlFor="notifs" className="text-sm text-[#4A5680] leading-relaxed">
-                    <span className="flex items-center gap-1.5 font-semibold text-[#0D1B4B] mb-0.5">
-                      <Bell className="w-4 h-4 text-[#E8651A]" />
-                      Recevoir les nouvelles brocantes IDF chaque semaine
-                    </span>
-                    Alertes par email uniquement. Désabonnement en un clic.
-                  </label>
-                </div>
-
-                <Link
-                  href="/search"
-                  className="block w-full text-center bg-[#E8651A] hover:bg-[#d4581a] text-white font-semibold px-6 py-4 rounded-2xl text-base transition-colors"
-                >
-                  Créer mon profil et rechercher un objet
-                </Link>
-
-                <p className="text-center text-xs text-[#4A5680]">
-                  Gratuit · Aucune app · Aucun abonnement
-                </p>
-              </form>
-            </div>
+            <InscriptionChineurForm />
           </div>
         </section>
 
