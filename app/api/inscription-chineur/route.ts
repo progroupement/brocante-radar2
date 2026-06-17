@@ -22,19 +22,17 @@ export async function POST(req: NextRequest) {
 
     const supabase = createClient(SUPABASE_URL, SUPABASE_KEY)
 
-    const { error } = await supabase.from('profils_chineurs').insert({
-      prenom,
-      email,
-      departement: departement || null,
-      objet_recherche: objet_recherche || null,
-      notifications: notifications ?? false,
-    })
-
-    if (error) {
-      console.error('Supabase error:', error)
-      if (error.code !== '42P01') {
-        return NextResponse.json({ error: "Erreur lors de l'inscription" }, { status: 500 })
-      }
+    // Sauvegarde Supabase — non bloquante
+    try {
+      await supabase.from('profils_chineurs').insert({
+        prenom,
+        email,
+        departement: departement || null,
+        objet_recherche: objet_recherche || null,
+        notifications: notifications ?? false,
+      })
+    } catch (dbErr) {
+      console.error('Supabase error (non bloquant):', dbErr)
     }
 
     // Notification email à progroupement@gmail.com
