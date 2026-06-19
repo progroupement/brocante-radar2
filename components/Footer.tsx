@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { Radar } from 'lucide-react'
+import Image from 'next/image'
 import { DEPARTEMENTS_IDF } from '@/lib/utils'
 
 export default function Footer() {
@@ -9,14 +9,8 @@ export default function Footer() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
           {/* Brand */}
           <div className="lg:col-span-1">
-            <div className="flex items-center gap-2.5 mb-4">
-              <div className="w-8 h-8 bg-[#E8651A] rounded-lg flex items-center justify-center">
-                <Radar className="w-4 h-4 text-white" />
-              </div>
-              <div className="flex flex-col leading-none">
-                <span className="font-black text-xs tracking-widest text-white uppercase">Brocante</span>
-                <span className="font-black text-xs tracking-widest text-[#E8651A] uppercase">Radar</span>
-              </div>
+            <div className="mb-4">
+              <Image src="/logo.png" alt="Brocante Radar" width={150} height={50} className="h-10 w-auto object-contain brightness-0 invert" />
             </div>
             <p className="text-sm text-gray-500 leading-relaxed mb-6">
               Le GPS des chineurs — trouvez les objets que vous cherchez avant même d&apos;arriver à la brocante.
@@ -29,6 +23,7 @@ export default function Footer() {
             <h3 className="text-xs font-bold text-white uppercase tracking-widest mb-5">Navigation</h3>
             <ul className="space-y-3 text-sm">
               <li><Link href="/" className="hover:text-white transition-colors">Accueil</Link></li>
+              <li><Link href="/je-cherche" className="hover:text-white transition-colors">Je cherche la perle rare</Link></li>
               <li><Link href="/search" className="hover:text-white transition-colors">Rechercher un objet</Link></li>
               <li><Link href="/exposant" className="hover:text-white transition-colors">Publier mon stand</Link></li>
               <li><Link href="/guide-chineur" className="hover:text-white transition-colors">Guide du chineur</Link></li>
@@ -60,7 +55,7 @@ export default function Footer() {
           <div>
             <h3 className="text-xs font-bold text-white uppercase tracking-widest mb-5">Contact</h3>
             <ul className="space-y-3 text-sm">
-              <li><a href="mailto:contact@brocanteradar.fr" className="hover:text-white transition-colors">contact@brocanteradar.fr</a></li>
+              <li><a href="mailto:progroupement@gmail.com" className="hover:text-white transition-colors">progroupement@gmail.com</a></li>
               <li><Link href="/mentions-legales" className="hover:text-white transition-colors">Mentions légales</Link></li>
               <li><Link href="/confidentialite" className="hover:text-white transition-colors">Confidentialité</Link></li>
             </ul>
