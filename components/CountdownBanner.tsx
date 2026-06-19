@@ -56,13 +56,11 @@ export default function CountdownBanner() {
           <Unit value={time?.secondes ?? null} label="Secondes" />
         </div>
 
-        <Link href="/organizer">
-          <Button
-            variant="outline"
-            className="border-white text-white hover:bg-white hover:text-[#E8651A] font-semibold"
-          >
-            Préinscrire ma brocante
-          </Button>
+        <Link
+          href="/contact-organisateur"
+          className="inline-flex items-center gap-2 border-2 border-white text-white hover:bg-white hover:text-[#E8651A] font-semibold px-6 py-3 rounded-2xl transition-colors"
+        >
+          Organisateur — demander un QR code
         </Link>
       </div>
     </section>

@@ -6,29 +6,14 @@ import { createClient, type Event } from '@/lib/supabase'
 import { DEPARTEMENTS_IDF } from '@/lib/utils'
 import { formatDate } from '@/lib/utils'
 import 'leaflet/dist/leaflet.css'
-import type { Icon } from 'leaflet'
+import type { Icon as LeafletIcon } from 'leaflet'
 
 const MapContainer = dynamic(() => import('react-leaflet').then((m) => m.MapContainer), { ssr: false })
 const TileLayer = dynamic(() => import('react-leaflet').then((m) => m.TileLayer), { ssr: false })
 const Marker = dynamic(() => import('react-leaflet').then((m) => m.Marker), { ssr: false })
 const Popup = dynamic(() => import('react-leaflet').then((m) => m.Popup), { ssr: false })
 
-// Icônes Leaflet via CDN (fix webpack/Next.js)
-let orangeIcon: Icon | null = null
-let blueIcon: Icon | null = null
-if (typeof window !== 'undefined') {
-  const L = require('leaflet')
-  orangeIcon = L.icon({
-    iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-orange.png',
-    shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/images/marker-shadow.png',
-    iconSize: [25, 41], iconAnchor: [12, 41], popupAnchor: [1, -34], shadowSize: [41, 41],
-  })
-  blueIcon = L.icon({
-    iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-blue.png',
-    shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/images/marker-shadow.png',
-    iconSize: [25, 41], iconAnchor: [12, 41], popupAnchor: [1, -34], shadowSize: [41, 41],
-  })
-}
+// Icônes initialisées dans le composant via useEffect
 
 // Coordonnées approximatives pour les villes brocantes_agenda
 const COORDS_BY_VILLE: Record<string, [number, number]> = {
@@ -73,6 +58,25 @@ export default function MapIDF() {
   const [deptFilter, setDeptFilter] = useState('')
   const [dateFilter, setDateFilter] = useState('')
   const [userPos, setUserPos] = useState<[number, number] | null>(null)
+  const [orangeIcon, setOrangeIcon] = useState<LeafletIcon | null>(null)
+  const [blueIcon, setBlueIcon] = useState<LeafletIcon | null>(null)
+
+  // Initialisation icônes Leaflet côté client uniquement
+  useEffect(() => {
+    const L = require('leaflet')
+    const shadow = 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/images/marker-shadow.png'
+    const base = 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img'
+    setOrangeIcon(L.icon({
+      iconUrl: `${base}/marker-icon-2x-orange.png`,
+      shadowUrl: shadow,
+      iconSize: [25, 41], iconAnchor: [12, 41], popupAnchor: [1, -34], shadowSize: [41, 41],
+    }))
+    setBlueIcon(L.icon({
+      iconUrl: `${base}/marker-icon-2x-blue.png`,
+      shadowUrl: shadow,
+      iconSize: [25, 41], iconAnchor: [12, 41], popupAnchor: [1, -34], shadowSize: [41, 41],
+    }))
+  }, [])
 
   useEffect(() => {
     const supabase = createClient()
