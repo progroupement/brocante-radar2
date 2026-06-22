@@ -34,8 +34,9 @@ async function getBrocante(id: string): Promise<Brocante | null> {
   return data[0] ?? null
 }
 
-export async function generateMetadata({ params }: { params: { id: string } }): Promise<Metadata> {
-  const b = await getBrocante(params.id)
+export async function generateMetadata({ params }: { params: Promise<{ id: string }> }): Promise<Metadata> {
+  const { id } = await params
+  const b = await getBrocante(id)
   if (!b) return { title: 'Brocante introuvable' }
   return {
     title: `${b.nom} — ${b.ville} | Brocante Radar`,
@@ -49,8 +50,9 @@ function formatDateFr(dateStr: string) {
   })
 }
 
-export default async function BrocantePage({ params }: { params: { id: string } }) {
-  const brocante = await getBrocante(params.id)
+export default async function BrocantePage({ params }: { params: Promise<{ id: string }> }) {
+  const { id } = await params
+  const brocante = await getBrocante(id)
   if (!brocante) notFound()
 
   return (
