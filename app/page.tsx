@@ -51,25 +51,23 @@ export default function HomePage() {
             <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-[#E8651A] rounded-full blur-3xl opacity-10 -translate-x-1/3 translate-y-1/3" />
           </div>
 
-          <div className="relative max-w-6xl mx-auto px-4 sm:px-6 pt-20 pb-24 sm:pt-28 sm:pb-32">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div className="relative max-w-6xl mx-auto px-4 sm:px-6 pt-12 pb-14 sm:pt-16 sm:pb-18">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
               <div>
-                <div className="inline-flex items-center gap-2 border border-blue-600 bg-blue-900/50 text-blue-300 text-xs font-semibold px-4 py-2 rounded-full mb-8 tracking-wide uppercase">
+                <div className="inline-flex items-center gap-2 border border-blue-600 bg-blue-900/50 text-blue-300 text-xs font-semibold px-4 py-1.5 rounded-full mb-5 tracking-wide uppercase">
                   <span className="w-1.5 h-1.5 bg-[#E8651A] rounded-full animate-pulse" />
                   Île-de-France · Lancement juillet 2026
                 </div>
 
-                <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-white leading-[1.05] tracking-tight mb-8">
-                  Trouvez la{' '}
-                  <span className="text-[#E8651A]">perle rare</span>{' '}
-                  avant tout le monde.
+                <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white leading-tight tracking-tight mb-5">
+                  Trouvez la <span className="text-[#E8651A]">perle&nbsp;rare</span> avant tout le monde.
                 </h1>
 
-                <p className="text-lg sm:text-xl text-blue-200 mb-10 leading-relaxed">
+                <p className="text-base sm:text-lg text-blue-200 mb-7 leading-relaxed">
                   Brocante Radar, c&apos;est le GPS des chineurs. Recherchez un objet, repérez les stands, ne ratez plus jamais la bonne affaire en Île-de-France.
                 </p>
 
-                <div className="flex flex-col sm:flex-row gap-3 mb-10">
+                <div className="flex flex-col sm:flex-row gap-3 mb-7">
                   <Link href="/search" className="inline-flex items-center justify-center gap-2 bg-[#E8651A] hover:bg-[#d4581a] text-white font-semibold px-7 py-4 rounded-2xl text-base transition-colors">
                     <Search className="w-5 h-5" />
                     Chercher un objet
@@ -87,7 +85,7 @@ export default function HomePage() {
                 </div>
               </div>
 
-              <div className="hidden lg:block relative h-[460px] rounded-3xl overflow-hidden shadow-2xl shadow-black/40">
+              <div className="hidden lg:block relative h-[380px] rounded-3xl overflow-hidden shadow-2xl shadow-black/40">
                 <Image
                   src="https://images.unsplash.com/photo-1685883518161-63ccb05aef83?auto=format&fit=crop&w=900&q=80"
                   alt="Chineurs à la brocante"
@@ -106,9 +104,9 @@ export default function HomePage() {
         </section>
 
         {/* ─── POUR QUI — bleu clair ─────────────────────────────────── */}
-        <section className="py-24 bg-[#EEF4FF]">
+        <section className="py-14 bg-[#EEF4FF]">
           <div className="max-w-6xl mx-auto px-4 sm:px-6">
-            <div className="text-center mb-16">
+            <div className="text-center mb-10">
               <p className="text-xs font-bold text-[#E8651A] uppercase tracking-widest mb-3">Comment ça marche</p>
               <h2 className="text-3xl sm:text-4xl font-black text-[#0D1B4B] tracking-tight">Fait pour les vrais chineurs</h2>
             </div>
@@ -150,7 +148,7 @@ export default function HomePage() {
         </section>
 
         {/* ─── AVANTAGES — blanc ─────────────────────────────────────── */}
-        <section className="py-24 bg-white">
+        <section className="py-14 bg-white">
           <div className="max-w-6xl mx-auto px-4 sm:px-6">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
               <div>
@@ -176,7 +174,7 @@ export default function HomePage() {
                 </div>
               </div>
 
-              <div className="relative h-[420px] rounded-3xl overflow-hidden shadow-lg">
+              <div className="relative h-[320px] rounded-3xl overflow-hidden shadow-lg">
                 <Image
                   src="https://images.unsplash.com/photo-1488841714725-bb4c32d1ac94?auto=format&fit=crop&w=800&q=80"
                   alt="Vinyles et objets vintage à la brocante"
@@ -196,7 +194,7 @@ export default function HomePage() {
 
         {/* ─── PHOTO MARCHÉ — pleine largeur ─────────────────────────── */}
         <section className="py-0">
-          <div className="relative h-[400px] sm:h-[500px] w-full">
+          <div className="relative h-[280px] sm:h-[360px] w-full">
             <Image
               src="https://images.unsplash.com/photo-1516382461343-35e1ba016e01?auto=format&fit=crop&w=1600&q=80"
               alt="Ambiance brocante"
@@ -227,9 +225,9 @@ export default function HomePage() {
         <CounterSection />
 
         {/* ─── DEPARTEMENTS — bleu clair ─────────────────────────────── */}
-        <section className="py-24 bg-[#EEF4FF]">
+        <section className="py-14 bg-[#EEF4FF]">
           <div className="max-w-6xl mx-auto px-4 sm:px-6">
-            <div className="text-center mb-12">
+            <div className="text-center mb-8">
               <p className="text-xs font-bold text-[#E8651A] uppercase tracking-widest mb-3">Par département</p>
               <h2 className="text-3xl sm:text-4xl font-black text-[#0D1B4B] tracking-tight">
                 Trouvez une brocante près de chez vous
@@ -275,15 +273,15 @@ export default function HomePage() {
         </section>
 
         {/* ─── CTA FINAL — bleu sombre ───────────────────────────────── */}
-        <section className="py-24 bg-[#0D1B4B]">
+        <section className="py-14 bg-[#0D1B4B]">
           <div className="max-w-3xl mx-auto px-4 sm:px-6 text-center">
-            <div className="w-14 h-14 bg-[#E8651A] rounded-2xl flex items-center justify-center mx-auto mb-8">
+            <div className="w-12 h-12 bg-[#E8651A] rounded-2xl flex items-center justify-center mx-auto mb-6">
               <Search className="w-7 h-7 text-white" />
             </div>
             <h2 className="text-3xl sm:text-4xl font-black text-white tracking-tight mb-4">
               Prêt pour votre prochaine chine ?
             </h2>
-            <p className="text-blue-300 mb-10 text-lg leading-relaxed">
+            <p className="text-blue-300 mb-7 text-base leading-relaxed">
               Toutes les brocantes d&apos;Île-de-France, les stands en temps réel, les objets recherchables. Brocante Radar, le GPS des chineurs.
             </p>
             <div className="flex flex-col sm:flex-row gap-3 justify-center">
@@ -298,7 +296,7 @@ export default function HomePage() {
         </section>
 
         {/* ─── BLOC SEO — texte indexable ────────────────────────────── */}
-        <section className="py-16 bg-[#EEF4FF] border-t border-blue-100">
+        <section className="py-12 bg-[#EEF4FF] border-t border-blue-100">
           <div className="max-w-4xl mx-auto px-4 sm:px-6">
             <h2 className="text-2xl font-black text-[#0D1B4B] mb-6">Brocantes et vide-greniers en Île-de-France</h2>
             <div className="prose prose-sm text-[#4A5680] leading-relaxed space-y-4 max-w-none">
