@@ -7,7 +7,9 @@ import CountdownBanner from '@/components/CountdownBanner'
 import CounterSection from '@/components/CounterSection'
 import MapIDF from '@/components/MapIDF'
 import UpcomingBrocantes from '@/components/UpcomingBrocantes'
-import { Search, MapPin, ArrowRight, CheckCircle, Phone } from 'lucide-react'
+import { Search, MapPin, ArrowRight, CheckCircle, Phone, BookOpen } from 'lucide-react'
+import { articlesOrganisateur } from '@/lib/articles-organisateur'
+import { articlesCollectionneur } from '@/lib/articles-collectionneur'
 
 export const metadata: Metadata = {
   title: 'Brocante Radar — Le GPS des chineurs en Île-de-France',
@@ -291,6 +293,67 @@ export default function HomePage() {
               <Link href="/guide-chineur" className="inline-flex items-center justify-center gap-2 bg-white/10 hover:bg-white/20 border border-white/20 text-white font-semibold px-8 py-4 rounded-2xl text-base transition-colors">
                 Lire le guide du chineur
               </Link>
+            </div>
+          </div>
+        </section>
+
+        {/* ─── BLOGS — derniers articles ─────────────────────────────── */}
+        <section className="py-14 bg-white border-t border-blue-100">
+          <div className="max-w-6xl mx-auto px-4 sm:px-6">
+            <div className="text-center mb-10">
+              <p className="text-xs font-bold text-[#E8651A] uppercase tracking-widest mb-3">Conseils & expertise</p>
+              <h2 className="text-2xl sm:text-3xl font-black text-[#0D1B4B] tracking-tight">Nos blogs</h2>
+            </div>
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+              {/* Blog organisateur */}
+              <div className="bg-[#EEF4FF] rounded-3xl p-7 border border-blue-100">
+                <div className="flex items-center gap-3 mb-5">
+                  <div className="w-10 h-10 bg-[#0D1B4B] rounded-xl flex items-center justify-center">
+                    <BookOpen className="w-5 h-5 text-white" />
+                  </div>
+                  <div>
+                    <h3 className="font-black text-[#0D1B4B] text-base">Blog de l&apos;organisateur</h3>
+                    <p className="text-xs text-[#4A5680]">10 articles · Conseils pour organisateurs</p>
+                  </div>
+                </div>
+                <ul className="space-y-3 mb-5">
+                  {articlesOrganisateur.slice(0, 4).map((a) => (
+                    <li key={a.slug}>
+                      <Link href={`/blog-organisateur/${a.slug}`} className="text-sm font-semibold text-[#0D1B4B] hover:text-[#E8651A] transition-colors flex items-start gap-2">
+                        <span className="text-[#E8651A] mt-0.5">→</span> {a.title}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+                <Link href="/blog-organisateur" className="inline-flex items-center gap-1 text-sm font-semibold text-[#E8651A] hover:gap-2 transition-all">
+                  Voir tous les articles <ArrowRight className="w-4 h-4" />
+                </Link>
+              </div>
+
+              {/* Blog collectionneur */}
+              <div className="bg-[#EEF4FF] rounded-3xl p-7 border border-blue-100">
+                <div className="flex items-center gap-3 mb-5">
+                  <div className="w-10 h-10 bg-[#E8651A] rounded-xl flex items-center justify-center">
+                    <BookOpen className="w-5 h-5 text-white" />
+                  </div>
+                  <div>
+                    <h3 className="font-black text-[#0D1B4B] text-base">Blog du collectionneur</h3>
+                    <p className="text-xs text-[#4A5680]">10 articles · Conseils pour chineurs</p>
+                  </div>
+                </div>
+                <ul className="space-y-3 mb-5">
+                  {articlesCollectionneur.slice(0, 4).map((a) => (
+                    <li key={a.slug}>
+                      <Link href={`/blog-collectionneur/${a.slug}`} className="text-sm font-semibold text-[#0D1B4B] hover:text-[#E8651A] transition-colors flex items-start gap-2">
+                        <span className="text-[#E8651A] mt-0.5">→</span> {a.title}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+                <Link href="/blog-collectionneur" className="inline-flex items-center gap-1 text-sm font-semibold text-[#E8651A] hover:gap-2 transition-all">
+                  Voir tous les articles <ArrowRight className="w-4 h-4" />
+                </Link>
+              </div>
             </div>
           </div>
         </section>
