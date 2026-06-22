@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 56" fill="none">
+  <!-- Icône radar/cible -->
+  <circle cx="28" cy="28" r="22" fill="#0D1B4B"/>
+  <circle cx="28" cy="28" r="16" stroke="#E8651A" stroke-width="2" fill="none"/>
+  <circle cx="28" cy="28" r="9" stroke="#E8651A" stroke-width="1.5" fill="none"/>
+  <circle cx="28" cy="28" r="3" fill="#E8651A"/>
+  <!-- Ligne radar animée — trait statique -->
+  <line x1="28" y1="28" x2="44" y2="12" stroke="#E8651A" stroke-width="2" stroke-linecap="round" opacity="0.85"/>
+  <!-- Texte BROCANTE -->
+  <text x="60" y="22" font-family="'Segoe UI', Arial, sans-serif" font-weight="900" font-size="13" letter-spacing="1.5" fill="#0D1B4B">BROCANTE</text>
+  <!-- Texte RADAR -->
+  <text x="60" y="42" font-family="'Segoe UI', Arial, sans-serif" font-weight="900" font-size="20" letter-spacing="0.5" fill="#E8651A">RADAR</text>
+</svg>

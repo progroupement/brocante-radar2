@@ -1,3 +1,4 @@
+import type { Metadata } from 'next'
 import Link from 'next/link'
 import Image from 'next/image'
 import Navbar from '@/components/Navbar'
@@ -8,10 +9,39 @@ import MapIDF from '@/components/MapIDF'
 import UpcomingBrocantes from '@/components/UpcomingBrocantes'
 import { Search, MapPin, ArrowRight, CheckCircle, Phone } from 'lucide-react'
 
+export const metadata: Metadata = {
+  title: 'Brocante Radar — Le GPS des chineurs en Île-de-France',
+  description: "Brocante Radar : trouvez les objets que vous cherchez avant même d'arriver à la brocante. 50+ brocantes et vide-greniers en Île-de-France — Paris, 77, 78, 91, 92, 93, 94, 95.",
+  alternates: { canonical: 'https://brocanteradar.fr/' },
+  openGraph: {
+    title: 'Brocante Radar — Le GPS des chineurs en Île-de-France',
+    description: "Trouvez vos objets avant d'arriver à la brocante. 50+ brocantes IDF référencées.",
+    url: 'https://brocanteradar.fr/',
+    type: 'website',
+  },
+}
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: 'Brocante Radar',
+  url: 'https://brocanteradar.fr',
+  description: "Le GPS des chineurs en Île-de-France. Trouvez les objets que vous cherchez avant même d'arriver à la brocante.",
+  potentialAction: {
+    '@type': 'SearchAction',
+    target: { '@type': 'EntryPoint', urlTemplate: 'https://brocanteradar.fr/search?q={search_term_string}' },
+    'query-input': 'required name=search_term_string',
+  },
+}
+
 export default function HomePage() {
   return (
     <>
       <Navbar />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <main className="flex-1">
 
         {/* ─── HERO — bleu sombre ────────────────────────────────────── */}
@@ -263,6 +293,32 @@ export default function HomePage() {
               <Link href="/guide-chineur" className="inline-flex items-center justify-center gap-2 bg-white/10 hover:bg-white/20 border border-white/20 text-white font-semibold px-8 py-4 rounded-2xl text-base transition-colors">
                 Lire le guide du chineur
               </Link>
+            </div>
+          </div>
+        </section>
+
+        {/* ─── BLOC SEO — texte indexable ────────────────────────────── */}
+        <section className="py-16 bg-[#EEF4FF] border-t border-blue-100">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6">
+            <h2 className="text-2xl font-black text-[#0D1B4B] mb-6">Brocantes et vide-greniers en Île-de-France</h2>
+            <div className="prose prose-sm text-[#4A5680] leading-relaxed space-y-4 max-w-none">
+              <p>
+                <strong>Brocante Radar</strong> est le premier GPS dédié aux chineurs d&apos;Île-de-France. Notre plateforme référence les <strong>brocantes, vide-greniers et marchés aux puces</strong> dans tous les départements : Paris (75), Seine-et-Marne (77), Yvelines (78), Essonne (91), Hauts-de-Seine (92), Seine-Saint-Denis (93), Val-de-Marne (94) et Val-d&apos;Oise (95).
+              </p>
+              <p>
+                Contrairement aux autres annuaires de brocantes, Brocante Radar vous permet de <strong>rechercher un objet précis</strong> et de localiser directement le stand qui le vend — avant même d&apos;arriver sur place. Les exposants publient leurs objets en temps réel avec photos et description.
+              </p>
+              <p>
+                Que vous cherchiez du <strong>mobilier vintage</strong>, de la vaisselle ancienne, des vinyles, des livres d&apos;occasion, des vêtements rétro ou des objets de collection, Brocante Radar vous guide directement vers le bon stand. Plus besoin de parcourir des centaines de mètres à pied pour trouver la perle rare.
+              </p>
+              <p>
+                Agenda mis à jour chaque semaine · 100% gratuit pour les chineurs · Compatible mobile
+              </p>
+            </div>
+            <div className="mt-8 flex flex-wrap gap-2">
+              {['Brocante Paris', 'Vide-grenier 77', 'Marché aux puces IDF', 'Brocante 92', 'Chineur Île-de-France', 'Brocante 94', 'Vide-grenier Essonne', 'Brocante Yvelines'].map((tag) => (
+                <span key={tag} className="text-xs bg-white border border-blue-200 text-[#0D1B4B] px-3 py-1.5 rounded-full font-medium">{tag}</span>
+              ))}
             </div>
           </div>
         </section>

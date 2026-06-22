@@ -42,7 +42,7 @@ export async function POST(req: NextRequest) {
         const deptLabel = departement ? `${departement} — ${DEPT_LABELS[departement] ?? departement}` : 'Non précisé'
 
         await resend.emails.send({
-          from: 'Brocante Radar <noreply@brocanteradar.fr>',
+          from: process.env.RESEND_FROM ?? 'Brocante Radar <onboarding@resend.dev>',
           to: ['progroupement@gmail.com'],
           subject: `🔍 Nouveau chineur inscrit — ${prenom}`,
           html: `

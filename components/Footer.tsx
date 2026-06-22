@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import Image from 'next/image'
+import Logo from '@/components/Logo'
 import { DEPARTEMENTS_IDF } from '@/lib/utils'
 
 export default function Footer() {
@@ -10,7 +10,7 @@ export default function Footer() {
           {/* Brand */}
           <div className="lg:col-span-1">
             <div className="mb-4">
-              <Image src="/logo.png" alt="Brocante Radar" width={150} height={50} className="h-10 w-auto object-contain brightness-0 invert" />
+              <Logo variant="light" className="h-9 w-auto" />
             </div>
             <p className="text-sm text-gray-500 leading-relaxed mb-6">
               Le GPS des chineurs — trouvez les objets que vous cherchez avant même d&apos;arriver à la brocante.

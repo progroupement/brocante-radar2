@@ -1,8 +1,8 @@
 'use client'
 
 import Link from 'next/link'
-import Image from 'next/image'
 import { useState, useEffect } from 'react'
+import Logo from '@/components/Logo'
 import { Menu, X } from 'lucide-react'
 
 export default function Navbar() {
@@ -20,14 +20,7 @@ export default function Navbar() {
       <div className="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
         {/* Logo */}
         <Link href="/" className="flex items-center group">
-          <Image
-            src="/logo.png"
-            alt="Brocante Radar"
-            width={180}
-            height={60}
-            className="h-12 w-auto object-contain transition-opacity group-hover:opacity-90"
-            priority
-          />
+          <Logo variant="light" className="h-10 w-auto transition-opacity group-hover:opacity-90" />
         </Link>
 
         {/* Desktop nav */}
