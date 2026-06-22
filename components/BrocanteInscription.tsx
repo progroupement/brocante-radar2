@@ -17,12 +17,17 @@ type Brocante = {
 
 type Role = 'chineur' | 'exposant' | 'organisateur' | null
 
-type Props = {
-  brocante: Brocante
-  formatDate: (d: string) => string
+function formatDate(dateStr: string): string {
+  return new Date(dateStr + 'T00:00:00').toLocaleDateString('fr-FR', {
+    weekday: 'long', day: 'numeric', month: 'long', year: 'numeric',
+  })
 }
 
-export default function BrocanteInscription({ brocante, formatDate }: Props) {
+type Props = {
+  brocante: Brocante
+}
+
+export default function BrocanteInscription({ brocante }: Props) {
   const [role, setRole] = useState<Role>(null)
   const [form, setForm] = useState({ nom: '', email: '', telephone: '', message: '' })
   const [sending, setSending] = useState(false)

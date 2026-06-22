@@ -44,12 +44,6 @@ export async function generateMetadata({ params }: { params: Promise<{ id: strin
   }
 }
 
-function formatDateFr(dateStr: string) {
-  return new Date(dateStr + 'T00:00:00').toLocaleDateString('fr-FR', {
-    weekday: 'long', day: 'numeric', month: 'long', year: 'numeric',
-  })
-}
-
 export default async function BrocantePage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params
   const brocante = await getBrocante(id)
@@ -59,7 +53,7 @@ export default async function BrocantePage({ params }: { params: Promise<{ id: s
     <>
       <Navbar />
       <main className="flex-1 bg-[#EEF4FF]">
-        <BrocanteInscription brocante={brocante} formatDate={formatDateFr} />
+        <BrocanteInscription brocante={brocante!} />
       </main>
       <Footer />
     </>
