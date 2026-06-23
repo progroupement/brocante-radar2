@@ -96,18 +96,17 @@ export default function JeCherchePerleRarePage() {
             <div className="absolute bottom-0 left-0 w-[350px] h-[350px] bg-[#E8651A] rounded-full blur-3xl opacity-10 -translate-x-1/3 translate-y-1/3" />
           </div>
 
-          <div className="relative max-w-6xl mx-auto px-4 sm:px-6 pt-20 pb-24 sm:pt-28 sm:pb-32">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div className="relative max-w-6xl mx-auto px-4 sm:px-6 pt-12 pb-14 sm:pt-16 sm:pb-18">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
               <div>
-                <div className="inline-flex items-center gap-2 border border-blue-600 bg-blue-900/50 text-blue-300 text-xs font-semibold px-4 py-2 rounded-full mb-8 tracking-wide uppercase">
+                <div className="inline-flex items-center gap-2 border border-blue-600 bg-blue-900/50 text-blue-300 text-xs font-semibold px-4 py-1.5 rounded-full mb-5 tracking-wide uppercase">
                   <span className="w-1.5 h-1.5 bg-[#E8651A] rounded-full animate-pulse" />
                   Pour les vrais chineurs
                 </div>
-                <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-white leading-[1.05] tracking-tight mb-6">
-                  Je cherche{' '}
-                  <span className="text-[#E8651A]">la perle rare.</span>
+                <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white leading-tight tracking-tight mb-4">
+                  Je cherche <span className="text-[#E8651A]">la&nbsp;perle&nbsp;rare.</span>
                 </h1>
-                <p className="text-lg sm:text-xl text-blue-200 mb-10 leading-relaxed">
+                <p className="text-base sm:text-lg text-blue-200 mb-7 leading-relaxed">
                   Créez votre profil chineur gratuit. Recherchez n&apos;importe quel objet dans toutes les brocantes d&apos;Île-de-France — et trouvez-le avant tout le monde.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-3">

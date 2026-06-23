@@ -102,6 +102,77 @@ export async function GET(request: NextRequest) {
     }
   })
 
+  // ── Recherche dans agenda_stands (exposants comptes) ──────────────────────
+
+  const { data: agendaKw } = await supabase
+    .from('agenda_keywords')
+    .select('stand_id, label')
+    .ilike('label', `%${q}%`)
+    .limit(200)
+
+  if (agendaKw && agendaKw.length > 0) {
+    const agendaStandIds = [...new Set(agendaKw.map(k => k.stand_id))]
+
+    const { data: agendaStands } = await supabase
+      .from('agenda_stands')
+      .select(`
+        id, photo_url,
+        inscriptions_brocante!inner (
+          exposant_id,
+          brocantes_agenda!inner (
+            id, nom, adresse, ville, date_debut, date_fin
+          ),
+          exposant_profiles (nom)
+        )
+      `)
+      .in('id', agendaStandIds)
+      .eq('actif', true)
+
+    if (agendaStands) {
+      // Récupérer tous les keywords pour ces stands
+      const { data: agendaAllKw } = await supabase
+        .from('agenda_keywords')
+        .select('stand_id, label')
+        .in('stand_id', agendaStandIds)
+
+      const agendaKwByStand: Record<string, string[]> = {}
+      agendaAllKw?.forEach(k => {
+        if (!agendaKwByStand[k.stand_id]) agendaKwByStand[k.stand_id] = []
+        agendaKwByStand[k.stand_id].push(k.label)
+      })
+
+      for (const as of agendaStands) {
+        const insc = Array.isArray(as.inscriptions_brocante) ? as.inscriptions_brocante[0] : as.inscriptions_brocante
+        const brocante = Array.isArray(insc?.brocantes_agenda) ? insc.brocantes_agenda[0] : insc?.brocantes_agenda
+        const profil = Array.isArray(insc?.exposant_profiles) ? insc.exposant_profiles[0] : insc?.exposant_profiles
+
+        // Filtre temporel sur date_debut
+        if (brocante?.date_debut) {
+          if (scope === 'today' && brocante.date_debut !== today) continue
+          if (scope === 'week') {
+            const nextWeek = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000).toISOString().split('T')[0]
+            if (brocante.date_debut < today || brocante.date_debut > nextWeek) continue
+          }
+        }
+
+        results.push({
+          id: as.id,
+          nom_exposant: profil?.nom ?? null,
+          numero_stand: null,
+          photo_url: as.photo_url ?? null,
+          keywords: agendaKwByStand[as.id] ?? [],
+          event_id: brocante?.id ?? null,
+          event_nom: brocante?.nom ?? null,
+          event_adresse: brocante?.adresse ?? null,
+          event_ville: brocante?.ville ?? null,
+          event_date: brocante?.date_debut ?? null,
+          event_lat: null,
+          event_lng: null,
+        })
+      }
+    }
+  }
+
   // 5. Trier : les keywords qui matchent exactement en premier
   const qLower = q.toLowerCase()
   results.sort((a, b) => {

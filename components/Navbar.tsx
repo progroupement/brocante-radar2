@@ -56,14 +56,14 @@ export default function Navbar() {
               Blog <ChevronDown className={`w-3.5 h-3.5 transition-transform ${blogOpen ? 'rotate-180' : ''}`} />
             </button>
             {blogOpen && (
-              <div className="absolute top-full left-0 mt-1 w-64 bg-white rounded-2xl shadow-xl border border-blue-100 py-2 z-50">
+              <div className="absolute top-full left-0 mt-1 w-72 bg-white rounded-2xl shadow-xl border border-blue-100 py-2 z-50">
                 <Link
-                  href="/blog-organisateur"
+                  href="/blog-chineur"
                   onClick={() => setBlogOpen(false)}
                   className="block px-4 py-3 hover:bg-[#EEF4FF] transition-colors"
                 >
-                  <p className="font-bold text-[#0D1B4B] text-sm">Blog de l&apos;organisateur</p>
-                  <p className="text-xs text-[#4A5680] mt-0.5">Conseils pour réussir vos brocantes</p>
+                  <p className="font-bold text-[#0D1B4B] text-sm">Blog du chineur</p>
+                  <p className="text-xs text-[#4A5680] mt-0.5">Astuces et conseils pratiques</p>
                 </Link>
                 <div className="border-t border-blue-50 mx-2 my-1" />
                 <Link
@@ -72,7 +72,25 @@ export default function Navbar() {
                   className="block px-4 py-3 hover:bg-[#EEF4FF] transition-colors"
                 >
                   <p className="font-bold text-[#0D1B4B] text-sm">Blog du collectionneur</p>
-                  <p className="text-xs text-[#4A5680] mt-0.5">Conseils pour bien chiner</p>
+                  <p className="text-xs text-[#4A5680] mt-0.5">Expertise et collections</p>
+                </Link>
+                <div className="border-t border-blue-50 mx-2 my-1" />
+                <Link
+                  href="/actualites"
+                  onClick={() => setBlogOpen(false)}
+                  className="block px-4 py-3 hover:bg-[#EEF4FF] transition-colors"
+                >
+                  <p className="font-bold text-[#0D1B4B] text-sm">Actualités brocante</p>
+                  <p className="text-xs text-[#4A5680] mt-0.5">Tendances et nouveautés 2026</p>
+                </Link>
+                <div className="border-t border-blue-50 mx-2 my-1" />
+                <Link
+                  href="/blog-organisateur"
+                  onClick={() => setBlogOpen(false)}
+                  className="block px-4 py-3 hover:bg-[#EEF4FF] transition-colors"
+                >
+                  <p className="font-bold text-[#0D1B4B] text-sm">Blog de l&apos;organisateur</p>
+                  <p className="text-xs text-[#4A5680] mt-0.5">Organiser une brocante réussie</p>
                 </Link>
               </div>
             )}
@@ -101,8 +119,10 @@ export default function Navbar() {
           <Link href="/search" onClick={() => setOpen(false)} className="text-sm font-medium text-blue-200 px-3 py-3 rounded-lg hover:bg-blue-800">Rechercher un objet</Link>
           <div className="border-t border-blue-800 pt-2 mt-1">
             <p className="text-xs text-blue-500 px-3 pb-2 font-semibold uppercase tracking-wider">Blog</p>
-            <Link href="/blog-organisateur" onClick={() => setOpen(false)} className="text-sm font-medium text-blue-200 px-3 py-3 rounded-lg hover:bg-blue-800 block">Blog de l&apos;organisateur</Link>
+            <Link href="/blog-chineur" onClick={() => setOpen(false)} className="text-sm font-medium text-blue-200 px-3 py-3 rounded-lg hover:bg-blue-800 block">Blog du chineur</Link>
             <Link href="/blog-collectionneur" onClick={() => setOpen(false)} className="text-sm font-medium text-blue-200 px-3 py-3 rounded-lg hover:bg-blue-800 block">Blog du collectionneur</Link>
+            <Link href="/actualites" onClick={() => setOpen(false)} className="text-sm font-medium text-blue-200 px-3 py-3 rounded-lg hover:bg-blue-800 block">Actualités brocante</Link>
+            <Link href="/blog-organisateur" onClick={() => setOpen(false)} className="text-sm font-medium text-blue-200 px-3 py-3 rounded-lg hover:bg-blue-800 block">Blog de l&apos;organisateur</Link>
           </div>
           <Link href="/exposant" onClick={() => setOpen(false)} className="mt-2 bg-[#E8651A] text-white text-sm font-semibold px-4 py-3 rounded-xl text-center">Publier mon stand</Link>
         </div>

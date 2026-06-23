@@ -1,24 +1,22 @@
 'use client'
 
 import { useEffect, useState, useRef } from 'react'
-import { useParams, useRouter } from 'next/navigation'
+import { useParams } from 'next/navigation'
 import { createClient, type Event } from '@/lib/supabase'
-import { Button } from '@/components/ui/button'
-import { Input } from '@/components/ui/input'
-import { Label } from '@/components/ui/label'
 import { KEYWORDS_SUGGESTIONS } from '@/lib/utils'
 import { formatDate } from '@/lib/utils'
-import { Loader2, X, Camera, CheckCircle, MapPin, CalendarDays } from 'lucide-react'
+import {
+  Loader2, X, Camera, CheckCircle, MapPin, CalendarDays,
+  RotateCcw, Tag, ArrowRight, ImagePlus
+} from 'lucide-react'
 
 export default function StandPage() {
   const { token } = useParams<{ token: string }>()
-  const router = useRouter()
   const [event, setEvent] = useState<Event | null>(null)
   const [loading, setLoading] = useState(true)
   const [submitting, setSubmitting] = useState(false)
   const [notFound, setNotFound] = useState(false)
   const [success, setSuccess] = useState(false)
-  const [standId, setStandId] = useState('')
 
   // Formulaire
   const [nomExposant, setNomExposant] = useState('')
@@ -50,6 +48,12 @@ export default function StandPage() {
     if (!file) return
     setPhoto(file)
     setPhotoPreview(URL.createObjectURL(file))
+  }
+
+  function removePhoto() {
+    setPhoto(null)
+    setPhotoPreview('')
+    if (fileInputRef.current) fileInputRef.current.value = ''
   }
 
   function addKeyword(label: string) {
@@ -87,7 +91,6 @@ export default function StandPage() {
     const supabase = createClient()
 
     try {
-      // 1. Upload photo
       let photoUrl: string | null = null
       if (photo) {
         const ext = photo.name.split('.').pop()
@@ -103,7 +106,6 @@ export default function StandPage() {
         }
       }
 
-      // 2. Créer le stand
       const { data: stand, error: standError } = await supabase
         .from('stands')
         .insert({
@@ -117,12 +119,10 @@ export default function StandPage() {
 
       if (standError || !stand) throw new Error(standError?.message)
 
-      // 3. Insérer les mots-clés
       await supabase.from('keywords').insert(
         keywords.map((label) => ({ stand_id: stand.id, label }))
       )
 
-      setStandId(stand.id)
       setSuccess(true)
     } catch (err: unknown) {
       setError(err instanceof Error ? err.message : 'Une erreur est survenue')
@@ -131,21 +131,27 @@ export default function StandPage() {
     }
   }
 
+  /* ── États : loading / not found / success ── */
+
   if (loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center">
-        <Loader2 className="w-8 h-8 animate-spin text-[#E8651A]" />
+      <div className="min-h-screen bg-[#0D1B4B] flex items-center justify-center">
+        <Loader2 className="w-10 h-10 animate-spin text-[#E8651A]" />
       </div>
     )
   }
 
   if (notFound) {
     return (
-      <div className="min-h-screen flex items-center justify-center p-4">
+      <div className="min-h-screen bg-[#0D1B4B] flex items-center justify-center p-6">
         <div className="text-center max-w-sm">
-          <div className="text-5xl mb-4">🔍</div>
-          <h1 className="text-2xl font-bold mb-2">QR code invalide</h1>
-          <p className="text-[#6B6B6B]">Ce lien ne correspond à aucune brocante. Demandez le bon QR code à l'organisateur.</p>
+          <div className="w-16 h-16 bg-white/10 rounded-2xl flex items-center justify-center mx-auto mb-5 text-3xl">
+            🔍
+          </div>
+          <h1 className="text-2xl font-black text-white mb-3">QR code invalide</h1>
+          <p className="text-blue-300 text-sm leading-relaxed">
+            Ce lien ne correspond à aucune brocante. Demandez le bon QR code à l&apos;organisateur.
+          </p>
         </div>
       </div>
     )
@@ -153,18 +159,22 @@ export default function StandPage() {
 
   if (success) {
     return (
-      <div className="min-h-screen bg-[#F8F5F0] flex items-center justify-center p-4">
-        <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-8 max-w-sm w-full text-center">
-          <CheckCircle className="w-16 h-16 text-green-500 mx-auto mb-4" />
-          <h1 className="text-2xl font-bold mb-2">Stand publié ! 🎉</h1>
-          <p className="text-[#6B6B6B] mb-6">
-            Votre stand <strong className="font-mono text-[#1A1A1A]">{numeroStand}</strong> est visible par tous les visiteurs.
+      <div className="min-h-screen bg-[#0D1B4B] flex items-center justify-center p-6">
+        <div className="max-w-sm w-full text-center">
+          <div className="w-20 h-20 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg shadow-green-500/30">
+            <CheckCircle className="w-10 h-10 text-white" />
+          </div>
+          <h1 className="text-3xl font-black text-white mb-3">Stand publié !</h1>
+          <p className="text-blue-300 mb-6 text-sm leading-relaxed">
+            Votre stand <strong className="text-white font-mono text-base">{numeroStand}</strong> est maintenant visible par tous les chineurs.
           </p>
-          <div className="bg-[#F8F5F0] rounded-xl p-4 text-left text-sm mb-6">
-            <p className="font-medium mb-2">Mots-clés publiés :</p>
-            <div className="flex flex-wrap gap-1.5">
+          <div className="bg-white/5 border border-white/10 rounded-2xl p-5 text-left mb-8">
+            <p className="text-xs text-blue-400 font-semibold uppercase tracking-wider mb-3">Vos mots-clés</p>
+            <div className="flex flex-wrap gap-2">
               {keywords.map((k) => (
-                <span key={k} className="bg-orange-100 text-orange-800 rounded-full px-2 py-0.5 text-xs font-medium">{k}</span>
+                <span key={k} className="bg-[#E8651A]/20 text-orange-300 rounded-full px-3 py-1 text-sm font-medium border border-[#E8651A]/30">
+                  {k}
+                </span>
               ))}
             </div>
           </div>
@@ -173,178 +183,231 @@ export default function StandPage() {
               setSuccess(false)
               setNomExposant('')
               setNumeroStand('')
-              setPhoto(null)
-              setPhotoPreview('')
+              removePhoto()
               setKeywords([])
-              setStandId('')
             }}
-            className="text-sm text-[#E8651A] hover:underline"
+            className="text-sm text-blue-300 hover:text-white transition-colors flex items-center gap-2 mx-auto"
           >
-            Modifier mon stand
+            <RotateCcw className="w-4 h-4" /> Modifier mon stand
           </button>
         </div>
       </div>
     )
   }
 
+  /* ── Formulaire principal ── */
+
   return (
-    <div className="min-h-screen bg-[#F8F5F0]">
-      {/* En-tête brocante */}
-      <div className="bg-[#E8651A] text-white px-4 py-6">
-        <div className="max-w-lg mx-auto">
-          <p className="text-orange-200 text-xs font-medium uppercase tracking-wider mb-1">Brocante</p>
-          <h1 className="text-xl font-bold">{event!.nom}</h1>
-          <div className="flex flex-col sm:flex-row gap-2 mt-2 text-orange-100 text-sm">
-            <span className="flex items-center gap-1">
-              <CalendarDays className="w-3.5 h-3.5" />
-              {formatDate(event!.date)}
-            </span>
-            <span className="flex items-center gap-1">
-              <MapPin className="w-3.5 h-3.5" />
-              {event!.ville}
-            </span>
+    <div className="min-h-screen bg-[#0D1B4B]">
+
+      {/* Header brocante */}
+      <div className="bg-[#060D26] border-b border-white/10 px-4 py-5">
+        <div className="max-w-lg mx-auto flex items-start gap-4">
+          <div className="w-11 h-11 bg-[#E8651A] rounded-xl flex items-center justify-center flex-shrink-0 mt-0.5">
+            <MapPin className="w-5 h-5 text-white" />
+          </div>
+          <div>
+            <p className="text-xs text-blue-400 font-semibold uppercase tracking-wider mb-0.5">Brocante</p>
+            <h1 className="text-lg font-black text-white leading-snug">{event!.nom}</h1>
+            <div className="flex flex-wrap gap-3 mt-1.5 text-blue-300 text-xs">
+              <span className="flex items-center gap-1">
+                <CalendarDays className="w-3 h-3" />{formatDate(event!.date)}
+              </span>
+              <span className="flex items-center gap-1">
+                <MapPin className="w-3 h-3" />{event!.ville}
+              </span>
+            </div>
           </div>
         </div>
       </div>
 
       {/* Formulaire */}
-      <div className="max-w-lg mx-auto px-4 py-8">
-        <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 sm:p-8">
-          <h2 className="text-xl font-bold mb-1">Publiez votre stand</h2>
-          <p className="text-[#6B6B6B] text-sm mb-6">Les visiteurs vous trouveront en cherchant vos objets.</p>
+      <div className="max-w-lg mx-auto px-4 py-8 space-y-5">
 
-          <form onSubmit={handleSubmit} className="space-y-5">
-            {/* Nom exposant */}
-            <div>
-              <Label htmlFor="nom">Votre nom ou pseudo</Label>
-              <Input
-                id="nom"
-                placeholder="Marie, Brocante Vintage, ..."
-                className="mt-1.5"
-                value={nomExposant}
-                onChange={(e) => setNomExposant(e.target.value)}
-              />
-            </div>
+        <div>
+          <h2 className="text-2xl font-black text-white mb-1">Publiez votre stand</h2>
+          <p className="text-blue-400 text-sm">Les chineurs vous trouvent avant d&apos;arriver.</p>
+        </div>
 
-            {/* Numéro stand */}
-            <div>
-              <Label htmlFor="numero">Numéro de stand <span className="text-red-500">*</span></Label>
-              <Input
-                id="numero"
-                placeholder="14 · B-7 · Allée C stand 3"
-                className="mt-1.5 font-mono text-base"
-                value={numeroStand}
-                onChange={(e) => setNumeroStand(e.target.value)}
-              />
-            </div>
+        <form onSubmit={handleSubmit} className="space-y-4">
 
-            {/* Photo */}
-            <div>
-              <Label>Photo de votre stand</Label>
-              <div
+          {/* ── Photo — zone large et tactile ── */}
+          <div>
+            <label className="text-sm font-semibold text-blue-200 mb-2 flex items-center gap-1.5">
+              <Camera className="w-4 h-4 text-[#E8651A]" /> Photo de votre stand
+              <span className="text-blue-500 font-normal ml-1">— optionnel</span>
+            </label>
+
+            {!photoPreview ? (
+              <button
+                type="button"
                 onClick={() => fileInputRef.current?.click()}
-                className="mt-1.5 border-2 border-dashed border-gray-200 rounded-xl p-4 flex flex-col items-center cursor-pointer hover:border-[#E8651A] hover:bg-orange-50 transition-colors"
+                className="w-full bg-white/5 border-2 border-dashed border-white/20 hover:border-[#E8651A] hover:bg-[#E8651A]/5 rounded-2xl transition-all"
+                style={{ minHeight: '180px' }}
               >
-                {photoPreview ? (
-                  <img src={photoPreview} alt="Aperçu" className="w-full max-h-40 object-cover rounded-lg" />
-                ) : (
-                  <>
-                    <Camera className="w-8 h-8 text-gray-300 mb-2" />
-                    <p className="text-sm text-[#6B6B6B]">Appuyez pour prendre une photo</p>
-                    <p className="text-xs text-gray-400 mt-1">Optionnel — aide les visiteurs à vous repérer</p>
-                  </>
-                )}
+                <div className="flex flex-col items-center justify-center py-10 gap-3">
+                  <div className="w-16 h-16 bg-white/10 rounded-2xl flex items-center justify-center">
+                    <ImagePlus className="w-8 h-8 text-white/40" />
+                  </div>
+                  <div className="text-center">
+                    <p className="text-white font-semibold text-base">Prendre une photo</p>
+                    <p className="text-blue-400 text-sm mt-1">Appuyez pour ouvrir l&apos;appareil photo</p>
+                  </div>
+                </div>
+              </button>
+            ) : (
+              <div className="relative rounded-2xl overflow-hidden border-2 border-[#E8651A]/50">
+                <img
+                  src={photoPreview}
+                  alt="Aperçu stand"
+                  className="w-full object-cover"
+                  style={{ maxHeight: '280px' }}
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
+                <button
+                  type="button"
+                  onClick={() => fileInputRef.current?.click()}
+                  className="absolute bottom-3 left-3 flex items-center gap-2 bg-white/90 hover:bg-white text-[#0D1B4B] font-semibold text-sm px-4 py-2.5 rounded-xl transition-colors shadow-lg"
+                >
+                  <RotateCcw className="w-4 h-4" /> Reprendre
+                </button>
+                <button
+                  type="button"
+                  onClick={removePhoto}
+                  className="absolute top-3 right-3 w-9 h-9 bg-black/50 hover:bg-black/70 text-white rounded-xl flex items-center justify-center transition-colors"
+                >
+                  <X className="w-4 h-4" />
+                </button>
               </div>
-              <input
-                ref={fileInputRef}
-                type="file"
-                accept="image/*"
-                capture="environment"
-                className="hidden"
-                onChange={handlePhotoChange}
-              />
+            )}
+
+            <input
+              ref={fileInputRef}
+              type="file"
+              accept="image/*"
+              capture="environment"
+              className="hidden"
+              onChange={handlePhotoChange}
+            />
+          </div>
+
+          {/* ── Numéro de stand ── */}
+          <div>
+            <label htmlFor="numero" className="text-sm font-semibold text-blue-200 mb-2 flex items-center gap-1.5">
+              <Tag className="w-4 h-4 text-[#E8651A]" /> Numéro de stand <span className="text-[#E8651A]">*</span>
+            </label>
+            <input
+              id="numero"
+              type="text"
+              placeholder="Ex : 14 · B-7 · Allée C stand 3"
+              value={numeroStand}
+              onChange={(e) => setNumeroStand(e.target.value)}
+              className="w-full bg-white/5 border border-white/20 focus:border-[#E8651A] focus:ring-2 focus:ring-[#E8651A]/20 rounded-xl px-4 py-3.5 text-white placeholder-white/30 text-base font-mono outline-none transition-all"
+            />
+          </div>
+
+          {/* ── Nom exposant ── */}
+          <div>
+            <label htmlFor="nom" className="text-sm font-semibold text-blue-200 mb-2 block">
+              Votre nom ou pseudo <span className="text-blue-500 font-normal">— optionnel</span>
+            </label>
+            <input
+              id="nom"
+              type="text"
+              placeholder="Marie, Brocante Vintage, ..."
+              value={nomExposant}
+              onChange={(e) => setNomExposant(e.target.value)}
+              className="w-full bg-white/5 border border-white/20 focus:border-[#E8651A] focus:ring-2 focus:ring-[#E8651A]/20 rounded-xl px-4 py-3.5 text-white placeholder-white/30 text-base outline-none transition-all"
+            />
+          </div>
+
+          {/* ── Mots-clés ── */}
+          <div>
+            <label className="text-sm font-semibold text-blue-200 mb-1 flex items-center gap-1.5">
+              Ce que vous vendez <span className="text-[#E8651A]">*</span>
+            </label>
+            <p className="text-xs text-blue-400 mb-3">Les chineurs cherchent par ces termes · max 20</p>
+
+            {/* Suggestions rapides */}
+            <div className="flex flex-wrap gap-2 mb-3">
+              {KEYWORDS_SUGGESTIONS.filter(s => !keywords.includes(s)).slice(0, 10).map((s) => (
+                <button
+                  key={s}
+                  type="button"
+                  onClick={() => addKeyword(s)}
+                  className="text-sm bg-white/10 text-blue-200 border border-white/10 rounded-full px-3 py-1.5 hover:bg-[#E8651A]/20 hover:text-orange-300 hover:border-[#E8651A]/30 transition-all"
+                >
+                  + {s}
+                </button>
+              ))}
             </div>
 
-            {/* Mots-clés */}
-            <div>
-              <Label>Ce que vous vendez <span className="text-red-500">*</span></Label>
-              <p className="text-xs text-[#6B6B6B] mb-2 mt-0.5">Maximum 20 mots-clés · Les visiteurs cherchent par ces termes</p>
-
-              {/* Suggestions rapides */}
-              <div className="flex flex-wrap gap-1.5 mb-2">
-                {KEYWORDS_SUGGESTIONS.filter(s => !keywords.includes(s)).slice(0, 8).map((s) => (
-                  <button
-                    key={s}
-                    type="button"
-                    onClick={() => addKeyword(s)}
-                    className="text-xs bg-gray-100 text-[#6B6B6B] rounded-full px-3 py-1 hover:bg-orange-100 hover:text-orange-800 transition-colors"
-                  >
-                    + {s}
-                  </button>
-                ))}
-              </div>
-
-              {/* Saisie libre */}
-              <div className="relative">
-                <Input
-                  placeholder="Saisir un mot-clé..."
-                  value={kwInput}
-                  onChange={(e) => handleKwInput(e.target.value)}
-                  onKeyDown={(e) => {
-                    if (e.key === 'Enter') { e.preventDefault(); addKeyword(kwInput) }
-                  }}
-                  disabled={keywords.length >= 20}
-                />
-                {suggestions.length > 0 && (
-                  <div className="absolute top-full left-0 right-0 mt-1 bg-white border border-gray-200 rounded-xl shadow-lg z-10 overflow-hidden">
-                    {suggestions.map((s) => (
-                      <button
-                        key={s}
-                        type="button"
-                        onClick={() => addKeyword(s)}
-                        className="w-full text-left px-4 py-2.5 text-sm hover:bg-orange-50 hover:text-[#E8651A] transition-colors"
-                      >
-                        {s}
-                      </button>
-                    ))}
-                  </div>
-                )}
-              </div>
-
-              {/* Tags sélectionnés */}
-              {keywords.length > 0 && (
-                <div className="flex flex-wrap gap-1.5 mt-3">
-                  {keywords.map((k) => (
-                    <span
-                      key={k}
-                      className="flex items-center gap-1 bg-orange-100 text-orange-800 rounded-full px-3 py-1 text-xs font-medium"
+            {/* Saisie libre */}
+            <div className="relative">
+              <input
+                type="text"
+                placeholder="Ou tapez un mot-clé..."
+                value={kwInput}
+                onChange={(e) => handleKwInput(e.target.value)}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter') { e.preventDefault(); addKeyword(kwInput) }
+                }}
+                disabled={keywords.length >= 20}
+                className="w-full bg-white/5 border border-white/20 focus:border-[#E8651A] rounded-xl px-4 py-3 text-white placeholder-white/30 text-sm outline-none transition-all"
+              />
+              {suggestions.length > 0 && (
+                <div className="absolute top-full left-0 right-0 mt-1 bg-[#0D1B4B] border border-white/10 rounded-xl shadow-2xl z-20 overflow-hidden">
+                  {suggestions.map((s) => (
+                    <button
+                      key={s}
+                      type="button"
+                      onClick={() => addKeyword(s)}
+                      className="w-full text-left px-4 py-3 text-sm text-blue-200 hover:bg-white/5 hover:text-white transition-colors border-b border-white/5 last:border-0"
                     >
-                      {k}
-                      <button type="button" onClick={() => removeKeyword(k)} className="hover:text-orange-900">
-                        <X className="w-3 h-3" />
-                      </button>
-                    </span>
+                      {s}
+                    </button>
                   ))}
-                  <span className="text-xs text-gray-400 self-center">{keywords.length}/20</span>
                 </div>
               )}
             </div>
 
-            {error && (
-              <div className="bg-red-50 border border-red-200 rounded-xl p-3 text-red-700 text-sm">
-                {error}
+            {/* Tags sélectionnés */}
+            {keywords.length > 0 && (
+              <div className="flex flex-wrap gap-2 mt-3">
+                {keywords.map((k) => (
+                  <span key={k} className="flex items-center gap-1.5 bg-[#E8651A]/20 text-orange-300 border border-[#E8651A]/30 rounded-full px-3 py-1.5 text-sm font-medium">
+                    {k}
+                    <button type="button" onClick={() => removeKeyword(k)} className="hover:text-white transition-colors">
+                      <X className="w-3 h-3" />
+                    </button>
+                  </span>
+                ))}
+                <span className="text-xs text-blue-500 self-center">{keywords.length}/20</span>
               </div>
             )}
+          </div>
 
-            <Button type="submit" className="w-full h-12 text-base" disabled={submitting}>
-              {submitting ? (
-                <><Loader2 className="w-4 h-4 animate-spin" /> Publication en cours...</>
-              ) : (
-                '📣 Publier mon stand'
-              )}
-            </Button>
-          </form>
-        </div>
+          {/* Erreur */}
+          {error && (
+            <div className="bg-red-500/10 border border-red-500/30 rounded-xl p-4 text-red-300 text-sm">
+              {error}
+            </div>
+          )}
+
+          {/* Bouton submit */}
+          <button
+            type="submit"
+            disabled={submitting}
+            className="w-full bg-[#E8651A] hover:bg-[#d4581a] disabled:opacity-50 text-white font-black text-base px-6 py-4 rounded-2xl transition-colors flex items-center justify-center gap-2 shadow-lg shadow-[#E8651A]/20 mt-2"
+          >
+            {submitting ? (
+              <><Loader2 className="w-5 h-5 animate-spin" /> Publication en cours...</>
+            ) : (
+              <>Publier mon stand <ArrowRight className="w-5 h-5" /></>
+            )}
+          </button>
+
+        </form>
       </div>
     </div>
   )

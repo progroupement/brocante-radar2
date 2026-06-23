@@ -1,6 +1,8 @@
 import type { MetadataRoute } from 'next'
 import { articlesOrganisateur } from '@/lib/articles-organisateur'
 import { articlesCollectionneur } from '@/lib/articles-collectionneur'
+import { articlesChineur } from '@/lib/articles-chineur'
+import { articlesActualites } from '@/lib/articles-actualites'
 
 const BASE_URL = 'https://brocanteradar.fr'
 
@@ -19,6 +21,20 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }))
 
+  const blogChineurPages: MetadataRoute.Sitemap = articlesChineur.map((a) => ({
+    url: `${BASE_URL}/blog-chineur/${a.slug}`,
+    lastModified: new Date(a.date),
+    changeFrequency: 'monthly',
+    priority: 0.7,
+  }))
+
+  const actualitesPages: MetadataRoute.Sitemap = articlesActualites.map((a) => ({
+    url: `${BASE_URL}/actualites/${a.slug}`,
+    lastModified: new Date(a.date),
+    changeFrequency: 'weekly',
+    priority: 0.75,
+  }))
+
   return [
     { url: `${BASE_URL}/`, lastModified: new Date(), changeFrequency: 'weekly', priority: 1 },
     { url: `${BASE_URL}/guide-chineur`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.9 },
@@ -29,6 +45,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE_URL}/contact-organisateur`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.7 },
     { url: `${BASE_URL}/blog-organisateur`, lastModified: new Date(), changeFrequency: 'weekly', priority: 0.8 },
     { url: `${BASE_URL}/blog-collectionneur`, lastModified: new Date(), changeFrequency: 'weekly', priority: 0.8 },
+    { url: `${BASE_URL}/blog-chineur`, lastModified: new Date(), changeFrequency: 'weekly', priority: 0.8 },
+    { url: `${BASE_URL}/actualites`, lastModified: new Date(), changeFrequency: 'weekly', priority: 0.85 },
     { url: `${BASE_URL}/mentions-legales`, lastModified: new Date(), changeFrequency: 'yearly', priority: 0.3 },
     { url: `${BASE_URL}/confidentialite`, lastModified: new Date(), changeFrequency: 'yearly', priority: 0.3 },
     { url: `${BASE_URL}/brocante-paris`, lastModified: new Date(), changeFrequency: 'weekly', priority: 0.8 },
@@ -41,5 +59,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE_URL}/brocante-seine-et-marne`, lastModified: new Date(), changeFrequency: 'weekly', priority: 0.8 },
     ...blogOrganisateurPages,
     ...blogCollectionneurPages,
+    ...blogChineurPages,
+    ...actualitesPages,
   ]
 }

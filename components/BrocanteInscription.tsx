@@ -171,7 +171,7 @@ export default function BrocanteInscription({ brocante }: Props) {
         </div>
       )}
 
-      {/* Exposant → page exposant */}
+      {/* Exposant → créer compte ou se connecter */}
       {role === 'exposant' && (
         <div className="bg-white rounded-3xl p-8 text-center border border-blue-100">
           <div className="w-16 h-16 bg-[#EEF4FF] rounded-2xl flex items-center justify-center mx-auto mb-6">
@@ -179,23 +179,29 @@ export default function BrocanteInscription({ brocante }: Props) {
           </div>
           <h2 className="text-2xl font-black text-[#0D1B4B] mb-3">Publiez votre stand !</h2>
           <p className="text-[#4A5680] text-sm leading-relaxed mb-8">
-            Listez vos objets avec photos depuis votre téléphone. Les chineurs qui visitent <strong>{brocante.nom}</strong> vous trouveront directement. Scannez le QR code à l&apos;entrée de la brocante ou créez votre stand en ligne.
+            Créez un compte exposant gratuit. Le jour J à 8h, vous recevrez un email pour publier une photo de votre stand et vos objets — les chineurs vous trouveront via la recherche.
           </p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
             <Link
-              href={`/exposant?brocante=${brocante.id}`}
+              href={`/exposant/inscription?brocante=${brocante.id}`}
               className="inline-flex items-center justify-center gap-2 bg-[#E8651A] hover:bg-[#d4581a] text-white font-semibold px-7 py-4 rounded-2xl text-sm transition-colors"
             >
               <Store className="w-4 h-4" />
-              Créer mon stand
+              Créer mon compte exposant
             </Link>
-            <button
-              onClick={() => setRole(null)}
+            <Link
+              href="/exposant/connexion"
               className="inline-flex items-center justify-center gap-2 bg-[#EEF4FF] hover:bg-blue-100 text-[#0D1B4B] font-semibold px-6 py-4 rounded-2xl text-sm transition-colors"
             >
-              Retour
-            </button>
+              J&apos;ai déjà un compte
+            </Link>
           </div>
+          <button
+            onClick={() => setRole(null)}
+            className="mt-4 text-xs text-[#4A5680] hover:text-[#0D1B4B] underline"
+          >
+            Retour
+          </button>
         </div>
       )}
 

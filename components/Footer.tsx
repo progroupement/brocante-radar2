@@ -29,8 +29,10 @@ export default function Footer() {
               <li><Link href="/guide-chineur" className="hover:text-white transition-colors">Guide du chineur</Link></li>
               <li><Link href="/brocantes-ile-de-france" className="hover:text-white transition-colors">Brocantes IDF</Link></li>
               <li><Link href="/contact-organisateur" className="hover:text-white transition-colors">Organisateur — QR code</Link></li>
-              <li><Link href="/blog-organisateur" className="hover:text-white transition-colors">Blog de l&apos;organisateur</Link></li>
+              <li><Link href="/blog-chineur" className="hover:text-white transition-colors">Blog du chineur</Link></li>
               <li><Link href="/blog-collectionneur" className="hover:text-white transition-colors">Blog du collectionneur</Link></li>
+              <li><Link href="/actualites" className="hover:text-white transition-colors">Actualités brocante</Link></li>
+              <li><Link href="/blog-organisateur" className="hover:text-white transition-colors">Blog de l&apos;organisateur</Link></li>
             </ul>
           </div>
 

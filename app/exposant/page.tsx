@@ -1,12 +1,25 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
-import { useRouter } from 'next/navigation'
+import { useRouter, useSearchParams } from 'next/navigation'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
-import { QrCode, Search, MapPin, ArrowRight, CheckCircle, Smartphone, Camera, Tag } from 'lucide-react'
+import { QrCode, Search, MapPin, ArrowRight, CheckCircle, Smartphone, Camera, Tag, CalendarDays } from 'lucide-react'
+
+const SUPABASE_URL = 'https://amnwcgdqrgmsdgfekrry.supabase.co'
+const SUPABASE_ANON = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFtbndjZ2Rxcmdtc2RnZmVrcnJ5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODE1MjUyODMsImV4cCI6MjA5NzEwMTI4M30.Zodk0XBNeOBgiYWrzWXkR6qsdYpgxdUbK-1-etMFiJQ'
+
+type BrocanteAgenda = {
+  id: string
+  nom: string
+  date_debut: string
+  date_fin: string
+  ville: string
+  dept: string
+  adresse: string | null
+}
 
 const etapes = [
   {
@@ -35,9 +48,29 @@ const etapes = [
   },
 ]
 
+function formatDateFr(dateStr: string): string {
+  return new Date(dateStr + 'T00:00:00').toLocaleDateString('fr-FR', {
+    weekday: 'long', day: 'numeric', month: 'long', year: 'numeric',
+  })
+}
+
 export default function ExposantPage() {
   const router = useRouter()
+  const searchParams = useSearchParams()
+  const brocanteId = searchParams.get('brocante')
   const [token, setToken] = useState('')
+  const [brocante, setBrocante] = useState<BrocanteAgenda | null>(null)
+
+  useEffect(() => {
+    if (!brocanteId) return
+    fetch(
+      `${SUPABASE_URL}/rest/v1/brocantes_agenda?id=eq.${brocanteId}&select=*&limit=1`,
+      { headers: { apikey: SUPABASE_ANON, Authorization: `Bearer ${SUPABASE_ANON}` } }
+    )
+      .then(r => r.json())
+      .then(data => { if (data[0]) setBrocante(data[0]) })
+      .catch(() => {})
+  }, [brocanteId])
 
   function handleToken(e: React.FormEvent) {
     e.preventDefault()
@@ -88,7 +121,82 @@ export default function ExposantPage() {
           </div>
         </section>
 
+        {/* ─── BLOC CONTEXTUEL (quand on arrive d'une brocante) ─── */}
+        {brocanteId && (
+          <section className="py-12 bg-white border-b border-blue-100">
+            <div className="max-w-2xl mx-auto px-4 sm:px-6">
+              {/* Carte brocante */}
+              {brocante && (
+                <div className="bg-[#0D1B4B] rounded-2xl p-6 mb-8 text-white">
+                  <span className="text-xs font-bold text-blue-300 uppercase tracking-widest mb-2 block">Brocante sélectionnée</span>
+                  <h2 className="text-xl font-black mb-2">{brocante.nom}</h2>
+                  <div className="flex flex-wrap gap-4 text-sm text-blue-200">
+                    <span className="flex items-center gap-1">
+                      <CalendarDays className="w-3.5 h-3.5" />
+                      {brocante.date_debut === brocante.date_fin
+                        ? formatDateFr(brocante.date_debut)
+                        : `${formatDateFr(brocante.date_debut)} → ${formatDateFr(brocante.date_fin)}`}
+                    </span>
+                    <span className="flex items-center gap-1">
+                      <MapPin className="w-3.5 h-3.5" />
+                      {brocante.adresse ? `${brocante.adresse}, ` : ''}{brocante.ville}
+                    </span>
+                  </div>
+                </div>
+              )}
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                {/* Option 1 : j'ai un QR code */}
+                <div className="bg-[#EEF4FF] rounded-2xl p-6 border border-blue-100">
+                  <div className="w-12 h-12 bg-[#0D1B4B] rounded-xl flex items-center justify-center mb-4">
+                    <QrCode className="w-6 h-6 text-white" />
+                  </div>
+                  <h3 className="font-black text-[#0D1B4B] text-lg mb-2">J&apos;ai un code d&apos;accès</h3>
+                  <p className="text-[#4A5680] text-sm mb-4">
+                    L&apos;organisateur vous a donné un code ou un lien QR. Entrez-le pour publier votre stand.
+                  </p>
+                  <form onSubmit={handleToken} className="flex gap-2">
+                    <input
+                      type="text"
+                      value={token}
+                      onChange={(e) => setToken(e.target.value)}
+                      placeholder="Code d'accès"
+                      className="flex-1 border border-blue-200 rounded-xl px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-[#E8651A] bg-white"
+                    />
+                    <button
+                      type="submit"
+                      disabled={!token.trim()}
+                      className="bg-[#E8651A] hover:bg-[#d4581a] disabled:opacity-40 text-white font-semibold px-4 py-2.5 rounded-xl transition-colors"
+                    >
+                      <ArrowRight className="w-4 h-4" />
+                    </button>
+                  </form>
+                </div>
+
+                {/* Option 2 : je n'ai pas de code */}
+                <div className="bg-[#EEF4FF] rounded-2xl p-6 border border-blue-100">
+                  <div className="w-12 h-12 bg-[#E8651A] rounded-xl flex items-center justify-center mb-4">
+                    <Search className="w-6 h-6 text-white" />
+                  </div>
+                  <h3 className="font-black text-[#0D1B4B] text-lg mb-2">Je n&apos;ai pas de code</h3>
+                  <p className="text-[#4A5680] text-sm mb-4">
+                    Demandez à l&apos;organisateur de la brocante de s&apos;inscrire sur Brocante Radar. Il obtiendra un QR code à afficher à l&apos;entrée.
+                  </p>
+                  <Link
+                    href={`/brocante/${brocanteId}`}
+                    className="inline-flex items-center gap-2 bg-[#0D1B4B] hover:bg-[#162254] text-white font-semibold px-4 py-2.5 rounded-xl text-sm transition-colors"
+                  >
+                    Contacter l&apos;organisateur
+                    <ArrowRight className="w-4 h-4" />
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </section>
+        )}
+
         {/* ─── ACCÈS RAPIDE TOKEN — bleu clair ─── */}
+        {!brocanteId && (
         <section className="py-16 bg-[#EEF4FF]">
           <div className="max-w-xl mx-auto px-4 sm:px-6 text-center">
             <div className="w-14 h-14 bg-[#0D1B4B] rounded-2xl flex items-center justify-center mx-auto mb-6">
@@ -120,6 +228,7 @@ export default function ExposantPage() {
             </p>
           </div>
         </section>
+        )}
 
         {/* ─── COMMENT ÇA MARCHE — blanc ─── */}
         <section className="py-24 bg-white">

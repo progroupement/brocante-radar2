@@ -10,6 +10,8 @@ import UpcomingBrocantes from '@/components/UpcomingBrocantes'
 import { Search, MapPin, ArrowRight, CheckCircle, Phone, BookOpen } from 'lucide-react'
 import { articlesOrganisateur } from '@/lib/articles-organisateur'
 import { articlesCollectionneur } from '@/lib/articles-collectionneur'
+import { articlesChineur } from '@/lib/articles-chineur'
+import { articlesActualites } from '@/lib/articles-actualites'
 
 export const metadata: Metadata = {
   title: 'Brocante Radar — Le GPS des chineurs en Île-de-France',
@@ -304,28 +306,28 @@ export default function HomePage() {
               <p className="text-xs font-bold text-[#E8651A] uppercase tracking-widest mb-3">Conseils & expertise</p>
               <h2 className="text-2xl sm:text-3xl font-black text-[#0D1B4B] tracking-tight">Nos blogs</h2>
             </div>
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-              {/* Blog organisateur */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              {/* Blog chineur */}
               <div className="bg-[#EEF4FF] rounded-3xl p-7 border border-blue-100">
                 <div className="flex items-center gap-3 mb-5">
-                  <div className="w-10 h-10 bg-[#0D1B4B] rounded-xl flex items-center justify-center">
+                  <div className="w-10 h-10 bg-[#E8651A] rounded-xl flex items-center justify-center">
                     <BookOpen className="w-5 h-5 text-white" />
                   </div>
                   <div>
-                    <h3 className="font-black text-[#0D1B4B] text-base">Blog de l&apos;organisateur</h3>
-                    <p className="text-xs text-[#4A5680]">10 articles · Conseils pour organisateurs</p>
+                    <h3 className="font-black text-[#0D1B4B] text-base">Blog du chineur</h3>
+                    <p className="text-xs text-[#4A5680]">10 articles · Astuces pratiques</p>
                   </div>
                 </div>
                 <ul className="space-y-3 mb-5">
-                  {articlesOrganisateur.slice(0, 4).map((a) => (
+                  {articlesChineur.slice(0, 4).map((a) => (
                     <li key={a.slug}>
-                      <Link href={`/blog-organisateur/${a.slug}`} className="text-sm font-semibold text-[#0D1B4B] hover:text-[#E8651A] transition-colors flex items-start gap-2">
+                      <Link href={`/blog-chineur/${a.slug}`} className="text-sm font-semibold text-[#0D1B4B] hover:text-[#E8651A] transition-colors flex items-start gap-2">
                         <span className="text-[#E8651A] mt-0.5">→</span> {a.title}
                       </Link>
                     </li>
                   ))}
                 </ul>
-                <Link href="/blog-organisateur" className="inline-flex items-center gap-1 text-sm font-semibold text-[#E8651A] hover:gap-2 transition-all">
+                <Link href="/blog-chineur" className="inline-flex items-center gap-1 text-sm font-semibold text-[#E8651A] hover:gap-2 transition-all">
                   Voir tous les articles <ArrowRight className="w-4 h-4" />
                 </Link>
               </div>
@@ -333,12 +335,12 @@ export default function HomePage() {
               {/* Blog collectionneur */}
               <div className="bg-[#EEF4FF] rounded-3xl p-7 border border-blue-100">
                 <div className="flex items-center gap-3 mb-5">
-                  <div className="w-10 h-10 bg-[#E8651A] rounded-xl flex items-center justify-center">
+                  <div className="w-10 h-10 bg-[#0D1B4B] rounded-xl flex items-center justify-center">
                     <BookOpen className="w-5 h-5 text-white" />
                   </div>
                   <div>
                     <h3 className="font-black text-[#0D1B4B] text-base">Blog du collectionneur</h3>
-                    <p className="text-xs text-[#4A5680]">10 articles · Conseils pour chineurs</p>
+                    <p className="text-xs text-[#4A5680]">10 articles · Expertise et collections</p>
                   </div>
                 </div>
                 <ul className="space-y-3 mb-5">
@@ -354,6 +356,56 @@ export default function HomePage() {
                   Voir tous les articles <ArrowRight className="w-4 h-4" />
                 </Link>
               </div>
+
+              {/* Actualités */}
+              <div className="bg-[#EEF4FF] rounded-3xl p-7 border border-blue-100">
+                <div className="flex items-center gap-3 mb-5">
+                  <div className="w-10 h-10 bg-[#0D1B4B] rounded-xl flex items-center justify-center">
+                    <BookOpen className="w-5 h-5 text-white" />
+                  </div>
+                  <div>
+                    <h3 className="font-black text-[#0D1B4B] text-base">Actualités brocante</h3>
+                    <p className="text-xs text-[#4A5680]">10 articles · Tendances 2026</p>
+                  </div>
+                </div>
+                <ul className="space-y-3 mb-5">
+                  {articlesActualites.slice(0, 4).map((a) => (
+                    <li key={a.slug}>
+                      <Link href={`/actualites/${a.slug}`} className="text-sm font-semibold text-[#0D1B4B] hover:text-[#E8651A] transition-colors flex items-start gap-2">
+                        <span className="text-[#E8651A] mt-0.5">→</span> {a.title}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+                <Link href="/actualites" className="inline-flex items-center gap-1 text-sm font-semibold text-[#E8651A] hover:gap-2 transition-all">
+                  Voir toutes les actualités <ArrowRight className="w-4 h-4" />
+                </Link>
+              </div>
+
+              {/* Blog organisateur */}
+              <div className="bg-[#EEF4FF] rounded-3xl p-7 border border-blue-100">
+                <div className="flex items-center gap-3 mb-5">
+                  <div className="w-10 h-10 bg-[#E8651A] rounded-xl flex items-center justify-center">
+                    <BookOpen className="w-5 h-5 text-white" />
+                  </div>
+                  <div>
+                    <h3 className="font-black text-[#0D1B4B] text-base">Blog de l&apos;organisateur</h3>
+                    <p className="text-xs text-[#4A5680]">10 articles · Organiser une brocante</p>
+                  </div>
+                </div>
+                <ul className="space-y-3 mb-5">
+                  {articlesOrganisateur.slice(0, 4).map((a) => (
+                    <li key={a.slug}>
+                      <Link href={`/blog-organisateur/${a.slug}`} className="text-sm font-semibold text-[#0D1B4B] hover:text-[#E8651A] transition-colors flex items-start gap-2">
+                        <span className="text-[#E8651A] mt-0.5">→</span> {a.title}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+                <Link href="/blog-organisateur" className="inline-flex items-center gap-1 text-sm font-semibold text-[#E8651A] hover:gap-2 transition-all">
+                  Voir tous les articles <ArrowRight className="w-4 h-4" />
+                </Link>
+              </div>
             </div>
           </div>
         </section>
@@ -362,15 +414,12 @@ export default function HomePage() {
         <section className="py-12 bg-[#EEF4FF] border-t border-blue-100">
           <div className="max-w-4xl mx-auto px-4 sm:px-6">
             <h2 className="text-2xl font-black text-[#0D1B4B] mb-6">Brocantes et vide-greniers en Île-de-France</h2>
-            <div className="prose prose-sm text-[#4A5680] leading-relaxed space-y-4 max-w-none">
+            <div className="text-[#4A5680] leading-relaxed space-y-4 text-sm max-w-none">
               <p>
                 <strong>Brocante Radar</strong> est le premier GPS dédié aux chineurs d&apos;Île-de-France. Notre plateforme référence les <strong>brocantes, vide-greniers et marchés aux puces</strong> dans tous les départements : Paris (75), Seine-et-Marne (77), Yvelines (78), Essonne (91), Hauts-de-Seine (92), Seine-Saint-Denis (93), Val-de-Marne (94) et Val-d&apos;Oise (95).
               </p>
               <p>
-                Contrairement aux autres annuaires de brocantes, Brocante Radar vous permet de <strong>rechercher un objet précis</strong> et de localiser directement le stand qui le vend — avant même d&apos;arriver sur place. Les exposants publient leurs objets en temps réel avec photos et description.
-              </p>
-              <p>
-                Que vous cherchiez du <strong>mobilier vintage</strong>, de la vaisselle ancienne, des vinyles, des livres d&apos;occasion, des vêtements rétro ou des objets de collection, Brocante Radar vous guide directement vers le bon stand. Plus besoin de parcourir des centaines de mètres à pied pour trouver la perle rare.
+                Contrairement aux autres annuaires de brocantes, Brocante Radar vous permet de <strong>rechercher un objet précis</strong> et de localiser directement le stand qui le vend — avant même d&apos;arriver sur place.
               </p>
               <p>
                 Agenda mis à jour chaque semaine · 100% gratuit pour les chineurs · Compatible mobile
