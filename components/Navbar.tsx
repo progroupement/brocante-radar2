@@ -96,7 +96,10 @@ export default function Navbar() {
             )}
           </div>
 
-          <Link href="/exposant" className="ml-1 bg-[#E8651A] hover:bg-[#d4581a] text-white text-sm font-semibold px-5 py-2.5 rounded-xl transition-colors">
+          <Link href="/exposant/connexion" className="text-sm font-medium text-blue-300 hover:text-white transition-colors px-3 py-2">
+            Mon espace
+          </Link>
+          <Link href="/exposant/inscription" className="ml-1 bg-[#E8651A] hover:bg-[#d4581a] text-white text-sm font-semibold px-5 py-2.5 rounded-xl transition-colors">
             Publier mon stand
           </Link>
         </div>
@@ -124,7 +127,8 @@ export default function Navbar() {
             <Link href="/actualites" onClick={() => setOpen(false)} className="text-sm font-medium text-blue-200 px-3 py-3 rounded-lg hover:bg-blue-800 block">Actualités brocante</Link>
             <Link href="/blog-organisateur" onClick={() => setOpen(false)} className="text-sm font-medium text-blue-200 px-3 py-3 rounded-lg hover:bg-blue-800 block">Blog de l&apos;organisateur</Link>
           </div>
-          <Link href="/exposant" onClick={() => setOpen(false)} className="mt-2 bg-[#E8651A] text-white text-sm font-semibold px-4 py-3 rounded-xl text-center">Publier mon stand</Link>
+          <Link href="/exposant/connexion" onClick={() => setOpen(false)} className="text-sm font-medium text-blue-200 px-3 py-3 rounded-lg hover:bg-blue-800 block">Mon espace exposant</Link>
+          <Link href="/exposant/inscription" onClick={() => setOpen(false)} className="mt-2 bg-[#E8651A] text-white text-sm font-semibold px-4 py-3 rounded-xl text-center block">Publier mon stand</Link>
         </div>
       )}
     </nav>
