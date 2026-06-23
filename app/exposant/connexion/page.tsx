@@ -77,6 +77,11 @@ function ConnexionForm() {
               {showPwd ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
             </button>
           </div>
+          <div className="text-right mt-1">
+            <Link href="/exposant/mot-de-passe-oublie" className="text-xs text-[#4A5680] hover:text-[#E8651A]">
+              Mot de passe oublié ?
+            </Link>
+          </div>
         </div>
 
         {error && (
