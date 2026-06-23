@@ -1,8 +1,6 @@
 'use client'
 
-export const dynamic = 'force-dynamic'
-
-import { useState, useEffect } from 'react'
+import { Suspense, useState, useEffect } from 'react'
 import Link from 'next/link'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { createClient } from '@/lib/supabase'
@@ -59,7 +57,7 @@ function isFuture(dateStr: string) {
   return dateStr >= new Date().toISOString().split('T')[0]
 }
 
-export default function MonEspacePage() {
+function MonEspaceContent() {
   const router = useRouter()
   const searchParams = useSearchParams()
   const bienvenue = searchParams.get('bienvenue') === '1'
@@ -377,5 +375,17 @@ export default function MonEspacePage() {
       </main>
       <Footer />
     </>
+  )
+}
+
+export default function MonEspacePage() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen flex items-center justify-center">
+        <Loader2 className="w-8 h-8 animate-spin text-[#E8651A]" />
+      </div>
+    }>
+      <MonEspaceContent />
+    </Suspense>
   )
 }

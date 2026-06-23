@@ -1,8 +1,6 @@
 'use client'
 
-export const dynamic = 'force-dynamic'
-
-import { useState, useEffect } from 'react'
+import { Suspense, useState, useEffect } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { useRouter, useSearchParams } from 'next/navigation'
@@ -56,7 +54,7 @@ function formatDateFr(dateStr: string): string {
   })
 }
 
-export default function ExposantPage() {
+function ExposantContent() {
   const router = useRouter()
   const searchParams = useSearchParams()
   const brocanteId = searchParams.get('brocante')
@@ -302,5 +300,13 @@ export default function ExposantPage() {
       </main>
       <Footer />
     </>
+  )
+}
+
+export default function ExposantPage() {
+  return (
+    <Suspense>
+      <ExposantContent />
+    </Suspense>
   )
 }
