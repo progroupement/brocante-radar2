@@ -24,7 +24,7 @@ function MotDePasseOublieForm() {
     })
 
     if (err) {
-      setError('Erreur : ' + err.message)
+      setError(err.message || err.name || JSON.stringify(err) || 'Erreur inconnue')
     } else {
       setSent(true)
     }
