@@ -49,16 +49,20 @@ function InscriptionForm() {
       return
     }
 
-    const { error: profileError } = await supabase
-      .from('exposant_profiles')
-      .insert({
-        id: data.user.id,
+    // Utilise la route API (service role) pour bypasser RLS
+    const profileRes = await fetch('/api/exposant/create-profile', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        userId: data.user.id,
         nom: form.nom.trim(),
         telephone: form.telephone.trim() || null,
-      })
+      }),
+    })
+    const profileJson = await profileRes.json()
 
-    if (profileError) {
-      setError('Compte créé mais erreur profil : ' + profileError.message)
+    if (!profileRes.ok) {
+      setError('Compte créé mais erreur profil : ' + (profileJson.error ?? 'inconnue'))
       setLoading(false)
       return
     }
