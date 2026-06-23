@@ -36,14 +36,14 @@ export default function Navbar() {
         </Link>
 
         {/* Desktop nav */}
-        <div className="hidden md:flex items-center gap-1">
-          <Link href="/je-cherche" className="text-sm font-medium text-blue-300 hover:text-white transition-colors px-3 py-2">
+        <div className="hidden md:flex items-center gap-0.5">
+          <Link href="/je-cherche" className="text-xs font-medium text-blue-300 hover:text-white transition-colors px-2.5 py-2 whitespace-nowrap">
             Je cherche
           </Link>
-          <Link href="/brocantes-ile-de-france" className="text-sm font-medium text-blue-300 hover:text-white transition-colors px-3 py-2">
+          <Link href="/brocantes-ile-de-france" className="text-xs font-medium text-blue-300 hover:text-white transition-colors px-2.5 py-2 whitespace-nowrap">
             Brocantes IDF
           </Link>
-          <Link href="/search" className="text-sm font-medium text-blue-300 hover:text-white transition-colors px-3 py-2">
+          <Link href="/search" className="text-xs font-medium text-blue-300 hover:text-white transition-colors px-2.5 py-2 whitespace-nowrap">
             Rechercher
           </Link>
 
@@ -51,55 +51,35 @@ export default function Navbar() {
           <div ref={blogRef} className="relative">
             <button
               onClick={() => setBlogOpen(!blogOpen)}
-              className="flex items-center gap-1 text-sm font-medium text-blue-300 hover:text-white transition-colors px-3 py-2"
+              className="flex items-center gap-1 text-xs font-medium text-blue-300 hover:text-white transition-colors px-2.5 py-2 whitespace-nowrap"
             >
-              Blog <ChevronDown className={`w-3.5 h-3.5 transition-transform ${blogOpen ? 'rotate-180' : ''}`} />
+              Blog <ChevronDown className={`w-3 h-3 transition-transform ${blogOpen ? 'rotate-180' : ''}`} />
             </button>
             {blogOpen && (
-              <div className="absolute top-full left-0 mt-1 w-72 bg-white rounded-2xl shadow-xl border border-blue-100 py-2 z-50">
-                <Link
-                  href="/blog-chineur"
-                  onClick={() => setBlogOpen(false)}
-                  className="block px-4 py-3 hover:bg-[#EEF4FF] transition-colors"
-                >
+              <div className="absolute top-full left-0 mt-1 w-64 bg-white rounded-2xl shadow-xl border border-blue-100 py-2 z-50">
+                <Link href="/blog-chineur" onClick={() => setBlogOpen(false)} className="block px-4 py-2.5 hover:bg-[#EEF4FF] transition-colors">
                   <p className="font-bold text-[#0D1B4B] text-sm">Blog du chineur</p>
-                  <p className="text-xs text-[#4A5680] mt-0.5">Astuces et conseils pratiques</p>
                 </Link>
-                <div className="border-t border-blue-50 mx-2 my-1" />
-                <Link
-                  href="/blog-collectionneur"
-                  onClick={() => setBlogOpen(false)}
-                  className="block px-4 py-3 hover:bg-[#EEF4FF] transition-colors"
-                >
+                <div className="border-t border-blue-50 mx-2 my-0.5" />
+                <Link href="/blog-collectionneur" onClick={() => setBlogOpen(false)} className="block px-4 py-2.5 hover:bg-[#EEF4FF] transition-colors">
                   <p className="font-bold text-[#0D1B4B] text-sm">Blog du collectionneur</p>
-                  <p className="text-xs text-[#4A5680] mt-0.5">Expertise et collections</p>
                 </Link>
-                <div className="border-t border-blue-50 mx-2 my-1" />
-                <Link
-                  href="/actualites"
-                  onClick={() => setBlogOpen(false)}
-                  className="block px-4 py-3 hover:bg-[#EEF4FF] transition-colors"
-                >
+                <div className="border-t border-blue-50 mx-2 my-0.5" />
+                <Link href="/actualites" onClick={() => setBlogOpen(false)} className="block px-4 py-2.5 hover:bg-[#EEF4FF] transition-colors">
                   <p className="font-bold text-[#0D1B4B] text-sm">Actualités brocante</p>
-                  <p className="text-xs text-[#4A5680] mt-0.5">Tendances et nouveautés 2026</p>
                 </Link>
-                <div className="border-t border-blue-50 mx-2 my-1" />
-                <Link
-                  href="/blog-organisateur"
-                  onClick={() => setBlogOpen(false)}
-                  className="block px-4 py-3 hover:bg-[#EEF4FF] transition-colors"
-                >
+                <div className="border-t border-blue-50 mx-2 my-0.5" />
+                <Link href="/blog-organisateur" onClick={() => setBlogOpen(false)} className="block px-4 py-2.5 hover:bg-[#EEF4FF] transition-colors">
                   <p className="font-bold text-[#0D1B4B] text-sm">Blog de l&apos;organisateur</p>
-                  <p className="text-xs text-[#4A5680] mt-0.5">Organiser une brocante réussie</p>
                 </Link>
               </div>
             )}
           </div>
 
-          <Link href="/exposant/connexion" className="text-sm font-medium text-blue-300 hover:text-white transition-colors px-3 py-2">
+          <Link href="/exposant/connexion" className="text-xs font-medium text-blue-300 hover:text-white transition-colors px-2.5 py-2 whitespace-nowrap">
             Mon espace
           </Link>
-          <Link href="/exposant/inscription" className="ml-1 bg-[#E8651A] hover:bg-[#d4581a] text-white text-sm font-semibold px-5 py-2.5 rounded-xl transition-colors">
+          <Link href="/exposant/inscription" className="ml-1 bg-[#E8651A] hover:bg-[#d4581a] text-white text-xs font-semibold px-4 py-2.5 rounded-xl transition-colors whitespace-nowrap">
             Publier mon stand
           </Link>
         </div>
