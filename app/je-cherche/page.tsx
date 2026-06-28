@@ -7,11 +7,11 @@ import InscriptionChineurForm from '@/components/InscriptionChineurForm'
 import { Search, MapPin, CheckCircle, ArrowRight, Star, Clock, Lightbulb, ShoppingBag } from 'lucide-react'
 
 export const metadata: Metadata = {
-  title: 'Je cherche la perle rare — Brocante Radar Île-de-France',
+  title: 'Mon espace chineur — Alertes & profil chineur | Brocante Radar',
   description: 'Créez votre profil chineur et trouvez l\'objet de vos rêves dans les brocantes d\'Île-de-France. Conseils, astuces et outils pour les vrais chineurs.',
   keywords: ['chercher objet brocante', 'chineur perle rare', 'trouver objet vintage', 'brocante île-de-france', 'chineur profil'],
   openGraph: {
-    title: 'Je cherche la perle rare — Brocante Radar',
+    title: 'Mon espace chineur — Brocante Radar',
     description: 'Trouvez l\'objet de vos rêves dans les brocantes d\'Île-de-France.',
     url: 'https://brocanteradar.fr/je-cherche',
   },
@@ -104,7 +104,7 @@ export default function JeCherchePerleRarePage() {
                   Pour les vrais chineurs
                 </div>
                 <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white leading-tight tracking-tight mb-4">
-                  Je cherche <span className="text-[#E8651A]">la&nbsp;perle&nbsp;rare.</span>
+                  Mon espace <span className="text-[#E8651A]">chineur.</span>
                 </h1>
                 <p className="text-base sm:text-lg text-blue-200 mb-7 leading-relaxed">
                   Créez votre profil chineur gratuit. Recherchez n&apos;importe quel objet dans toutes les brocantes d&apos;Île-de-France — et trouvez-le avant tout le monde.
