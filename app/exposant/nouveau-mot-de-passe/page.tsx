@@ -2,27 +2,31 @@
 
 import { Suspense, useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
+import Link from 'next/link'
 import { createClient } from '@/lib/supabase'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
-import { Store, Eye, EyeOff, Loader2, CheckCircle } from 'lucide-react'
+import { Store, Loader2, CheckCircle, Eye, EyeOff } from 'lucide-react'
 
 function NouveauMotDePasseForm() {
   const router = useRouter()
   const [password, setPassword] = useState('')
   const [confirm, setConfirm] = useState('')
-  const [showPwd, setShowPwd] = useState(false)
+  const [showPw, setShowPw] = useState(false)
   const [loading, setLoading] = useState(false)
-  const [success, setSuccess] = useState(false)
+  const [done, setDone] = useState(false)
   const [error, setError] = useState('')
   const [ready, setReady] = useState(false)
 
+  // Supabase envoie le token via le hash de l'URL (#access_token=...)
+  // Le client Supabase le détecte automatiquement au chargement
   useEffect(() => {
-    // Supabase injecte la session depuis le fragment URL (#access_token=...)
     const supabase = createClient()
-    supabase.auth.onAuthStateChange((event) => {
-      if (event === 'PASSWORD_RECOVERY') {
+    supabase.auth.getSession().then(({ data }) => {
+      if (data.session) {
         setReady(true)
+      } else {
+        setError('Lien expiré ou invalide. Veuillez recommencer la procédure.')
       }
     })
   }, [])
@@ -31,12 +35,12 @@ function NouveauMotDePasseForm() {
     e.preventDefault()
     setError('')
 
-    if (password !== confirm) {
-      setError('Les mots de passe ne correspondent pas.')
-      return
-    }
     if (password.length < 8) {
       setError('Le mot de passe doit contenir au moins 8 caractères.')
+      return
+    }
+    if (password !== confirm) {
+      setError('Les deux mots de passe ne correspondent pas.')
       return
     }
 
@@ -45,83 +49,108 @@ function NouveauMotDePasseForm() {
     const { error: err } = await supabase.auth.updateUser({ password })
 
     if (err) {
-      setError('Erreur : ' + err.message)
-      setLoading(false)
-      return
+      setError(err.message || 'Erreur lors de la mise à jour. Veuillez réessayer.')
+    } else {
+      setDone(true)
+      setTimeout(() => router.push('/exposant/connexion'), 3000)
     }
-
-    setSuccess(true)
-    setTimeout(() => router.push('/exposant/connexion'), 2500)
+    setLoading(false)
   }
 
-  if (success) {
+  if (done) {
     return (
       <div className="bg-white rounded-3xl shadow-sm border border-blue-100 p-8 text-center">
         <CheckCircle className="w-14 h-14 text-green-500 mx-auto mb-4" />
         <h2 className="text-xl font-black text-[#0D1B4B] mb-2">Mot de passe mis à jour !</h2>
-        <p className="text-[#4A5680] text-sm">Redirection vers la connexion…</p>
-      </div>
-    )
-  }
-
-  if (!ready) {
-    return (
-      <div className="bg-white rounded-3xl shadow-sm border border-blue-100 p-8 text-center">
-        <Loader2 className="w-10 h-10 animate-spin text-[#E8651A] mx-auto mb-4" />
-        <p className="text-[#4A5680] text-sm">Vérification du lien…</p>
-        <p className="text-xs text-gray-400 mt-2">
-          Si rien ne se passe, votre lien a peut-être expiré.{' '}
-          <a href="/exposant/mot-de-passe-oublie" className="text-[#E8651A] hover:underline">Réessayer</a>
+        <p className="text-[#4A5680] text-sm mb-2">
+          Vous allez être redirigé vers la page de connexion…
         </p>
+        <Link href="/exposant/connexion" className="text-[#E8651A] font-semibold hover:underline text-sm">
+          Se connecter maintenant →
+        </Link>
       </div>
     )
   }
 
   return (
     <div className="bg-white rounded-3xl shadow-sm border border-blue-100 p-8">
-      <form onSubmit={handleSubmit} className="space-y-4">
-        <div>
-          <label className="block text-xs font-bold text-[#0D1B4B] uppercase tracking-wider mb-1.5">Nouveau mot de passe</label>
-          <div className="relative">
-            <input
-              type={showPwd ? 'text' : 'password'}
-              required
-              value={password}
-              onChange={e => setPassword(e.target.value)}
-              placeholder="8 caractères minimum"
-              className="w-full border border-blue-200 rounded-xl px-4 py-3 pr-11 text-sm focus:outline-none focus:ring-2 focus:ring-[#E8651A] bg-[#F8FAFE]"
-            />
-            <button type="button" onClick={() => setShowPwd(v => !v)}
-              className="absolute right-3 top-1/2 -translate-y-1/2 text-[#4A5680] hover:text-[#0D1B4B]">
-              {showPwd ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
-            </button>
+      <p className="text-[#4A5680] text-sm mb-6">
+        Choisissez un nouveau mot de passe pour votre espace exposant.
+      </p>
+
+      {!ready && !error && (
+        <div className="flex justify-center py-8">
+          <Loader2 className="w-8 h-8 animate-spin text-[#E8651A]" />
+        </div>
+      )}
+
+      {error && (
+        <div className="bg-red-50 border border-red-200 rounded-xl px-4 py-3 text-red-700 text-sm mb-4">
+          {error}
+          {error.includes('expiré') && (
+            <div className="mt-2">
+              <Link href="/exposant/mot-de-passe-oublie" className="text-[#E8651A] font-semibold hover:underline">
+                Recommencer →
+              </Link>
+            </div>
+          )}
+        </div>
+      )}
+
+      {ready && (
+        <form onSubmit={handleSubmit} className="space-y-4">
+          <div>
+            <label className="block text-xs font-bold text-[#0D1B4B] uppercase tracking-wider mb-1.5">
+              Nouveau mot de passe
+            </label>
+            <div className="relative">
+              <input
+                type={showPw ? 'text' : 'password'}
+                required
+                value={password}
+                onChange={e => setPassword(e.target.value)}
+                placeholder="Minimum 8 caractères"
+                className="w-full border border-blue-200 rounded-xl px-4 py-3 pr-10 text-sm focus:outline-none focus:ring-2 focus:ring-[#E8651A] bg-[#F8FAFE]"
+              />
+              <button
+                type="button"
+                onClick={() => setShowPw(!showPw)}
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-[#4A5680] hover:text-[#0D1B4B]"
+              >
+                {showPw ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
+              </button>
+            </div>
           </div>
-        </div>
 
-        <div>
-          <label className="block text-xs font-bold text-[#0D1B4B] uppercase tracking-wider mb-1.5">Confirmer le mot de passe</label>
-          <input
-            type={showPwd ? 'text' : 'password'}
-            required
-            value={confirm}
-            onChange={e => setConfirm(e.target.value)}
-            placeholder="Répétez le mot de passe"
-            className="w-full border border-blue-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-[#E8651A] bg-[#F8FAFE]"
-          />
-        </div>
+          <div>
+            <label className="block text-xs font-bold text-[#0D1B4B] uppercase tracking-wider mb-1.5">
+              Confirmer le mot de passe
+            </label>
+            <input
+              type={showPw ? 'text' : 'password'}
+              required
+              value={confirm}
+              onChange={e => setConfirm(e.target.value)}
+              placeholder="Répétez le mot de passe"
+              className="w-full border border-blue-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-[#E8651A] bg-[#F8FAFE]"
+            />
+          </div>
 
-        {error && (
-          <div className="bg-red-50 border border-red-200 rounded-xl px-4 py-3 text-red-700 text-sm">{error}</div>
-        )}
+          <button
+            type="submit"
+            disabled={loading}
+            className="w-full flex items-center justify-center gap-2 bg-[#E8651A] hover:bg-[#d4581a] disabled:opacity-60 text-white font-bold px-6 py-3.5 rounded-xl transition-colors"
+          >
+            {loading ? <><Loader2 className="w-4 h-4 animate-spin" /> Mise à jour…</> : 'Enregistrer le nouveau mot de passe'}
+          </button>
+        </form>
+      )}
 
-        <button
-          type="submit"
-          disabled={loading}
-          className="w-full flex items-center justify-center gap-2 bg-[#E8651A] hover:bg-[#d4581a] disabled:opacity-60 text-white font-bold px-6 py-3.5 rounded-xl transition-colors"
-        >
-          {loading ? <><Loader2 className="w-4 h-4 animate-spin" /> Mise à jour…</> : 'Enregistrer le nouveau mot de passe'}
-        </button>
-      </form>
+      <div className="text-center mt-6">
+        <Link href="/exposant/connexion" className="text-sm text-[#4A5680] hover:text-[#0D1B4B]">
+          ← Retour à la connexion
+        </Link>
+      </div>
     </div>
   )
 }
