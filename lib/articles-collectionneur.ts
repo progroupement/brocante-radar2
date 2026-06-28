@@ -6,11 +6,12 @@ export const articlesCollectionneur: Article[] = [
     title: '10 conseils pour bien chiner à la brocante comme un pro',
     metaTitle: 'Bien chiner à la brocante : 10 conseils de pro pour trouver la perle rare',
     metaDescription: 'Arrivez tôt, négociez malin, repérez les bonnes affaires : nos 10 conseils incontournables pour chiner à la brocante comme un professionnel.',
-    keywords: ['conseils chiner brocante', 'comment bien chiner', 'astuces brocante chineur', 'trouver perle rare brocante'],
+    keywords: ['conseils chiner brocante', 'comment bien chiner', 'astuces brocante chineur', 'trouver perle rare brocante', 'techniques chinage', 'règles or chineur', 'chiner comme un pro', 'brocante conseils expérimentés'],
     date: '2026-05-20',
     readTime: 7,
     category: 'Conseils',
     excerpt: 'Chiner à la brocante, ça s\'apprend. Voici les 10 règles d\'or que tous les chineurs expérimentés appliquent pour trouver les meilleures affaires.',
+    illustration: 'https://images.unsplash.com/photo-1670092485050-2022fbd6e88e?auto=format&fit=crop&w=800&q=80',
     content: `
 <h2>1. Arrivez à l'ouverture (ou avant)</h2>
 <p>La règle numéro un du chinage : <strong>le ver est pour le lève-tôt</strong>. Les meilleures pièces partent dans les 30 premières minutes après l'ouverture. Les chineurs professionnels arrivent parfois pendant l'installation des exposants, dès 6h ou 7h du matin. Si la brocante ouvre à 8h, soyez là à 8h.</p>
@@ -48,11 +49,12 @@ export const articlesCollectionneur: Article[] = [
     title: 'Comment négocier le prix à la brocante : techniques qui marchent',
     metaTitle: 'Négocier à la brocante : 7 techniques pour obtenir le meilleur prix',
     metaDescription: 'Apprenez à négocier le prix à la brocante sans vexer le vendeur. 7 techniques efficaces pour obtenir de meilleures affaires sur les marchés aux puces.',
-    keywords: ['negocier brocante', 'comment negocier prix brocante', 'marchander vide grenier', 'techniques negociation brocante'],
+    keywords: ['negocier brocante', 'comment negocier prix brocante', 'marchander vide grenier', 'techniques negociation brocante', 'obtenir meilleur prix brocante', 'faire baisser prix brocante', 'offre brocante exposant', 'négociation sans conflit brocante'],
     date: '2026-05-08',
     readTime: 6,
     category: 'Conseils',
     excerpt: 'La négociation est un art qui s\'apprend. Ces 7 techniques éprouvées vous permettront d\'obtenir de meilleurs prix sans créer de conflits avec les exposants.',
+    illustration: 'https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=800&q=80',
     content: `
 <h2>La négociation à la brocante : un jeu à deux</h2>
 <p>Négocier le prix d'un objet à la brocante n'est ni impoli ni honteux — c'est une pratique culturelle ancienne qui fait partie intégrante du chinage. Les exposants eux-mêmes s'y attendent et ont souvent prévu une marge de manœuvre dans leurs prix. La clé : négocier avec respect, humour et bonne humeur.</p>
@@ -92,11 +94,12 @@ export const articlesCollectionneur: Article[] = [
     title: 'Reconnaître les meubles anciens authentiques à la brocante',
     metaTitle: 'Reconnaître un meuble ancien à la brocante : guide du chineur',
     metaDescription: 'Comment distinguer un vrai meuble ancien d\'une reproduction à la brocante ? Bois, quincaillerie, assemblages, patine : les signes qui ne trompent pas.',
-    keywords: ['reconnaitre meuble ancien brocante', 'authentifier meuble vintage', 'meuble ancien ou reproduction', 'estimer meuble brocante'],
+    keywords: ['reconnaitre meuble ancien brocante', 'authentifier meuble vintage', 'meuble ancien ou reproduction', 'estimer meuble brocante', 'identifier style meuble', 'Louis XV Art Déco Empire meuble', 'expertise meuble brocante', 'meuble authentique vs copie'],
     date: '2026-04-15',
     readTime: 8,
     category: 'Expertise',
     excerpt: 'Louis XV, Art Déco, Empire... Reconnaître un meuble ancien authentique d\'une bonne copie est un art qui s\'apprend. Voici les indices que les experts regardent en premier.',
+    illustration: 'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=800&q=80',
     content: `
 <h2>Pourquoi authentifier un meuble à la brocante</h2>
 <p>Le marché du meuble ancien regorge de reproductions, parfois de grande qualité, qui peuvent être confondues avec des pièces authentiques. Pour un chineur, savoir authentifier un meuble, c'est éviter de payer le prix d'un original pour une copie — et à l'inverse, dénicher une vraie pièce ancienne vendue comme simple "vieux meuble".</p>
@@ -139,11 +142,12 @@ export const articlesCollectionneur: Article[] = [
     title: 'Vinyles et disques : comment évaluer leur valeur à la brocante',
     metaTitle: 'Évaluer un vinyle à la brocante : guide de valeur 2026',
     metaDescription: 'Comment savoir si un vinyle vaut de l\'or ou rien à la brocante ? État, pressage, édition, artiste : les critères pour évaluer un 33 tours ou un 45 tours.',
-    keywords: ['valeur vinyle brocante', 'evaluer disque vinyl brocante', 'acheter vinyle vide grenier', 'cote disque vinyl occasion'],
+    keywords: ['valeur vinyle brocante', 'evaluer disque vinyl brocante', 'acheter vinyle vide grenier', 'cote disque vinyl occasion', 'disque rare brocante', 'vinyle collection brocante', 'prix vinyle occasion', 'vinyle vintage valeur'],
     date: '2026-04-01',
     readTime: 7,
     category: 'Expertise',
     excerpt: 'Le vinyle est de retour en force. Mais entre un disque qui vaut 1€ et un autre qui vaut 500€, la différence n\'est pas toujours évidente. Voici les critères essentiels.',
+    illustration: 'https://images.unsplash.com/photo-1539375665275-f9de415ef9ac?auto=format&fit=crop&w=800&q=80',
     content: `
 <h2>Le marché du vinyle en 2026</h2>
 <p>Depuis le début des années 2010, le vinyle connaît une renaissance spectaculaire. Les ventes de disques vinyle ont dépassé celles des CD en Europe en 2023. À la brocante, les bacs à vinyles sont devenus des mines d'or pour ceux qui savent quoi chercher — et des pièges pour les autres.</p>
@@ -197,11 +201,12 @@ export const articlesCollectionneur: Article[] = [
     title: 'Quels objets vintage ont vraiment de la valeur à la brocante ?',
     metaTitle: 'Objets vintage de valeur à la brocante : le guide complet 2026',
     metaDescription: 'Jouets anciens, affiches vintage, céramiques, luminaires : découvrez quels objets valent de l\'or à la brocante et comment les reconnaître.',
-    keywords: ['objets vintage valeur brocante', 'quoi chercher brocante', 'objets precieux brocante', 'collection vintage idf'],
+    keywords: ['objets vintage valeur brocante', 'quoi chercher brocante', 'objets precieux brocante', 'collection vintage idf', 'objets anciens cote élevée', 'objets quotidien vintage valeur', 'brocante investissement', 'objets qui se revendent brocante'],
     date: '2026-03-20',
     readTime: 7,
     category: 'Expertise',
     excerpt: 'Tout ce qui est vieux n\'est pas forcément précieux. Mais certains objets du quotidien des siècles passés atteignent des prix surprenants. Voici le guide.',
+    illustration: 'https://images.unsplash.com/photo-1488841714725-bb4c32d1ac94?auto=format&fit=crop&w=800&q=80',
     content: `
 <h2>Le paradoxe du brocanteur</h2>
 <p>À la brocante, certains objets qui paraissent banals peuvent valoir une fortune, tandis que d'autres qui semblent impressionnants ne valent presque rien. La valeur d'un objet vintage dépend de la rareté, de l'état, de l'époque et surtout de la demande actuelle des collectionneurs.</p>
@@ -270,11 +275,12 @@ export const articlesCollectionneur: Article[] = [
     title: 'Pourquoi arriver tôt à la brocante change absolument tout',
     metaTitle: 'Arriver tôt à la brocante : la stratégie du chineur matinal',
     metaDescription: 'Les chineurs qui arrivent tôt font les meilleures affaires. Voici pourquoi l\'heure d\'arrivée est le facteur numéro un du chinage réussi en Île-de-France.',
-    keywords: ['arriver tot brocante', 'heure ouverture brocante', 'chineur matinal', 'brocante ouverture timing'],
+    keywords: ['arriver tot brocante', 'heure ouverture brocante', 'chineur matinal', 'brocante ouverture timing', 'stratégie heure brocante', 'avant ouverture brocante', '6h brocante professionnel', 'premier arrivé premier servi brocante'],
     date: '2026-02-28',
     readTime: 4,
     category: 'Stratégie',
     excerpt: 'L\'un des secrets les mieux gardés des chineurs expérimentés : l\'heure d\'arrivée est plus importante que tous les autres facteurs réunis. Voici pourquoi.',
+    illustration: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=800&q=80',
     content: `
 <h2>La loi non écrite de la brocante</h2>
 <p>Demandez à n'importe quel chineur expérimenté quel est son secret numéro un. La réponse sera quasi universellement la même : <strong>arrivez tôt</strong>. Pas "à l'heure", pas "dès l'ouverture officielle" — mais avant, si possible pendant l'installation.</p>
@@ -313,11 +319,12 @@ export const articlesCollectionneur: Article[] = [
     title: 'Guide des prix à la brocante en 2026 : payez-vous le juste prix ?',
     metaTitle: 'Prix brocante 2026 : guide des valeurs pour ne pas payer trop cher',
     metaDescription: 'Combien vaut vraiment un objet à la brocante ? Notre guide des prix 2026 vous aide à payer le juste prix pour les meubles, la vaisselle, les livres et les bijoux.',
-    keywords: ['prix brocante 2026', 'valeur objets brocante', 'cote brocante', 'combien vaut objet brocante'],
+    keywords: ['prix brocante 2026', 'valeur objets brocante', 'cote brocante', 'combien vaut objet brocante', 'guide prix brocante', 'estimation objet brocante', 'juste prix brocante', 'fourchette prix brocante paris'],
     date: '2026-01-25',
     readTime: 6,
     category: 'Guide pratique',
     excerpt: 'Savoir si on paie le juste prix à la brocante est une compétence qui s\'acquiert. Ce guide des prix 2026 vous donne les fourchettes à connaître pour les objets les plus courants.',
+    illustration: 'https://images.unsplash.com/photo-1579621970590-9d152c476153?auto=format&fit=crop&w=800&q=80',
     content: `
 <h2>Les références de prix à la brocante</h2>
 <p>Il n'existe pas de prix fixe à la brocante. La valeur d'un objet dépend de son état, de sa rareté, de la région où vous achetez et de la négociation. Néanmoins, voici des fourchettes de prix observées sur les brocantes d'Île-de-France en 2026.</p>
@@ -383,11 +390,12 @@ export const articlesCollectionneur: Article[] = [
     title: 'Les meilleures brocantes de Paris et d\'Île-de-France à ne pas manquer',
     metaTitle: 'Meilleures brocantes Paris IDF : les adresses incontournables 2026',
     metaDescription: 'Marchés aux puces de Saint-Ouen, Vanves, Montreuil... Les meilleures brocantes et marchés aux puces de Paris et d\'Île-de-France pour chineurs passionnés.',
-    keywords: ['meilleures brocantes paris', 'marché aux puces paris', 'brocante ile de france incontournable', 'ou chiner paris'],
+    keywords: ['meilleures brocantes paris', 'marché aux puces paris', 'brocante ile de france incontournable', 'ou chiner paris', 'saint-ouen brocante', 'vanves marché brocante', 'montreuil puces', 'adresses chiner idf'],
     date: '2026-03-01',
     readTime: 7,
     category: 'Agenda',
     excerpt: 'Saint-Ouen, Vanves, les vide-greniers de quartier... Paris et l\'IDF regorgent de lieux incontournables pour les chineurs. Notre sélection des adresses à connaître.',
+    illustration: 'https://images.unsplash.com/photo-1514222709836-5ef4e75d9c46?auto=format&fit=crop&w=800&q=80',
     content: `
 <h2>Paris et la brocante : une tradition centenaire</h2>
 <p>Paris est l'une des capitales mondiales de la brocante et des antiquités. La tradition des marchés aux puces remonte à la fin du XIXe siècle, quand les chiffonniers et brocanteurs s'installaient aux portes de la ville. Aujourd'hui, l'Île-de-France offre une diversité et une densité de brocantes unique en Europe.</p>
@@ -431,11 +439,12 @@ export const articlesCollectionneur: Article[] = [
     title: 'Débuter une collection de déco vintage : guide du collectionneur débutant',
     metaTitle: 'Collection déco vintage : comment débuter et bien choisir ses pièces',
     metaDescription: 'Vous voulez commencer à collectionner la déco vintage ? Thème, budget, conservation, exposition : tout ce qu\'il faut savoir pour bien démarrer votre collection.',
-    keywords: ['débuter collection vintage', 'collectionner decoration vintage', 'guide collectionneur debutant', 'collection brocante comment commencer'],
+    keywords: ['débuter collection vintage', 'collectionner decoration vintage', 'guide collectionneur debutant', 'collection brocante comment commencer', 'comment devenir collectionneur', 'thème collection vintage', 'budget collectionneur brocante', 'déco vintage collection débutant'],
     date: '2026-02-10',
     readTime: 6,
     category: 'Collection',
     excerpt: 'Tout le monde peut devenir collectionneur. La clé : choisir un thème, établir un budget et apprendre à l\'œil. Voici le guide pour bien débuter votre collection de déco vintage.',
+    illustration: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=800&q=80',
     content: `
 <h2>Pourquoi collectionner la déco vintage ?</h2>
 <p>La déco vintage attire de plus en plus de passionnés pour de nombreuses raisons : la qualité souvent supérieure des matériaux anciens, le caractère unique de chaque pièce, la dimension écologique de la seconde main, et le plaisir de la chasse. Collectionner, c'est aussi s'approprier un morceau d'histoire.</p>
@@ -490,11 +499,12 @@ export const articlesCollectionneur: Article[] = [
     title: 'Les 7 erreurs des chineurs débutants (et comment les éviter)',
     metaTitle: '7 erreurs du chineur débutant à la brocante : comment les éviter',
     metaDescription: 'Acheter sans négocier, arriver trop tard, se laisser emporter par l\'euphorie... Les 7 erreurs classiques des débutants à la brocante et les solutions pour progresser.',
-    keywords: ['erreurs chineur debutant', 'apprendre chiner brocante', 'debutant brocante conseils', 'pieges brocante eviter'],
+    keywords: ['erreurs chineur debutant', 'apprendre chiner brocante', 'debutant brocante conseils', 'pieges brocante eviter', 'mistakes brocante débutant', 'se faire arnaquer brocante', 'pièges vide grenier', 'éviter erreurs brocante'],
     date: '2026-01-10',
     readTime: 5,
     category: 'Conseils',
     excerpt: 'La brocante s\'apprend en faisant des erreurs. Mais autant les connaître à l\'avance pour les éviter. Voici les 7 pièges classiques dans lesquels tombent tous les débutants.',
+    illustration: 'https://images.unsplash.com/photo-1568354006539-9f4e28b0a776?auto=format&fit=crop&w=800&q=80',
     content: `
 <h2>Erreur n°1 : arriver tard</h2>
 <p>C'est l'erreur la plus coûteuse. Arriver en milieu de matinée à une brocante, c'est se condamner aux restes. Les meilleurs objets partent dans les 30 premières minutes. Réveillez-vous tôt — la grasse matinée et la brocante ne font pas bon ménage.</p>

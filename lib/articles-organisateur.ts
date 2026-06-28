@@ -8,6 +8,7 @@ export type Article = {
   readTime: number
   category: string
   excerpt: string
+  illustration?: string
   content: string
 }
 
@@ -17,11 +18,12 @@ export const articlesOrganisateur: Article[] = [
     title: 'Comment organiser une brocante réussie en Île-de-France',
     metaTitle: 'Organiser une brocante en Île-de-France : guide complet 2026',
     metaDescription: 'Tout ce qu\'il faut savoir pour organiser une brocante réussie en Île-de-France : autorisations, logistique, communication, attractivité exposants.',
-    keywords: ['organiser brocante ile-de-france', 'organiser vide-grenier paris', 'comment organiser brocante', 'brocante organisateur idf'],
+    keywords: ['organiser brocante ile-de-france', 'organiser vide-grenier paris', 'comment organiser brocante', 'brocante organisateur idf', 'créer brocante commune', 'brocante association organisateur', 'guide organisateur brocante', 'étapes organiser brocante'],
     date: '2026-05-10',
     readTime: 8,
     category: 'Organisation',
     excerpt: 'De la demande d\'autorisation en mairie jusqu\'à la communication le jour J, voici le guide complet pour réussir l\'organisation d\'une brocante en Île-de-France.',
+    illustration: 'https://images.unsplash.com/photo-1670092485050-2022fbd6e88e?auto=format&fit=crop&w=800&q=80',
     content: `
 <h2>Pourquoi organiser une brocante en Île-de-France ?</h2>
 <p>L'Île-de-France est la région la plus peuplée de France avec plus de 12 millions d'habitants. Elle représente un bassin de chalandise exceptionnel pour tout organisateur de brocante ou vide-grenier. Les chineurs parisiens et franciliens sont nombreux, fidèles et passionnés. Organiser une brocante en IDF, c'est l'assurance d'attirer exposants et visiteurs en nombre.</p>
@@ -86,11 +88,12 @@ export const articlesOrganisateur: Article[] = [
     title: 'Obtenir une autorisation de brocante en mairie : guide 2026',
     metaTitle: 'Autorisation brocante mairie 2026 : démarches et formulaires',
     metaDescription: 'Guide complet pour obtenir l\'autorisation d\'organiser une brocante ou vide-grenier en mairie. CERFA, délais, assurance, obligations légales.',
-    keywords: ['autorisation brocante mairie', 'déclaration vide grenier mairie', 'CERFA brocante', 'organiser vide grenier autorisation'],
+    keywords: ['autorisation brocante mairie', 'déclaration vide grenier mairie', 'CERFA brocante', 'organiser vide grenier autorisation', 'démarche administrative brocante', 'permis brocante ile-de-france', 'formulaire organisateur brocante', 'délai mairie brocante'],
     date: '2026-05-18',
     readTime: 6,
     category: 'Réglementation',
     excerpt: 'Obtenir l\'autorisation pour organiser une brocante n\'est pas compliqué si l\'on connaît les démarches. Voici tout ce qu\'il faut savoir sur les formulaires, délais et obligations.',
+    illustration: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=800&q=80',
     content: `
 <h2>Est-ce obligatoire d'avoir une autorisation pour organiser une brocante ?</h2>
 <p>Oui, toute manifestation de type brocante, vide-grenier ou marché aux puces ouverte au public sur la voie publique ou dans un lieu recevant du public nécessite une <strong>autorisation préalable</strong>. Cette règle s'applique partout en France, y compris en Île-de-France, quelle que soit la taille de l'événement.</p>
@@ -155,11 +158,12 @@ export const articlesOrganisateur: Article[] = [
     title: 'Comment attirer plus d\'exposants à votre brocante',
     metaTitle: 'Attirer des exposants à sa brocante : 8 stratégies efficaces',
     metaDescription: 'Recrutez plus d\'exposants pour votre brocante avec ces 8 stratégies éprouvées : communication, tarifs, fidélisation et outils numériques.',
-    keywords: ['attirer exposants brocante', 'recruter exposants vide grenier', 'exposants brocante idf', 'comment remplir brocante'],
+    keywords: ['attirer exposants brocante', 'recruter exposants vide grenier', 'exposants brocante idf', 'comment remplir brocante', 'fidéliser exposants brocante', 'inscrire exposants brocante', 'plus exposants brocante', 'stand brocante ile-de-france'],
     date: '2026-04-22',
     readTime: 5,
     category: 'Stratégie',
     excerpt: 'Des stands vides, c\'est une brocante qui périclite. Voici 8 stratégies concrètes pour attirer et fidéliser vos exposants saison après saison.',
+    illustration: 'https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=800&q=80',
     content: `
 <h2>Pourquoi le recrutement d'exposants est crucial</h2>
 <p>Une brocante réussie, c'est d'abord une brocante bien remplie. Les visiteurs reviennent si l'offre est variée et abondante. Les exposants s'inscrivent si la manifestation est connue et fréquentée. C'est un cercle vertueux qu'il faut déclencher dès la première édition.</p>
@@ -206,11 +210,12 @@ export const articlesOrganisateur: Article[] = [
     title: 'Fixer le bon prix pour les emplacements de votre brocante',
     metaTitle: 'Prix emplacements brocante 2026 : combien facturer vos exposants ?',
     metaDescription: 'Comment fixer le prix des emplacements de votre brocante ou vide-grenier ? Grille tarifaire IDF, facteurs clés et stratégie de prix.',
-    keywords: ['prix emplacement brocante', 'tarif vide grenier exposant', 'combien coûte emplacement brocante', 'tarification brocante organisateur'],
+    keywords: ['prix emplacement brocante', 'tarif vide grenier exposant', 'combien coûte emplacement brocante', 'tarification brocante organisateur', 'tarif stand brocante 2026', 'prix mètre linéaire brocante', 'fixer tarif brocante', 'emplacement brocante combien'],
     date: '2026-04-05',
     readTime: 5,
     category: 'Gestion',
     excerpt: 'Trop cher et vos emplacements ne se remplissent pas. Trop bon marché et vous ne couvrez pas vos frais. Voici comment fixer le bon prix pour votre brocante.',
+    illustration: 'https://images.unsplash.com/photo-1579621970590-9d152c476153?auto=format&fit=crop&w=800&q=80',
     content: `
 <h2>Les facteurs qui influencent le prix d'un emplacement</h2>
 <p>Le prix d'un emplacement de brocante n'est pas arbitraire. Il résulte d'un équilibre entre plusieurs facteurs :</p>
@@ -259,11 +264,12 @@ export const articlesOrganisateur: Article[] = [
     title: 'Numériser sa brocante avec un QR code : le guide complet',
     metaTitle: 'QR code brocante : comment numériser votre manifestation en 2026',
     metaDescription: 'Découvrez comment le QR code transforme l\'organisation de votre brocante. Exposants connectés, visiteurs guidés, stands visibles en temps réel.',
-    keywords: ['qr code brocante', 'numeriser brocante', 'brocante digitale', 'application brocante organisateur', 'stands en ligne brocante'],
+    keywords: ['qr code brocante', 'numeriser brocante', 'brocante digitale', 'application brocante organisateur', 'stands en ligne brocante', 'brocante numérique exposant', 'afficher stand QR code', 'moderniser brocante technologie'],
     date: '2026-03-15',
     readTime: 5,
     category: 'Numérique',
     excerpt: 'Le QR code révolutionne l\'expérience brocante pour les organisateurs, les exposants et les visiteurs. Découvrez comment en tirer parti pour votre prochaine manifestation.',
+    illustration: 'https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d6?auto=format&fit=crop&w=800&q=80',
     content: `
 <h2>Qu'est-ce qu'une brocante numérique ?</h2>
 <p>Une brocante numérique, c'est une manifestation traditionnelle enrichie d'outils digitaux qui améliorent l'expérience de tous les participants. Concrètement, cela signifie que les <strong>exposants publient leurs objets en ligne avant et pendant la brocante</strong>, et que les visiteurs peuvent rechercher un objet précis et savoir exactement à quel stand le trouver.</p>
@@ -318,11 +324,12 @@ export const articlesOrganisateur: Article[] = [
     title: 'Promouvoir sa brocante sur les réseaux sociaux : stratégie 2026',
     metaTitle: 'Réseaux sociaux brocante : comment promouvoir sa manifestation',
     metaDescription: 'Facebook, Instagram, TikTok : guide complet pour promouvoir votre brocante sur les réseaux sociaux et attirer plus de visiteurs et d\'exposants.',
-    keywords: ['promouvoir brocante facebook', 'instagram brocante', 'communication brocante reseaux sociaux', 'publicité brocante en ligne'],
+    keywords: ['promouvoir brocante facebook', 'instagram brocante', 'communication brocante reseaux sociaux', 'publicité brocante en ligne', 'marketing brocante', 'affiche brocante', 'annonce brocante gratuite', 'attirer visiteurs brocante'],
     date: '2026-03-28',
     readTime: 6,
     category: 'Communication',
     excerpt: 'Les réseaux sociaux sont devenus le premier canal de communication pour les brocantes. Voici comment les utiliser efficacement pour remplir vos stands et attirer les visiteurs.',
+    illustration: 'https://images.unsplash.com/photo-1563013544-824ae1b704d3?auto=format&fit=crop&w=800&q=80',
     content: `
 <h2>Pourquoi les réseaux sociaux sont incontournables pour votre brocante</h2>
 <p>En 2026, plus de 80% des Français de moins de 65 ans utilisent au moins un réseau social. C'est là que se trouvent vos futurs visiteurs et exposants. Ignorer les réseaux sociaux, c'est passer à côté de votre principal canal d'acquisition gratuit.</p>
@@ -371,11 +378,12 @@ export const articlesOrganisateur: Article[] = [
     title: 'Sécurité et assurance lors d\'une brocante : ce qu\'il faut savoir',
     metaTitle: 'Assurance brocante organisateur : obligations et couvertures 2026',
     metaDescription: 'Quelles assurances sont obligatoires pour organiser une brocante ? Comment garantir la sécurité des visiteurs et des exposants ? Le guide complet.',
-    keywords: ['assurance brocante organisateur', 'securite brocante', 'responsabilite civile brocante', 'obligation assurance vide grenier'],
+    keywords: ['assurance brocante organisateur', 'securite brocante', 'responsabilite civile brocante', 'obligation assurance vide grenier', 'assurance RC brocante', 'sécurité incendie brocante', 'secours brocante', 'obligations légales organisateur'],
     date: '2026-02-20',
     readTime: 6,
     category: 'Réglementation',
     excerpt: 'Responsabilité civile, sécurité incendie, dispositif de secours : voici toutes les obligations légales en matière de sécurité pour les organisateurs de brocantes.',
+    illustration: 'https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=800&q=80',
     content: `
 <h2>L'assurance responsabilité civile organisateur : obligatoire</h2>
 <p>Toute personne ou association organisant une brocante ouverte au public doit obligatoirement souscrire une <strong>assurance responsabilité civile organisateur d'événement</strong>. Cette assurance couvre les dommages corporels et matériels causés à des tiers (visiteurs, exposants, riverains) dans le cadre de la manifestation.</p>
@@ -426,11 +434,12 @@ export const articlesOrganisateur: Article[] = [
     title: 'Checklist organisateur : tout faire le jour J de votre brocante',
     metaTitle: 'Checklist organisateur brocante : le jour J sans stress',
     metaDescription: 'La checklist complète de l\'organisateur de brocante pour le jour J : de l\'arrivée à la fermeture, ne rien oublier et gérer sereinement votre manifestation.',
-    keywords: ['checklist organisateur brocante', 'jour j brocante', 'organisation brocante matin', 'gérer brocante jour evenement'],
+    keywords: ['checklist organisateur brocante', 'jour j brocante', 'organisation brocante matin', 'gérer brocante jour evenement', 'liste organisation brocante', 'planifier brocante', 'gestion brocante le jour même', 'que prévoir brocante'],
     date: '2026-01-30',
     readTime: 5,
     category: 'Organisation',
     excerpt: 'Le jour J d\'une brocante peut vite devenir chaotique sans préparation. Cette checklist vous guide de l\'arrivée du matin jusqu\'à la fermeture en soirée.',
+    illustration: 'https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?auto=format&fit=crop&w=800&q=80',
     content: `
 <h2>La veille : dernière vérification</h2>
 <ul>
@@ -493,11 +502,12 @@ export const articlesOrganisateur: Article[] = [
     title: 'Quel est le meilleur mois pour organiser une brocante en IDF ?',
     metaTitle: 'Meilleure période brocante IDF : quel mois choisir pour 2026 ?',
     metaDescription: 'Printemps, automne ou été ? Découvrez les meilleures périodes pour organiser une brocante en Île-de-France selon la météo, les vacances scolaires et la fréquentation.',
-    keywords: ['meilleur mois brocante', 'quand organiser brocante ile de france', 'calendrier brocante idf', 'periode brocante paris'],
+    keywords: ['meilleur mois brocante', 'quand organiser brocante ile de france', 'calendrier brocante idf', 'periode brocante paris', 'brocante printemps', 'brocante automne', 'meilleure saison brocante', 'date brocante 2026'],
     date: '2026-01-15',
     readTime: 5,
     category: 'Stratégie',
     excerpt: 'La météo, les vacances scolaires et les habitudes des chineurs influencent fortement la réussite de votre brocante. Voici comment choisir la meilleure date.',
+    illustration: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=800&q=80',
     content: `
 <h2>Les saisons des brocantes en Île-de-France</h2>
 <p>En Île-de-France, la saison des brocantes s'étend principalement de <strong>mars à novembre</strong>. Juillet et août sont des mois très calmes pour les brocantes car une grande partie des Franciliens est en vacances.</p>
@@ -555,11 +565,12 @@ export const articlesOrganisateur: Article[] = [
     title: 'Comment faire un bilan après votre brocante et progresser',
     metaTitle: 'Bilan organisateur brocante : comment s\'améliorer après l\'événement',
     metaDescription: 'Analysez votre brocante pour progresser : satisfaction exposants, recettes, fréquentation, problèmes rencontrés. Le guide du bilan post-événement.',
-    keywords: ['bilan brocante organisateur', 'améliorer brocante', 'retour experience brocante', 'analyse brocante apres evenement'],
+    keywords: ['bilan brocante organisateur', 'améliorer brocante', 'retour experience brocante', 'analyse brocante apres evenement', 'évaluer brocante résultats', 'satisfaction exposants brocante', 'reconduite brocante', 'fidélisation brocante organisateur'],
     date: '2026-02-05',
     readTime: 4,
     category: 'Gestion',
     excerpt: 'Chaque brocante est une leçon. Voici comment analyser votre manifestation pour progresser, fidéliser vos exposants et améliorer chaque nouvelle édition.',
+    illustration: 'https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=800&q=80',
     content: `
 <h2>Pourquoi faire un bilan après chaque brocante ?</h2>
 <p>Les meilleurs organisateurs de brocantes ont un point commun : ils analysent systématiquement chaque manifestation. Ce bilan, fait dans les 48h suivant l'événement, permet d'identifier les points forts à conserver et les problèmes à corriger pour la prochaine édition.</p>

@@ -18,11 +18,11 @@ export const articlesChineur: Article[] = [
     title: 'Comment bien préparer sa visite à la brocante',
     metaTitle: 'Préparer sa visite à la brocante : guide complet du chineur | Brocante Radar',
     metaDescription: 'Tout ce qu\'il faut faire avant d\'arriver à la brocante : recherches, budget, équipement, timing. Le guide du chineur préparé.',
-    keywords: ['préparer visite brocante', 'conseils chineur brocante', 'que emporter brocante', 'avant brocante'],
+    keywords: ['préparer visite brocante', 'conseils chineur brocante', 'que emporter brocante', 'avant brocante', 'checklist brocante', 'bien se préparer brocante', 'organiser chinage', 'kit chineur'],
     date: '2026-06-10',
     readTime: 6,
     category: 'Conseils pratiques',
-    illustration: 'compass',
+    illustration: 'https://images.unsplash.com/photo-1670092485050-2022fbd6e88e?auto=format&fit=crop&w=800&q=80',
     excerpt: 'La réussite d\'une chine se joue souvent avant même d\'arriver sur place. Voici comment préparer votre visite pour maximiser vos chances de trouver la perle rare.',
     content: `
 <h2>Pourquoi la préparation fait toute la différence</h2>
@@ -73,11 +73,11 @@ export const articlesChineur: Article[] = [
     title: 'Maîtriser l\'art de la négociation à la brocante',
     metaTitle: 'Négocier à la brocante : techniques et formules qui marchent | Brocante Radar',
     metaDescription: 'Apprenez à négocier à la brocante avec confiance. Techniques, formules magiques et erreurs à éviter pour obtenir les meilleurs prix.',
-    keywords: ['négocier brocante', 'comment négocier prix brocante', 'techniques négociation chineur', 'marchander brocante'],
+    keywords: ['négocier brocante', 'comment négocier prix brocante', 'techniques négociation chineur', 'marchander brocante', 'faire baisser prix brocante', 'négociation exposant', 'astuce prix brocante', 'discount brocante'],
     date: '2026-06-05',
     readTime: 7,
     category: 'Techniques',
-    illustration: 'handshake',
+    illustration: 'https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=800&q=80',
     excerpt: 'La négociation est un art qui s\'apprend. Ces techniques éprouvées vous permettront d\'obtenir les meilleurs prix tout en gardant une relation cordiale avec les exposants.',
     content: `
 <h2>L'état d'esprit du négociateur</h2>
@@ -122,11 +122,11 @@ export const articlesChineur: Article[] = [
     title: 'Les objets les plus intéressants à trouver en brocante',
     metaTitle: 'Quels objets chiner en brocante ? Guide des meilleures trouvailles | Brocante Radar',
     metaDescription: 'Linges brodés, vinyles, céramiques, jouets anciens, appareils photo... Découvrez les catégories d\'objets qui valent le détour dans les brocantes IDF.',
-    keywords: ['objets chiner brocante', 'bonnes affaires brocante', 'que trouver brocante', 'objets valeur brocante idf'],
+    keywords: ['objets chiner brocante', 'bonnes affaires brocante', 'que trouver brocante', 'objets valeur brocante idf', 'objets vintage valeur', 'quoi chercher brocante', 'meilleurs achats brocante', 'trouvaille brocante rare'],
     date: '2026-05-28',
     readTime: 8,
     category: 'Guide',
-    illustration: 'treasure',
+    illustration: 'https://images.unsplash.com/photo-1488841714725-bb4c32d1ac94?auto=format&fit=crop&w=800&q=80',
     excerpt: 'Meubles, textiles, jouets, vinyles... certains objets représentent de vraies opportunités en brocante. Voici notre guide des catégories les plus rentables et les plus belles.',
     content: `
 <h2>Pourquoi certains objets valent le détour</h2>
@@ -165,11 +165,11 @@ export const articlesChineur: Article[] = [
     title: 'Pourquoi arriver tôt à la brocante change tout',
     metaTitle: 'Arriver tôt à la brocante : stratégies des chineurs professionnels | Brocante Radar',
     metaDescription: 'Les premières minutes d\'une brocante sont les plus décisives. Découvrez les stratégies des chineurs expérimentés pour ne rien rater à l\'ouverture.',
-    keywords: ['arriver tôt brocante', 'ouverture brocante chineur', 'stratégie brocante matin', 'premiere heure brocante'],
+    keywords: ['arriver tôt brocante', 'ouverture brocante chineur', 'stratégie brocante matin', 'premiere heure brocante', 'heure arrivée brocante', 'brocante tôt matin', 'avant ouverture brocante', 'avantage chineur matinal'],
     date: '2026-05-20',
     readTime: 5,
     category: 'Stratégie',
-    illustration: 'clock',
+    illustration: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=800&q=80',
     excerpt: 'La première heure d\'une brocante concentre 80% des meilleures affaires. Voici comment les chineurs expérimentés exploitent ce timing pour des trouvailles exceptionnelles.',
     content: `
 <h2>La loi des premières minutes</h2>
@@ -216,11 +216,11 @@ export const articlesChineur: Article[] = [
     title: 'Chiner avec un petit budget : l\'art de faire des miracles',
     metaTitle: 'Chiner avec un petit budget : nos conseils pour maximiser chaque euro | Brocante Radar',
     metaDescription: 'Budget serré mais envie de chiner ? Ces stratégies vous permettent de trouver de belles pièces sans vous ruiner dans les brocantes d\'Île-de-France.',
-    keywords: ['chiner petit budget', 'brocante budget limité', 'bonne affaire brocante peu cher', 'économiser brocante'],
+    keywords: ['chiner petit budget', 'brocante budget limité', 'bonne affaire brocante peu cher', 'économiser brocante', 'brocante pas cher', 'chiner moins de 10 euros', 'budget chinage idf', 'brocante économique paris'],
     date: '2026-05-15',
     readTime: 6,
     category: 'Conseils pratiques',
-    illustration: 'coins',
+    illustration: 'https://images.unsplash.com/photo-1579621970590-9d152c476153?auto=format&fit=crop&w=800&q=80',
     excerpt: 'Avec 20€ ou 50€ en poche, il est tout à fait possible de revenir de la brocante avec de vraies trouvailles. Ces techniques vous aident à maximiser chaque euro.',
     content: `
 <h2>Le mythe du "il faut de l'argent pour chiner"</h2>
@@ -257,11 +257,11 @@ export const articlesChineur: Article[] = [
     title: 'Guide du chinage de vêtements vintage en brocante',
     metaTitle: 'Vêtements vintage en brocante : comment trouver les meilleures pièces | Brocante Radar',
     metaDescription: 'Robes années 70, vestes en cuir vintage, pièces mode rétro... comment repérer et acheter les meilleurs vêtements vintage dans les brocantes IDF.',
-    keywords: ['vêtements vintage brocante', 'mode vintage brocante paris', 'trouver habits anciens brocante', 'chiner mode rétro idf'],
+    keywords: ['vêtements vintage brocante', 'mode vintage brocante paris', 'trouver habits anciens brocante', 'chiner mode rétro idf', 'fripes brocante', 'vêtements occasion brocante', 'vintage fashion brocante', 'seconde main brocante paris'],
     date: '2026-05-10',
     readTime: 7,
     category: 'Mode & Textile',
-    illustration: 'hanger',
+    illustration: 'https://images.unsplash.com/photo-1445205170230-053b83016050?auto=format&fit=crop&w=800&q=80',
     excerpt: 'Les brocantes d\'Île-de-France regorgent de pièces mode vintage. Voici comment repérer les vraies pépites textiles, vérifier leur état et négocier le meilleur prix.',
     content: `
 <h2>Le renouveau du vintage en mode</h2>
@@ -312,11 +312,11 @@ export const articlesChineur: Article[] = [
     title: 'Reconnaître la qualité d\'un objet à la brocante',
     metaTitle: 'Reconnaître la qualité en brocante : signes qui ne trompent pas | Brocante Radar',
     metaDescription: 'Bois massif ou aggloméré ? Argent massif ou métal argenté ? Apprenez à reconnaître la vraie qualité des objets pour ne jamais vous faire avoir en brocante.',
-    keywords: ['reconnaître qualité brocante', 'vrai faux brocante', 'identifier objet ancien brocante', 'expert brocante conseils'],
+    keywords: ['reconnaître qualité brocante', 'vrai faux brocante', 'identifier objet ancien brocante', 'expert brocante conseils', 'authentifier objet brocante', 'différencier copie original brocante', 'savoir acheter brocante', 'éviter arnaques brocante'],
     date: '2026-05-05',
     readTime: 8,
     category: 'Expertise',
-    illustration: 'magnify',
+    illustration: 'https://images.unsplash.com/photo-1568354006539-9f4e28b0a776?auto=format&fit=crop&w=800&q=80',
     excerpt: 'L\'œil d\'un chineur expert se forme avec l\'expérience. Voici les signes concrets qui permettent de distinguer un objet de qualité d\'un vulgaire imposteur.',
     content: `
 <h2>L'œil se forme avec la pratique</h2>
@@ -355,11 +355,11 @@ export const articlesChineur: Article[] = [
     title: 'Les meilleures brocantes de Paris et petite couronne',
     metaTitle: 'Meilleures brocantes Paris et petite couronne IDF : guide complet | Brocante Radar',
     metaDescription: 'Tour d\'horizon des brocantes et marchés aux puces incontournables de Paris et de la petite couronne : Saint-Ouen, Montreuil, Vincennes et bien d\'autres.',
-    keywords: ['meilleures brocantes paris', 'marchés puces paris', 'brocante paris petite couronne', 'agenda brocante idf'],
+    keywords: ['meilleures brocantes paris', 'marchés puces paris', 'brocante paris petite couronne', 'agenda brocante idf', 'brocante incontournable ile-de-france', 'marché puces saint-ouen', 'vanves brocante', 'calendrier brocante paris 2026'],
     date: '2026-04-28',
     readTime: 9,
     category: 'Agenda & Lieux',
-    illustration: 'map',
+    illustration: 'https://images.unsplash.com/photo-1514222709836-5ef4e75d9c46?auto=format&fit=crop&w=800&q=80',
     excerpt: 'Paris et ses environs regorgent de marchés aux puces et brocantes d\'exception. Notre sélection des adresses incontournables pour un circuit de chinage optimal.',
     content: `
 <h2>L'Île-de-France, paradis du chineur</h2>
@@ -410,11 +410,11 @@ export const articlesChineur: Article[] = [
     title: 'Comment photographier ses trouvailles de brocante',
     metaTitle: 'Photographier ses trouvailles de brocante : guide photo pour chineurs | Brocante Radar',
     metaDescription: 'Valorisez et partagez vos trouvailles de brocante avec de belles photos. Conseils lumière, composition et mise en scène pour des photos qui font envie.',
-    keywords: ['photographier objet brocante', 'photo vintage brocante', 'mettre en valeur objet ancien', 'photo chineur'],
+    keywords: ['photographier objet brocante', 'photo vintage brocante', 'mettre en valeur objet ancien', 'photo chineur', 'photo revente brocante', 'immortaliser trouvaille brocante', 'photo smartphone brocante', 'documenter collection vintage'],
     date: '2026-04-20',
     readTime: 5,
     category: 'Partage & Style',
-    illustration: 'camera',
+    illustration: 'https://images.unsplash.com/photo-1502920917128-1aa500764b2d?auto=format&fit=crop&w=800&q=80',
     excerpt: 'Une belle photo transforme une simple trouvaille en objet désirable. Ces conseils vous aident à immortaliser vos pépites de brocante avec votre smartphone.',
     content: `
 <h2>Pourquoi photographier ses trouvailles ?</h2>
@@ -449,11 +449,11 @@ export const articlesChineur: Article[] = [
     title: 'Comment entretenir et restaurer ses achats de brocante',
     metaTitle: 'Entretenir et restaurer ses achats de brocante : guide complet | Brocante Radar',
     metaDescription: 'Nettoyage, restauration, entretien : comment prendre soin de vos trouvailles de brocante pour les garder en parfait état et les transmettre.',
-    keywords: ['entretenir objet brocante', 'restaurer meuble ancien', 'nettoyer achat brocante', 'conservation objet vintage'],
+    keywords: ['entretenir objet brocante', 'restaurer meuble ancien', 'nettoyer achat brocante', 'conservation objet vintage', 'entretien objet ancien', 'rénover meuble brocante', 'produit nettoyage vintage', 'préserver objet collection'],
     date: '2026-04-15',
     readTime: 7,
     category: 'Entretien',
-    illustration: 'brush',
+    illustration: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=800&q=80',
     excerpt: 'Une trouvaille de brocante mérite d\'être bien entretenue. Ces conseils de nettoyage et de restauration vous aideront à remettre vos objets en valeur sans les abîmer.',
     content: `
 <h2>La première règle : ne pas tout nettoyer</h2>

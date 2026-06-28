@@ -3,6 +3,7 @@ import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
+import ArticleIllustration from '@/components/ArticleIllustration'
 import { articlesCollectionneur, getArticleCollectionneur } from '@/lib/articles-collectionneur'
 import { Clock, ArrowLeft, ArrowRight, Tag } from 'lucide-react'
 
@@ -77,6 +78,12 @@ export default async function ArticleCollectionneurPage({ params }: Props) {
             </div>
           </div>
         </section>
+
+        {article.illustration && (
+          <div className="w-full h-64 sm:h-80 relative overflow-hidden bg-[#EEF4FF]">
+            <ArticleIllustration illustration={article.illustration} alt={article.title} />
+          </div>
+        )}
 
         <article className="py-12 px-4">
           <div

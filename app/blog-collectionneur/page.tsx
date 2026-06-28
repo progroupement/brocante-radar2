@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
+import ArticleIllustration from '@/components/ArticleIllustration'
 import { articlesCollectionneur } from '@/lib/articles-collectionneur'
 import { Clock, ArrowRight } from 'lucide-react'
 
@@ -61,6 +62,11 @@ export default function BlogCollectionneurPage() {
                   href={`/blog-collectionneur/${article.slug}`}
                   className="group bg-white border border-blue-100 rounded-2xl overflow-hidden hover:shadow-lg hover:shadow-blue-100 hover:border-blue-200 transition-all flex flex-col"
                 >
+                  {article.illustration && (
+                    <div className="bg-[#EEF4FF] h-40 flex items-center justify-center overflow-hidden relative">
+                      <ArticleIllustration illustration={article.illustration} alt={article.title} />
+                    </div>
+                  )}
                   <div className="p-6 flex flex-col gap-3 flex-1">
                     <div className="flex items-center gap-2">
                       <span className={`text-xs font-semibold px-2.5 py-1 rounded-full ${categoryColors[article.category] ?? 'bg-gray-100 text-gray-700'}`}>

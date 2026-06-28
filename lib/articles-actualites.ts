@@ -18,11 +18,11 @@ export const articlesActualites: ArticleActu[] = [
     title: 'Les tendances déco vintage qui dominent 2026',
     metaTitle: 'Tendances déco vintage 2026 : ce qui est tendance en brocante | Brocante Radar',
     metaDescription: 'Quelles tendances déco vintage s\'imposent en 2026 ? Rétro-futurisme, céramiques colorées, rotin et bois brut : le guide des styles qui font rêver les chineurs.',
-    keywords: ['tendances déco vintage 2026', 'décoration brocante tendance', 'style vintage maison 2026', 'tendance chineur 2026'],
+    keywords: ['tendances déco vintage 2026', 'décoration brocante tendance', 'style vintage maison 2026', 'tendance chineur 2026', 'couleurs tendance déco brocante', 'objets déco vintage 2026', 'intérieur vintage tendance', 'déco seconde main 2026'],
     date: '2026-06-15',
     readTime: 6,
     category: 'Tendances',
-    illustration: 'star',
+    illustration: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=800&q=80',
     excerpt: 'Le marché de la déco vintage évolue chaque saison. En 2026, certains styles et objets s\'imposent massivement dans les intérieurs. Voici ce que les chineurs recherchent.',
     content: `
 <h2>La déco vintage en pleine révolution</h2>
@@ -52,11 +52,11 @@ export const articlesActualites: ArticleActu[] = [
     title: 'Le marché de la brocante en France : chiffres et tendances 2026',
     metaTitle: 'Marché de la brocante en France 2026 : bilan et perspectives | Brocante Radar',
     metaDescription: 'Chiffre d\'affaires, nombre d\'événements, évolution des prix : le bilan du marché français de la brocante et des vide-greniers en 2026.',
-    keywords: ['marché brocante france 2026', 'chiffres brocante france', 'secteur brocante bilan', 'économie brocante'],
+    keywords: ['marché brocante france 2026', 'chiffres brocante france', 'secteur brocante bilan', 'économie brocante', 'croissance seconde main france', 'brocante milliards euros', 'statistiques brocante', 'marché occasion france'],
     date: '2026-06-10',
     readTime: 7,
     category: 'Marché',
-    illustration: 'chart',
+    illustration: 'https://images.unsplash.com/photo-1579621970590-9d152c476153?auto=format&fit=crop&w=800&q=80',
     excerpt: 'Le secteur de la brocante et de l\'occasion en France représente plusieurs milliards d\'euros. Voici l\'état du marché, les chiffres clés et les tendances qui façonnent l\'avenir.',
     content: `
 <h2>Un secteur en croissance continue</h2>
@@ -91,11 +91,11 @@ export const articlesActualites: ArticleActu[] = [
     title: 'La révolution numérique dans les brocantes françaises',
     metaTitle: 'Numérique et brocante : QR codes, applis et nouvelles technologies | Brocante Radar',
     metaDescription: 'QR codes, applications mobiles, réseaux sociaux... comment le numérique transforme l\'expérience des brocantes en France en 2026.',
-    keywords: ['numérique brocante', 'QR code brocante', 'application brocante mobile', 'digitalisation brocante'],
+    keywords: ['numérique brocante', 'QR code brocante', 'application brocante mobile', 'digitalisation brocante', 'instagram brocante', 'tiktok brocante', 'brocante 2.0', 'technologie marché aux puces'],
     date: '2026-06-05',
     readTime: 6,
     category: 'Innovation',
-    illustration: 'phone',
+    illustration: 'https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d6?auto=format&fit=crop&w=800&q=80',
     excerpt: 'Les brocantes s\'adaptent à l\'ère numérique. QR codes sur les stands, applications de recherche en temps réel, Instagram et TikTok : la révolution digitale est en marche.',
     content: `
 <h2>La brocante rejoint le XXIe siècle</h2>
@@ -124,11 +124,11 @@ export const articlesActualites: ArticleActu[] = [
     title: 'L\'explosion des prix des vinyles en brocante',
     metaTitle: 'Prix des vinyles en brocante 2026 : pourquoi ça flambe | Brocante Radar',
     metaDescription: 'Les prix des vinyles en brocante ont explosé ces dernières années. Analyse du phénomène, les disques les plus recherchés et comment encore trouver des bonnes affaires.',
-    keywords: ['prix vinyles brocante 2026', 'vinyles cher brocante', 'disques vinyle valeur', 'bonne affaire vinyles brocante'],
+    keywords: ['prix vinyles brocante 2026', 'vinyles cher brocante', 'disques vinyle valeur', 'bonne affaire vinyles brocante', 'vinyle marché puces prix', 'disque rare 33 tours', 'vendre vinyles brocante', 'collection vinyle valeur 2026'],
     date: '2026-05-30',
     readTime: 6,
     category: 'Marché',
-    illustration: 'vinyl',
+    illustration: 'https://images.unsplash.com/photo-1539375665275-f9de415ef9ac?auto=format&fit=crop&w=800&q=80',
     excerpt: 'Un vinyle qui valait 2€ il y a dix ans peut aujourd\'hui atteindre 20-50€. Analyse d\'un phénomène de marché qui transforme les brocantes françaises.',
     content: `
 <h2>Le grand retour du vinyle</h2>
@@ -161,11 +161,11 @@ export const articlesActualites: ArticleActu[] = [
     title: 'La génération Z s\'empare des brocantes',
     metaTitle: 'Génération Z et brocante : pourquoi les jeunes adorent chiner | Brocante Radar',
     metaDescription: 'Les moins de 30 ans représentent désormais une part importante des chineurs. Analyse d\'un phénomène culturel et économique qui transforme les brocantes.',
-    keywords: ['génération Z brocante', 'jeunes brocante tendance', 'vintage génération z', 'seconde main jeunes'],
+    keywords: ['génération Z brocante', 'jeunes brocante tendance', 'vintage génération z', 'seconde main jeunes', 'millennials brocante', 'rajeunissement brocante', 'jeunes chineurs paris', 'gen z vintage'],
     date: '2026-05-25',
     readTime: 6,
     category: 'Société',
-    illustration: 'people',
+    illustration: 'https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=800&q=80',
     excerpt: 'Les brocantes rajeunissent. La génération Z, sensible à l\'environnement et à l\'authenticité, est devenue l\'un des principaux moteurs du renouveau des marchés aux puces.',
     content: `
 <h2>Un changement générationnel visible</h2>
@@ -206,11 +206,11 @@ export const articlesActualites: ArticleActu[] = [
     title: 'La brocante, championne de l\'économie circulaire',
     metaTitle: 'Brocante et économie circulaire : l\'impact écologique positif | Brocante Radar',
     metaDescription: 'Acheter en brocante est l\'un des gestes les plus écologiques qui soit. Chiffres, études et témoignages sur l\'impact environnemental positif du marché de l\'occasion.',
-    keywords: ['brocante écologie', 'économie circulaire brocante', 'impact environnemental seconde main', 'brocante durable'],
+    keywords: ['brocante écologie', 'économie circulaire brocante', 'impact environnemental seconde main', 'brocante durable', 'brocante CO2', 'seconde main planète', 'achat responsable brocante', 'brocante vs fast fashion'],
     date: '2026-05-18',
     readTime: 6,
     category: 'Société',
-    illustration: 'leaf',
+    illustration: 'https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&w=800&q=80',
     excerpt: 'La brocante est bien plus qu\'un loisir : c\'est un acte écologique. Chiffres et analyses sur l\'impact environnemental positif du marché de la seconde main.',
     content: `
 <h2>La brocante, acte écologique par excellence</h2>
@@ -237,11 +237,11 @@ export const articlesActualites: ArticleActu[] = [
     title: 'Les nouvelles brocantes à découvrir en Île-de-France en 2026',
     metaTitle: 'Nouvelles brocantes IDF 2026 : les événements à ne pas manquer | Brocante Radar',
     metaDescription: 'Agenda des nouveaux événements brocante à découvrir en Île-de-France en 2026 : nouvelles adresses, formats innovants et marchés émergents.',
-    keywords: ['nouvelles brocantes idf 2026', 'agenda brocante ile-de-france', 'nouveaux marchés puces paris', 'brocante 2026'],
+    keywords: ['nouvelles brocantes idf 2026', 'agenda brocante ile-de-france', 'nouveaux marchés puces paris', 'brocante 2026', 'événements brocante idf', 'nouveaux formats brocante', 'brocante éphémère paris', 'pop-up brocante idf'],
     date: '2026-05-12',
     readTime: 6,
     category: 'Agenda',
-    illustration: 'pin',
+    illustration: 'https://images.unsplash.com/photo-1488841714725-bb4c32d1ac94?auto=format&fit=crop&w=800&q=80',
     excerpt: '2026 voit l\'apparition de nouveaux formats et de nouveaux événements dans le paysage brocante francilien. Tour d\'horizon des initiatives à suivre.',
     content: `
 <h2>Un paysage brocante en mouvement</h2>
@@ -271,11 +271,11 @@ export const articlesActualites: ArticleActu[] = [
     title: 'Réglementation des brocantes : ce qui change en 2026',
     metaTitle: 'Réglementation brocantes 2026 : nouvelles règles pour vendeurs et organisateurs | Brocante Radar',
     metaDescription: 'Nouvelles obligations, déclarations fiscales, droits des acheteurs : le point complet sur la réglementation des brocantes et vide-greniers en France en 2026.',
-    keywords: ['réglementation brocante 2026', 'loi vide-grenier', 'obligations brocante france', 'fiscalité seconde main'],
+    keywords: ['réglementation brocante 2026', 'loi vide-grenier', 'obligations brocante france', 'fiscalité seconde main', 'déclaration revenus vide grenier', 'plafond vide grenier', 'TVA brocante', 'nouvelles lois brocante 2026'],
     date: '2026-05-08',
     readTime: 7,
     category: 'Réglementation',
-    illustration: 'document',
+    illustration: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=800&q=80',
     excerpt: 'La réglementation des brocantes et vide-greniers évolue. Déclarations obligatoires, seuils de revenus, obligations des plateformes : voici ce que vendeurs et acheteurs doivent savoir.',
     content: `
 <h2>La réglementation des vide-greniers en France</h2>
@@ -305,11 +305,11 @@ export const articlesActualites: ArticleActu[] = [
     title: 'Les Puces de Saint-Ouen : actualités et évolutions du marché iconique',
     metaTitle: 'Puces Saint-Ouen 2026 : actualités, nouveautés et conseils pratiques | Brocante Radar',
     metaDescription: 'Les Puces de Saint-Ouen évoluent. Nouveaux marchés, rénovations, horaires actualisés : tout ce qu\'il faut savoir sur le marché aux puces le plus célèbre du monde.',
-    keywords: ['puces saint-ouen 2026', 'marché saint-ouen actualité', 'clignancourt brocante', 'puces paris 2026'],
+    keywords: ['puces saint-ouen 2026', 'marché saint-ouen actualité', 'clignancourt brocante', 'puces paris 2026', 'marché vernaison', 'marché paul bert', 'horaires saint-ouen', 'plus grand marché aux puces'],
     date: '2026-04-30',
     readTime: 6,
     category: 'Lieux emblématiques',
-    illustration: 'building',
+    illustration: 'https://images.unsplash.com/photo-1514222709836-5ef4e75d9c46?auto=format&fit=crop&w=800&q=80',
     excerpt: 'Les Puces de Saint-Ouen continuent d\'évoluer. Entre tradition et modernité, le marché aux puces le plus célèbre au monde se réinvente sans perdre son âme.',
     content: `
 <h2>Le marché aux puces le plus célèbre du monde</h2>
@@ -349,11 +349,11 @@ export const articlesActualites: ArticleActu[] = [
     title: 'L\'upcycling : quand la brocante rencontre le DIY',
     metaTitle: 'Upcycling et brocante : transformer des objets anciens en créations uniques | Brocante Radar',
     metaDescription: 'L\'upcycling — transformer des objets de brocante en nouvelles créations — est une tendance forte. Inspiration, tutoriels et conseils pour se lancer.',
-    keywords: ['upcycling brocante', 'DIY objet ancien', 'transformer meuble brocante', 'customisation vintage'],
+    keywords: ['upcycling brocante', 'DIY objet ancien', 'transformer meuble brocante', 'customisation vintage', 'relooker meuble brocante', 'upcycling déco tendance', 'faire-soi-même vintage', 'brocante créativité'],
     date: '2026-04-22',
     readTime: 6,
     category: 'Tendances',
-    illustration: 'tools',
+    illustration: 'https://images.unsplash.com/photo-1452860606245-08befc0ff44b?auto=format&fit=crop&w=800&q=80',
     excerpt: 'L\'upcycling — relooker et transformer des objets de brocante — est devenu un mouvement à part entière. Entre artisanat, créativité et écologie, tour d\'horizon d\'une tendance qui dure.',
     content: `
 <h2>Qu'est-ce que l'upcycling ?</h2>
