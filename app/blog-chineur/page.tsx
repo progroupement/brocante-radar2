@@ -6,6 +6,8 @@ import ArticleIllustration from '@/components/ArticleIllustration'
 import { articlesChineur } from '@/lib/articles-chineur'
 import { Clock, ArrowRight } from 'lucide-react'
 
+export const dynamic = 'force-static'
+
 export const metadata: Metadata = {
   title: 'Blog du Chineur — Conseils et astuces pour bien chiner en Île-de-France',
   description: 'Préparer sa visite, négocier, reconnaître les bonnes affaires : tous les conseils pratiques pour les chineurs des brocantes d\'Île-de-France.',
