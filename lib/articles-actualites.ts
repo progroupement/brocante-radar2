@@ -56,7 +56,7 @@ export const articlesActualites: ArticleActu[] = [
     date: '2026-06-10',
     readTime: 7,
     category: 'Marché',
-    illustration: 'https://images.unsplash.com/photo-1579621970590-9d152c476153?auto=format&fit=crop&w=800&q=80',
+    illustration: 'https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?auto=format&fit=crop&w=800&q=80',
     excerpt: 'Le secteur de la brocante et de l\'occasion en France représente plusieurs milliards d\'euros. Voici l\'état du marché, les chiffres clés et les tendances qui façonnent l\'avenir.',
     content: `
 <h2>Un secteur en croissance continue</h2>
@@ -95,7 +95,7 @@ export const articlesActualites: ArticleActu[] = [
     date: '2026-06-05',
     readTime: 6,
     category: 'Innovation',
-    illustration: 'https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d6?auto=format&fit=crop&w=800&q=80',
+    illustration: 'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&w=800&q=80',
     excerpt: 'Les brocantes s\'adaptent à l\'ère numérique. QR codes sur les stands, applications de recherche en temps réel, Instagram et TikTok : la révolution digitale est en marche.',
     content: `
 <h2>La brocante rejoint le XXIe siècle</h2>
@@ -128,7 +128,7 @@ export const articlesActualites: ArticleActu[] = [
     date: '2026-05-30',
     readTime: 6,
     category: 'Marché',
-    illustration: 'https://images.unsplash.com/photo-1539375665275-f9de415ef9ac?auto=format&fit=crop&w=800&q=80',
+    illustration: 'https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?auto=format&fit=crop&w=800&q=80',
     excerpt: 'Un vinyle qui valait 2€ il y a dix ans peut aujourd\'hui atteindre 20-50€. Analyse d\'un phénomène de marché qui transforme les brocantes françaises.',
     content: `
 <h2>Le grand retour du vinyle</h2>
@@ -165,7 +165,7 @@ export const articlesActualites: ArticleActu[] = [
     date: '2026-05-25',
     readTime: 6,
     category: 'Société',
-    illustration: 'https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=800&q=80',
+    illustration: 'https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=800&q=80',
     excerpt: 'Les brocantes rajeunissent. La génération Z, sensible à l\'environnement et à l\'authenticité, est devenue l\'un des principaux moteurs du renouveau des marchés aux puces.',
     content: `
 <h2>Un changement générationnel visible</h2>
@@ -210,7 +210,7 @@ export const articlesActualites: ArticleActu[] = [
     date: '2026-05-18',
     readTime: 6,
     category: 'Société',
-    illustration: 'https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&w=800&q=80',
+    illustration: 'https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=800&q=80',
     excerpt: 'La brocante est bien plus qu\'un loisir : c\'est un acte écologique. Chiffres et analyses sur l\'impact environnemental positif du marché de la seconde main.',
     content: `
 <h2>La brocante, acte écologique par excellence</h2>
@@ -353,7 +353,7 @@ export const articlesActualites: ArticleActu[] = [
     date: '2026-04-22',
     readTime: 6,
     category: 'Tendances',
-    illustration: 'https://images.unsplash.com/photo-1452860606245-08befc0ff44b?auto=format&fit=crop&w=800&q=80',
+    illustration: 'https://images.unsplash.com/photo-1416339306562-f3d12fefd36f?auto=format&fit=crop&w=800&q=80',
     excerpt: 'L\'upcycling — relooker et transformer des objets de brocante — est devenu un mouvement à part entière. Entre artisanat, créativité et écologie, tour d\'horizon d\'une tendance qui dure.',
     content: `
 <h2>Qu'est-ce que l'upcycling ?</h2>
