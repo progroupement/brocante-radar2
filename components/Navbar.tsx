@@ -108,7 +108,7 @@ export default function Navbar() {
                   <p className="text-xs text-[#4A5680] mt-0.5">Mon stand, mes photos, mes articles</p>
                 </Link>
                 <div className="border-t border-blue-50 mx-2 my-0.5" />
-                <Link href="/exposant/inscription" onClick={() => setEspaceOpen(false)} className="block px-4 py-3 hover:bg-[#EEF4FF] transition-colors rounded-xl mx-1">
+                <Link href="/organisateur" onClick={() => setEspaceOpen(false)} className="block px-4 py-3 hover:bg-[#EEF4FF] transition-colors rounded-xl mx-1">
                   <p className="font-bold text-[#0D1B4B] text-sm">📋 Espace organisateur</p>
                   <p className="text-xs text-[#4A5680] mt-0.5">Créer et gérer ma brocante</p>
                 </Link>
@@ -155,7 +155,7 @@ export default function Navbar() {
             <p className="text-xs text-blue-500 px-3 pb-2 font-semibold uppercase tracking-wider">Mon espace</p>
             <Link href="/je-cherche" onClick={() => setOpen(false)} className="text-sm font-semibold text-blue-200 px-3 py-3 rounded-lg hover:bg-blue-800 block">🔍 Espace chineur</Link>
             <Link href="/exposant/connexion" onClick={() => setOpen(false)} className="text-sm font-semibold text-blue-200 px-3 py-3 rounded-lg hover:bg-blue-800 block">🏷️ Espace exposant</Link>
-            <Link href="/exposant/inscription" onClick={() => setOpen(false)} className="text-sm font-semibold text-blue-200 px-3 py-3 rounded-lg hover:bg-blue-800 block">📋 Espace organisateur</Link>
+            <Link href="/organisateur" onClick={() => setOpen(false)} className="text-sm font-semibold text-blue-200 px-3 py-3 rounded-lg hover:bg-blue-800 block">📋 Espace organisateur</Link>
           </div>
 
           <Link href="/exposant/inscription" onClick={() => setOpen(false)} className="mt-3 bg-[#E8651A] text-white text-sm font-bold px-4 py-3.5 rounded-xl text-center block shadow-lg">
