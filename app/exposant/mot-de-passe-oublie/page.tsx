@@ -24,7 +24,12 @@ function MotDePasseOublieForm() {
     })
 
     if (err) {
-      setError(err.message || err.name || JSON.stringify(err) || 'Erreur inconnue')
+      const msg = err.message && err.message !== '{}'
+        ? err.message
+        : err.name && err.name !== 'AuthApiError'
+          ? err.name
+          : 'Une erreur est survenue. Vérifiez votre email ou réessayez dans quelques instants.'
+      setError(msg)
     } else {
       setSent(true)
     }
