@@ -39,8 +39,8 @@ export default function Navbar() {
 
         {/* Desktop nav — centré + bouton CTA inclus dans le groupe central */}
         <div className="hidden md:flex items-center justify-center flex-1 gap-1 px-4">
-          <Link href="/je-cherche" className="text-sm font-semibold text-blue-300 hover:text-white transition-colors px-3 py-2 whitespace-nowrap rounded-lg hover:bg-white/5">
-            Je cherche
+          <Link href="/" className="text-sm font-semibold text-blue-300 hover:text-white transition-colors px-3 py-2 whitespace-nowrap rounded-lg hover:bg-white/5">
+            Accueil
           </Link>
           <Link href="/brocantes-ile-de-france" className="text-sm font-semibold text-blue-300 hover:text-white transition-colors px-3 py-2 whitespace-nowrap rounded-lg hover:bg-white/5">
             Brocantes IDF
@@ -139,7 +139,7 @@ export default function Navbar() {
       {/* Mobile menu */}
       {open && (
         <div className="md:hidden border-t border-blue-800 bg-[#0D1B4B] px-4 py-4 flex flex-col gap-1">
-          <Link href="/je-cherche" onClick={() => setOpen(false)} className="text-sm font-semibold text-blue-200 px-3 py-3 rounded-lg hover:bg-blue-800">Je cherche la perle rare</Link>
+          <Link href="/" onClick={() => setOpen(false)} className="text-sm font-semibold text-blue-200 px-3 py-3 rounded-lg hover:bg-blue-800">Accueil</Link>
           <Link href="/brocantes-ile-de-france" onClick={() => setOpen(false)} className="text-sm font-semibold text-blue-200 px-3 py-3 rounded-lg hover:bg-blue-800">Brocantes IDF</Link>
           <Link href="/search" onClick={() => setOpen(false)} className="text-sm font-semibold text-blue-200 px-3 py-3 rounded-lg hover:bg-blue-800">Rechercher un objet</Link>
           <Link href="/actualites" onClick={() => setOpen(false)} className="text-sm font-semibold text-blue-200 px-3 py-3 rounded-lg hover:bg-blue-800">Actualités brocante</Link>

@@ -67,10 +67,8 @@ export default function ActualitesPage() {
               href={`/actualites/${featured.slug}`}
               className="group flex flex-col sm:flex-row gap-6 bg-white rounded-3xl overflow-hidden border border-blue-100 hover:border-blue-300 hover:shadow-lg hover:shadow-blue-100 transition-all"
             >
-              <div className="bg-[#0D1B4B] sm:w-48 flex-shrink-0 flex items-center justify-center py-8 sm:py-0">
-                <div className="w-28 h-28">
-                  <ArticleIllustration illustration={featured.illustration} />
-                </div>
+              <div className="sm:w-56 flex-shrink-0 h-48 sm:h-auto overflow-hidden bg-[#EEF4FF]">
+                <ArticleIllustration illustration={featured.illustration} alt={featured.title} />
               </div>
               <div className="p-6 flex flex-col justify-center gap-3">
                 <span className={`text-xs font-semibold px-2.5 py-1 rounded-full self-start ${categoryColors[featured.category] ?? 'bg-gray-100 text-gray-700'}`}>
@@ -104,10 +102,8 @@ export default function ActualitesPage() {
                   href={`/actualites/${article.slug}`}
                   className="group bg-white border border-blue-100 rounded-2xl overflow-hidden hover:shadow-lg hover:shadow-blue-100 hover:border-blue-200 transition-all flex flex-col"
                 >
-                  <div className="bg-[#EEF4FF] py-6 flex items-center justify-center">
-                    <div className="w-24 h-24">
-                      <ArticleIllustration illustration={article.illustration} />
-                    </div>
+                  <div className="h-48 overflow-hidden bg-[#EEF4FF]">
+                    <ArticleIllustration illustration={article.illustration} alt={article.title} />
                   </div>
                   <div className="p-5 flex flex-col gap-3 flex-1">
                     <span className={`text-xs font-semibold px-2.5 py-1 rounded-full self-start ${categoryColors[article.category] ?? 'bg-gray-100 text-gray-700'}`}>

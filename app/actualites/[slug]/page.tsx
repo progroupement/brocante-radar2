@@ -66,27 +66,23 @@ export default async function ArticleActualitePage({ params }: Props) {
             <Link href="/actualites" className="inline-flex items-center gap-2 text-blue-300 hover:text-white text-sm mb-6 transition-colors">
               <ArrowLeft className="w-4 h-4" /> Actualités brocante
             </Link>
-            <div className="flex items-center gap-4 mb-6">
-              <div className="w-20 h-20 bg-white/5 rounded-2xl flex items-center justify-center flex-shrink-0">
-                <div className="w-14 h-14">
-                  <ArticleIllustration illustration={article.illustration} />
-                </div>
-              </div>
-              <div>
-                <div className="inline-flex items-center gap-1.5 text-xs font-semibold px-2.5 py-1 rounded-full bg-[#E8651A]/20 text-orange-300 mb-2">
-                  <Tag className="w-3 h-3" /> {article.category}
-                </div>
-                <div className="flex items-center gap-3 text-sm text-blue-400">
-                  <span>{formatDate(article.date)}</span>
-                  <span className="flex items-center gap-1"><Clock className="w-3.5 h-3.5" /> {article.readTime} min</span>
-                </div>
-              </div>
+            <div className="inline-flex items-center gap-1.5 text-xs font-semibold px-2.5 py-1 rounded-full bg-[#E8651A]/20 text-orange-300 mb-4">
+              <Tag className="w-3 h-3" /> {article.category}
             </div>
-            <h1 className="text-2xl sm:text-3xl font-black text-white tracking-tight leading-snug">
+            <h1 className="text-2xl sm:text-3xl font-black text-white tracking-tight leading-snug mb-4">
               {article.title}
             </h1>
+            <div className="flex items-center gap-3 text-sm text-blue-400">
+              <span>{formatDate(article.date)}</span>
+              <span className="flex items-center gap-1"><Clock className="w-3.5 h-3.5" /> {article.readTime} min</span>
+            </div>
           </div>
         </section>
+
+        {/* Image héro plein-largeur */}
+        <div className="w-full h-64 sm:h-80 overflow-hidden bg-[#EEF4FF]">
+          <ArticleIllustration illustration={article.illustration} alt={article.title} />
+        </div>
 
         <article className="py-12 px-4">
           <div
@@ -101,10 +97,8 @@ export default async function ArticleActualitePage({ params }: Props) {
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
               {others.map((a) => (
                 <Link key={a.slug} href={`/actualites/${a.slug}`} className="group bg-white rounded-2xl overflow-hidden border border-blue-100 hover:border-[#E8651A] transition-all">
-                  <div className="bg-[#EEF4FF] py-4 flex items-center justify-center">
-                    <div className="w-16 h-16">
-                      <ArticleIllustration illustration={a.illustration} />
-                    </div>
+                  <div className="h-36 overflow-hidden bg-[#EEF4FF]">
+                    <ArticleIllustration illustration={a.illustration} alt={a.title} />
                   </div>
                   <div className="p-4">
                     <p className="font-bold text-[#0D1B4B] text-sm leading-snug group-hover:text-[#E8651A] transition-colors mb-2">{a.title}</p>
